@@ -183,7 +183,7 @@ body.lang-ja .en { display: none; }
 }
 .pain-item { background: var(--dark); padding: 28px; }
 .pain-item-h { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.82); margin-bottom: 8px; line-height: 1.4; }
-.pain-item-p { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.45); line-height: 1.75; }
+.pain-item-p { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.62); line-height: 1.75; }
 
 /* Divider inside problem */
 .problem-divider {
@@ -194,14 +194,14 @@ body.lang-ja .en { display: none; }
 /* Analysis text on dark */
 .stag-dark {
   font-size: 10px; font-weight: 600; letter-spacing: 0.22em;
-  text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 36px;
+  text-transform: uppercase; color: rgba(255,255,255,0.48); margin-bottom: 36px;
 }
 .prob-lead {
   font-size: clamp(20px, 2.6vw, 27px); font-weight: 300;
   line-height: 1.42; letter-spacing: -0.018em; color: rgba(255,255,255,0.88);
   margin-bottom: 36px;
 }
-.prob-body { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.52); line-height: 1.9; max-width: 640px; }
+.prob-body { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.72); line-height: 1.9; max-width: 640px; }
 .prob-body p + p { margin-top: 18px; }
 .prob-body strong { color: rgba(255,255,255,0.88); font-weight: 500; }
 .pullquote {
@@ -210,7 +210,7 @@ body.lang-ja .en { display: none; }
   font-size: clamp(17px, 2.2vw, 21px); font-weight: 400;
   color: rgba(255,255,255,0.82); line-height: 1.55; letter-spacing: -0.01em;
 }
-.pain-close { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.52); line-height: 1.85; max-width: 640px; }
+.pain-close { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.72); line-height: 1.85; max-width: 640px; }
 .pain-close strong { color: rgba(255,255,255,0.88); font-weight: 500; }
 
 /* ═══ PHOTO BREAK ═══ */
@@ -254,7 +254,7 @@ body.lang-ja .en { display: none; }
 .reality-in { max-width: 660px; margin: 0 auto; padding: 96px 24px; }
 
 /* Fear text */
-.fear-body { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.9; max-width: 640px; }
+.fear-body { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.9; max-width: 640px; }
 .fear-body p + p { margin-top: 18px; }
 .fear-body strong { color: #fff; font-weight: 500; }
 .fear-q {
@@ -264,8 +264,18 @@ body.lang-ja .en { display: none; }
 
 /* Divider between fear and waitlist */
 .reality-divider {
-  width: 100%; height: 1px; background: rgba(255,255,255,0.1);
-  margin: 64px 0;
+  width: 100%; height: 1px;
+  background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.2) 30%, rgba(255,255,255,0.2) 70%, transparent 100%);
+  margin: 72px 0 0;
+}
+
+/* Waitlist panel */
+.wl-panel {
+background: rgba(255,255,255,0.04);
+border: 1px solid rgba(255,255,255,0.1);
+border-radius: 2px;
+padding: 52px 48px;
+margin-top: 0;
 }
 
 /* Waitlist */
@@ -748,16 +758,17 @@ body.lang-ja .en { display: none; }
     <div class="reality-divider rv"></div>
 
     <!-- Waitlist -->
-    <p class="wl-tag en rv">Your move.</p>
-    <p class="wl-tag ja rv">あなたの選択。</p>
+    <div class="wl-panel">
+    <p class="wl-tag en rv">Early Access</p>
+    <p class="wl-tag ja rv">アーリーアクセス</p>
 
     <h2 class="wl-h2 en rv">
-      You never agreed to this.<br>
-      Start here.
+      Join the waitlist.<br>
+      Be first when we launch.
     </h2>
     <h2 class="wl-h2 ja rv">
-      同意した覚えはない。<br>
-      ここから始める。
+      ウェイティングリストに登録する。<br>
+      ローンチ時に最初にアクセスできます。
     </h2>
 
     <p class="wl-sub en rv">
