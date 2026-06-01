@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stoic — Reclaim Your Attention</title>
+<title>Stoic â Reclaim Your Attention</title>
 <meta name="description" content="Stoic helps you design a life where your time and attention go exactly where you choose.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,7 +70,7 @@ nav {
 .btn-primary:hover { background: #0077ed; }
 .btn-secondary { padding: 13px 28px; font-size: 15px; font-weight: 400; color: #0071e3; text-decoration: none; border-radius: 980px; transition: opacity 0.15s; display: flex; align-items: center; gap: 6px; }
 .btn-secondary:hover { opacity: 0.7; }
-.btn-secondary::after { content: '›'; font-size: 18px; line-height: 1; }
+.btn-secondary::after { content: 'âº'; font-size: 18px; line-height: 1; }
 .hero-scroll { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; opacity: 0.3; }
 .hero-scroll span { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-86); }
 .hero-scroll-line { width: 1px; height: 40px; background: var(--gray-86); animation: scrollline 1.8s ease-in-out infinite; }
@@ -163,7 +163,7 @@ footer { background: var(--gray-06); border-top: 0.5px solid var(--gray-12); pad
 .footer-link:hover { text-decoration: underline; }
 .footer-copy { font-size: 11px; color: var(--gray-40); }
 
-.fade { opacity: 0; transform: translateY(20px); transition: opacity 0.75s var(--ease), transform 0.75s var(--ease); }
+.fade { opacity: 1; transform: none; }
 .fade.visible { opacity: 1; transform: none; }
 
 @media(max-width: 768px) { .stat-band-in { grid-template-columns: 1fr 1fr; } .stat-cell:nth-child(3) { border-right: none; border-top: 0.5px solid var(--gray-12); } .stat-cell { padding: 40px 24px; } .empathy-grid { grid-template-columns: 1fr; } .feature-grid { grid-template-columns: 1fr; } .section, .manifesto, .waitlist, .contact { padding-left: 20px; padding-right: 20px; } .cinematic-copy { padding: 32px 24px; } .nav-cta { display: none; } .cf-field { flex-direction: column; } }
@@ -182,27 +182,27 @@ footer { background: var(--gray-06); border-top: 0.5px solid var(--gray-12); pad
         <button class="lng-btn" id="btn-ja" onclick="setLang('ja')">JP</button>
       </div>
       <a href="#waitlist" class="nav-cta en">Join Waitlist</a>
-      <a href="#waitlist" class="nav-cta ja">登録する</a>
+      <a href="#waitlist" class="nav-cta ja">ç»é²ãã</a>
     </div>
   </div>
 </nav>
 
 <section class="hero">
   <p class="hero-eyebrow en">Designed for the life you actually want.</p>
-  <p class="hero-eyebrow ja">本当に送りたい人生のために、設計された。</p>
+  <p class="hero-eyebrow ja">æ¬å½ã«éãããäººçã®ããã«ãè¨­è¨ãããã</p>
   <h1 class="hero-h1 en">Your attention<br><span>is the product.</span></h1>
-  <h1 class="hero-h1 ja">あなたの注意が<br><span>商品にされている。</span></h1>
-  <p class="hero-sub en">Stoic helps you take it back. Not through restriction — through design.</p>
-  <p class="hero-sub ja">STOICは、それを取り戻す手助けをします。制限ではなく、設計によって。</p>
+  <h1 class="hero-h1 ja">ããªãã®æ³¨æã<br><span>ååã«ããã¦ããã</span></h1>
+  <p class="hero-sub en">Stoic helps you take it back. Not through restriction â through design.</p>
+  <p class="hero-sub ja">STOICã¯ããããåãæ»ãæå©ãããã¾ããå¶éã§ã¯ãªããè¨­è¨ã«ãã£ã¦ã</p>
   <div class="hero-actions">
     <a href="#waitlist" class="btn-primary en">Join the Waitlist</a>
-    <a href="#waitlist" class="btn-primary ja">ウェイティングリストに登録</a>
+    <a href="#waitlist" class="btn-primary ja">ã¦ã§ã¤ãã£ã³ã°ãªã¹ãã«ç»é²</a>
     <a href="#how" class="btn-secondary en">Learn more</a>
-    <a href="#how" class="btn-secondary ja">詳細を見る</a>
+    <a href="#how" class="btn-secondary ja">è©³ç´°ãè¦ã</a>
   </div>
   <div class="hero-scroll">
     <span class="en">Scroll</span>
-    <span class="ja">スクロール</span>
+    <span class="ja">ã¹ã¯ã­ã¼ã«</span>
     <div class="hero-scroll-line"></div>
   </div>
 </section>
@@ -211,10 +211,10 @@ footer { background: var(--gray-06); border-top: 0.5px solid var(--gray-12); pad
 
 <div class="stat-band" id="data">
   <div class="stat-band-in">
-    <div class="stat-cell fade"><div class="stat-num">4.7<sup>h</sup></div><p class="stat-label en">Average daily smartphone use per adult</p><p class="stat-label ja">成人1人あたりの1日平均スマートフォン使用時間</p></div>
-    <div class="stat-cell fade"><div class="stat-num">71<sup>d</sup></div><p class="stat-label en">Days lost each year to passive screen time</p><p class="stat-label ja">受動的なスクリーンタイムで失われる年間日数</p></div>
-    <div class="stat-cell fade"><div class="stat-num">40<sup>%</sup></div><p class="stat-label en">Drop in deep-work capacity from digital interruptions</p><p class="stat-label ja">断続的な通知による深い集中力の低下率</p></div>
-    <div class="stat-cell fade"><div class="stat-num">1,500<sup>+</sup></div><p class="stat-label en">TikTok engineers working only on keeping you scrolling</p><p class="stat-label ja">TikTokのエンゲージメント最適化専任エンジニアの数</p></div>
+    <div class="stat-cell fade"><div class="stat-num">4.7<sup>h</sup></div><p class="stat-label en">Average daily smartphone use per adult</p><p class="stat-label ja">æäºº1äººãããã®1æ¥å¹³åã¹ãã¼ããã©ã³ä½¿ç¨æé</p></div>
+    <div class="stat-cell fade"><div class="stat-num">71<sup>d</sup></div><p class="stat-label en">Days lost each year to passive screen time</p><p class="stat-label ja">ååçãªã¹ã¯ãªã¼ã³ã¿ã¤ã ã§å¤±ãããå¹´éæ¥æ°</p></div>
+    <div class="stat-cell fade"><div class="stat-num">40<sup>%</sup></div><p class="stat-label en">Drop in deep-work capacity from digital interruptions</p><p class="stat-label ja">æ­ç¶çãªéç¥ã«ããæ·±ãéä¸­åã®ä½ä¸ç</p></div>
+    <div class="stat-cell fade"><div class="stat-num">1,500<sup>+</sup></div><p class="stat-label en">TikTok engineers working only on keeping you scrolling</p><p class="stat-label ja">TikTokã®ã¨ã³ã²ã¼ã¸ã¡ã³ãæé©åå°ä»»ã¨ã³ã¸ãã¢ã®æ°</p></div>
   </div>
 </div>
 
@@ -222,46 +222,46 @@ footer { background: var(--gray-06); border-top: 0.5px solid var(--gray-12); pad
 
 <div class="section fade" id="about">
   <p class="tag tag-blue en">What Stoic is</p>
-  <p class="tag tag-blue ja">STOICとは</p>
+  <p class="tag tag-blue ja">STOICã¨ã¯</p>
   <h2 class="h-display en">Not a blocker.<br>A life design companion.</h2>
-  <h2 class="h-display ja">制限ツールではありません。<br>人生設計の伴走者です。</h2>
+  <h2 class="h-display ja">å¶éãã¼ã«ã§ã¯ããã¾ããã<br>äººçè¨­è¨ã®ä¼´èµ°èã§ãã</h2>
   <div style="height:32px"></div>
-  <p class="body-copy en">Stoic works alongside you — helping you build each day so that your time and attention naturally flow toward what genuinely matters to you.</p>
-  <p class="body-copy ja">STOICはあなたの隣に立ち、時間と注意が本当に大切なことへと自然に向かえる毎日をともに作っていきます。</p>
+  <p class="body-copy en">Stoic works alongside you â helping you build each day so that your time and attention naturally flow toward what genuinely matters to you.</p>
+  <p class="body-copy ja">STOICã¯ããªãã®é£ã«ç«ã¡ãæéã¨æ³¨æãæ¬å½ã«å¤§åãªãã¨ã¸ã¨èªç¶ã«åãããæ¯æ¥ãã¨ãã«ä½ã£ã¦ããã¾ãã</p>
   <p class="body-copy en" style="margin-top:16px;"><strong>This is not about willpower. It's about building the right structure.</strong></p>
-  <p class="body-copy ja" style="margin-top:16px;"><strong>これは意志力の話ではありません。正しい構造を作ることです。</strong></p>
+  <p class="body-copy ja" style="margin-top:16px;"><strong>ããã¯æå¿åã®è©±ã§ã¯ããã¾ãããæ­£ããæ§é ãä½ããã¨ã§ãã</strong></p>
 </div>
 
 <hr class="div">
 
 <div class="section fade">
   <p class="tag en">You've already tried.</p>
-  <p class="tag ja">すでに試してきたはずです。</p>
+  <p class="tag ja">ãã§ã«è©¦ãã¦ããã¯ãã§ãã</p>
   <h2 class="h-display en">None of it worked.<br>Here's why.</h2>
-  <h2 class="h-display ja">どれもうまくいかなかった。<br>その理由があります。</h2>
+  <h2 class="h-display ja">ã©ãããã¾ããããªãã£ãã<br>ãã®çç±ãããã¾ãã</h2>
   <div class="empathy-grid">
-    <div class="empathy-card"><p class="empathy-card-head en">You bought a phone lockbox.</p><p class="empathy-card-head ja">スマートフォン用のロックボックスを購入した。</p><p class="empathy-card-body en">It ended up on the shelf. Complete unreachability was too high a cost.</p><p class="empathy-card-body ja">完全に連絡が取れなくなるという抵抗感が大きすぎて、棚の上に置かれたまま。</p></div>
-    <div class="empathy-card"><p class="empathy-card-head en">You installed a focus app.</p><p class="empathy-card-head ja">集中系のアプリを入れてタイマーを設定した。</p><p class="empathy-card-body en">The tree died. The streak reset. Nothing changed the next day.</p><p class="empathy-card-body ja">木は枯れ、記録はリセットされ、翌日には何も変わっていなかった。</p></div>
-    <div class="empathy-card"><p class="empathy-card-head en">You turned on Screen Time.</p><p class="empathy-card-head ja">スクリーンタイムの制限を設定した。</p><p class="empathy-card-body en">You entered the passcode to override it approximately 30 seconds later.</p><p class="empathy-card-body ja">30秒後には、制限解除のパスコードを入力していた。</p></div>
-    <div class="empathy-card"><p class="empathy-card-head en">You deleted the app entirely.</p><p class="empathy-card-head ja">アプリを完全に削除した。</p><p class="empathy-card-body en">By morning, it was back. "Just to check something."</p><p class="empathy-card-body ja">翌朝には再インストールしていた。「少し確認するだけ」と言い聞かせて。</p></div>
+    <div class="empathy-card"><p class="empathy-card-head en">You bought a phone lockbox.</p><p class="empathy-card-head ja">ã¹ãã¼ããã©ã³ç¨ã®ã­ãã¯ããã¯ã¹ãè³¼å¥ããã</p><p class="empathy-card-body en">It ended up on the shelf. Complete unreachability was too high a cost.</p><p class="empathy-card-body ja">å®å¨ã«é£çµ¡ãåããªããªãã¨ããæµææãå¤§ãããã¦ãæ£ã®ä¸ã«ç½®ãããã¾ã¾ã</p></div>
+    <div class="empathy-card"><p class="empathy-card-head en">You installed a focus app.</p><p class="empathy-card-head ja">éä¸­ç³»ã®ã¢ããªãå¥ãã¦ã¿ã¤ãã¼ãè¨­å®ããã</p><p class="empathy-card-body en">The tree died. The streak reset. Nothing changed the next day.</p><p class="empathy-card-body ja">æ¨ã¯æ¯ããè¨é²ã¯ãªã»ãããããç¿æ¥ã«ã¯ä½ãå¤ãã£ã¦ããªãã£ãã</p></div>
+    <div class="empathy-card"><p class="empathy-card-head en">You turned on Screen Time.</p><p class="empathy-card-head ja">ã¹ã¯ãªã¼ã³ã¿ã¤ã ã®å¶éãè¨­å®ããã</p><p class="empathy-card-body en">You entered the passcode to override it approximately 30 seconds later.</p><p class="empathy-card-body ja">30ç§å¾ã«ã¯ãå¶éè§£é¤ã®ãã¹ã³ã¼ããå¥åãã¦ããã</p></div>
+    <div class="empathy-card"><p class="empathy-card-head en">You deleted the app entirely.</p><p class="empathy-card-head ja">ã¢ããªãå®å¨ã«åé¤ããã</p><p class="empathy-card-body en">By morning, it was back. "Just to check something."</p><p class="empathy-card-body ja">ç¿æã«ã¯åã¤ã³ã¹ãã¼ã«ãã¦ããããå°ãç¢ºèªããã ããã¨è¨ãèããã¦ã</p></div>
   </div>
   <p class="empathy-close en">This didn't fail because you lack discipline. <strong>These tools were simply not designed around how attention and habit actually work.</strong></p>
-  <p class="empathy-close ja">うまくいかなかったのは、意志力が足りなかったからではありません。<strong>それらのツールは、注意と習慣が実際にどう機能するかを理解せずに作られていたのです。</strong></p>
+  <p class="empathy-close ja">ãã¾ããããªãã£ãã®ã¯ãæå¿åãè¶³ããªãã£ãããã§ã¯ããã¾ããã<strong>ãããã®ãã¼ã«ã¯ãæ³¨æã¨ç¿æ£ãå®éã«ã©ãæ©è½ããããçè§£ããã«ä½ããã¦ããã®ã§ãã</strong></p>
 </div>
 
 <hr class="div">
 
 <div class="section-wide fade" id="how">
   <div style="max-width:var(--max);margin:0 auto;">
-    <p class="tag en">How Stoic works</p><p class="tag ja">STOICの仕組み</p>
+    <p class="tag en">How Stoic works</p><p class="tag ja">STOICã®ä»çµã¿</p>
     <h2 class="h-display en">Four moments.<br>Redesigned.</h2>
-    <h2 class="h-display ja">4つの瞬間を<br>設計し直す。</h2>
+    <h2 class="h-display ja">4ã¤ã®ç¬éã<br>è¨­è¨ãç´ãã</h2>
   </div>
   <div class="feature-grid">
-    <div class="feature-card"><p class="feature-num">01</p><h3 class="feature-title en">From overwhelm to first step</h3><h3 class="feature-title ja">「どこから始めるか」をなくす</h3><p class="feature-body en">You sit down to work. Instead, you find yourself on Instagram 20 minutes later. The task wasn't hard — it was vague. Stoic breaks any task into 3-minute concrete steps, so there's always a clear next action.</p><p class="feature-body ja">仕事に取り掛かろうとしたのに、20分後にはSNSを見ていた。タスクが難しかったわけではなく、曖昧だっただけ。STOICは全てのタスクを3分以内の具体的なステップに整理します。</p></div>
-    <div class="feature-card"><p class="feature-num">02</p><h3 class="feature-title en">The 20-minute pause</h3><h3 class="feature-title ja">20分、待ってみる</h3><p class="feature-body en">Want to open Instagram? Wait 20 minutes first — screen on, uninterrupted. Leave, and the timer resets. By the time the wait ends, the urge is usually gone.</p><p class="feature-body ja">SNSを開きたい？まず20分待ちます。画面から離れるとタイマーがリセット。20分後には、そのアプリを開きたいという衝動が消えていることがほとんど。</p></div>
-    <div class="feature-card"><p class="feature-num">03</p><h3 class="feature-title en">Instant recognition of progress</h3><h3 class="feature-title ja">進んだことを、すぐに実感する</h3><p class="feature-body en">Every time you complete a step, Stoic responds immediately. Not a badge or streak — just the clean, direct sensation of having moved forward.</p><p class="feature-body ja">ステップを完了するたびに、STOICはすぐに応答します。バッジでも連続記録でもなく、前に進んだという純粋な実感。</p></div>
-    <div class="feature-card"><p class="feature-num">04</p><h3 class="feature-title en">Informed choice at the right moment</h3><h3 class="feature-title ja">選ぶ前に、事実を知る</h3><p class="feature-body en">Before you unlock a social app, Stoic shows you — calmly, factually, without judgment — how that platform is designed to use your time.</p><p class="feature-body ja">SNSを解除しようとする瞬間、そのプラットフォームがあなたの時間をどう設計しているかを静かに、事実として提示します。</p></div>
+    <div class="feature-card"><p class="feature-num">01</p><h3 class="feature-title en">From overwhelm to first step</h3><h3 class="feature-title ja">ãã©ãããå§ããããããªãã</h3><p class="feature-body en">You sit down to work. Instead, you find yourself on Instagram 20 minutes later. The task wasn't hard â it was vague. Stoic breaks any task into 3-minute concrete steps, so there's always a clear next action.</p><p class="feature-body ja">ä»äºã«åãæãããã¨ããã®ã«ã20åå¾ã«ã¯SNSãè¦ã¦ãããã¿ã¹ã¯ãé£ããã£ãããã§ã¯ãªããææ§ã ã£ãã ããSTOICã¯å¨ã¦ã®ã¿ã¹ã¯ã3åä»¥åã®å·ä½çãªã¹ãããã«æ´çãã¾ãã</p></div>
+    <div class="feature-card"><p class="feature-num">02</p><h3 class="feature-title en">The 20-minute pause</h3><h3 class="feature-title ja">20åãå¾ã£ã¦ã¿ã</h3><p class="feature-body en">Want to open Instagram? Wait 20 minutes first â screen on, uninterrupted. Leave, and the timer resets. By the time the wait ends, the urge is usually gone.</p><p class="feature-body ja">SNSãéãããï¼ã¾ã20åå¾ã¡ã¾ããç»é¢ããé¢ããã¨ã¿ã¤ãã¼ããªã»ããã20åå¾ã«ã¯ããã®ã¢ããªãéãããã¨ããè¡åãæ¶ãã¦ãããã¨ãã»ã¨ãã©ã</p></div>
+    <div class="feature-card"><p class="feature-num">03</p><h3 class="feature-title en">Instant recognition of progress</h3><h3 class="feature-title ja">é²ãã ãã¨ããããã«å®æãã</h3><p class="feature-body en">Every time you complete a step, Stoic responds immediately. Not a badge or streak â just the clean, direct sensation of having moved forward.</p><p class="feature-body ja">ã¹ããããå®äºãããã³ã«ãSTOICã¯ããã«å¿ç­ãã¾ããããã¸ã§ãé£ç¶è¨é²ã§ããªããåã«é²ãã ã¨ããç´ç²ãªå®æã</p></div>
+    <div class="feature-card"><p class="feature-num">04</p><h3 class="feature-title en">Informed choice at the right moment</h3><h3 class="feature-title ja">é¸ã¶åã«ãäºå®ãç¥ã</h3><p class="feature-body en">Before you unlock a social app, Stoic shows you â calmly, factually, without judgment â how that platform is designed to use your time.</p><p class="feature-body ja">SNSãè§£é¤ãããã¨ããç¬éããã®ãã©ãããã©ã¼ã ãããªãã®æéãã©ãè¨­è¨ãã¦ããããéãã«ãäºå®ã¨ãã¦æç¤ºãã¾ãã</p></div>
   </div>
 </div>
 
@@ -269,77 +269,77 @@ footer { background: var(--gray-06); border-top: 0.5px solid var(--gray-12); pad
   <img class="cinematic-img" src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&w=1920&q=80" alt="Times Square" loading="lazy">
   <div class="cinematic-gradient"></div>
   <div class="cinematic-copy">
-    <p class="cinematic-eyebrow en">Exhibit A</p><p class="cinematic-eyebrow ja">実例</p>
-    <p class="cinematic-line en"><strong>Times Square, New York City.</strong> Every surface rented by the second. Every pixel optimized to prevent your eyes from looking away. This is not design. This is extraction — at city scale.</p>
-    <p class="cinematic-line ja"><strong>ニューヨーク、タイムズスクエア。</strong>あらゆる表面が秒単位で貸し出され、あらゆる光があなたの目を逸らさせないよう最適化されている。これはデザインではありません。都市スケールの収奪です。</p>
+    <p class="cinematic-eyebrow en">Exhibit A</p><p class="cinematic-eyebrow ja">å®ä¾</p>
+    <p class="cinematic-line en"><strong>Times Square, New York City.</strong> Every surface rented by the second. Every pixel optimized to prevent your eyes from looking away. This is not design. This is extraction â at city scale.</p>
+    <p class="cinematic-line ja"><strong>ãã¥ã¼ã¨ã¼ã¯ãã¿ã¤ã ãºã¹ã¯ã¨ã¢ã</strong>ããããè¡¨é¢ãç§åä½ã§è²¸ãåºãããããããåãããªãã®ç®ãé¸ããããªãããæé©åããã¦ãããããã¯ãã¶ã¤ã³ã§ã¯ããã¾ãããé½å¸ã¹ã±ã¼ã«ã®åå¥ªã§ãã</p>
   </div>
 </div>
 
 <div class="manifesto-wrap">
   <div class="manifesto">
-    <p class="tag en">The uncomfortable truth</p><p class="tag ja">不都合な現実</p>
-    <p class="manifesto-lead en">Every time you open Instagram, TikTok, or X —<br>you enter a behavioral experiment.</p>
-    <p class="manifesto-lead ja">あなたがInstagram、TikTok、Xを開くたびに、<br>あなたは行動実験の被験者になっています。</p>
-    <div class="manifesto-body en"><p>The platform observes your actions. Measures your response time. Records what made you stop scrolling — and what made you keep going. It updates its model of you, in real time, with one goal: keep you inside for one more second.</p><p>You are not a user. <strong>You are a subject.</strong></p><p>Your restlessness, your boredom, your anxiety — these are not side effects. They are <strong>product features</strong>. Every second of your attention is revenue.</p><p><strong>We are living inside the largest attention extraction experiment in human history. Most of us never consciously agreed to it.</strong></p></div>
-    <div class="manifesto-body ja"><p>プラットフォームはあなたの行動を観察します。反応時間を計測します。何があなたのスクロールを止め、何があなたを続けさせたかを記録します。</p><p>あなたは「ユーザー」ではありません。<strong>実験対象者です。</strong></p><p>あなたの落ち着きのなさ、退屈さ、不安——これらは副作用ではありません。<strong>製品の機能です。</strong></p><p><strong>私たちは今、人類史上最大規模の注意収奪実験の中で生きています。そしてほとんどの人が、同意した覚えがありません。</strong></p></div>
+    <p class="tag en">The uncomfortable truth</p><p class="tag ja">ä¸é½åãªç¾å®</p>
+    <p class="manifesto-lead en">Every time you open Instagram, TikTok, or X â<br>you enter a behavioral experiment.</p>
+    <p class="manifesto-lead ja">ããªããInstagramãTikTokãXãéããã³ã«ã<br>ããªãã¯è¡åå®é¨ã®è¢«é¨èã«ãªã£ã¦ãã¾ãã</p>
+    <div class="manifesto-body en"><p>The platform observes your actions. Measures your response time. Records what made you stop scrolling â and what made you keep going. It updates its model of you, in real time, with one goal: keep you inside for one more second.</p><p>You are not a user. <strong>You are a subject.</strong></p><p>Your restlessness, your boredom, your anxiety â these are not side effects. They are <strong>product features</strong>. Every second of your attention is revenue.</p><p><strong>We are living inside the largest attention extraction experiment in human history. Most of us never consciously agreed to it.</strong></p></div>
+    <div class="manifesto-body ja"><p>ãã©ãããã©ã¼ã ã¯ããªãã®è¡åãè¦³å¯ãã¾ããåå¿æéãè¨æ¸¬ãã¾ããä½ãããªãã®ã¹ã¯ã­ã¼ã«ãæ­¢ããä½ãããªããç¶ããããããè¨é²ãã¾ãã</p><p>ããªãã¯ãã¦ã¼ã¶ã¼ãã§ã¯ããã¾ããã<strong>å®é¨å¯¾è±¡èã§ãã</strong></p><p>ããªãã®è½ã¡çãã®ãªããéå±ããä¸å®ââãããã¯å¯ä½ç¨ã§ã¯ããã¾ããã<strong>è£½åã®æ©è½ã§ãã</strong></p><p><strong>ç§ãã¡ã¯ä»ãäººé¡å²ä¸æå¤§è¦æ¨¡ã®æ³¨æåå¥ªå®é¨ã®ä¸­ã§çãã¦ãã¾ããããã¦ã»ã¨ãã©ã®äººããåæããè¦ããããã¾ããã</strong></p></div>
     <blockquote class="manifesto-quote en">"You are not weak.<br>You are outmatched by design.<br>Stoic changes the design."</blockquote>
-    <blockquote class="manifesto-quote ja">「あなたが弱いのではありません。<br>設計によって圧倒されているのです。<br>STOICはその設計を変えます。」</blockquote>
-    <p class="manifesto-close en">Knowing this —<br><em>what will you decide?</em></p>
-    <p class="manifesto-close ja">今、あなたはどのような<em>判断をしますか。</em></p>
+    <blockquote class="manifesto-quote ja">ãããªããå¼±ãã®ã§ã¯ããã¾ããã<br>è¨­è¨ã«ãã£ã¦å§åããã¦ããã®ã§ãã<br>STOICã¯ãã®è¨­è¨ãå¤ãã¾ããã</blockquote>
+    <p class="manifesto-close en">Knowing this â<br><em>what will you decide?</em></p>
+    <p class="manifesto-close ja">ä»ãããªãã¯ã©ã®ãããª<em>å¤æ­ããã¾ããã</em></p>
   </div>
 </div>
 
 <div class="waitlist-wrap" id="waitlist"><div class="waitlist">
-  <p class="tag tag-blue en fade">Early Access</p><p class="tag tag-blue ja fade">アーリーアクセス</p>
+  <p class="tag tag-blue en fade">Early Access</p><p class="tag tag-blue ja fade">ã¢ã¼ãªã¼ã¢ã¯ã»ã¹</p>
   <h2 class="waitlist-h en fade">Join the waitlist.</h2>
-  <h2 class="waitlist-h ja fade">ウェイティングリストに登録する。</h2>
-  <p class="waitlist-sub en fade">No spam. One email when Stoic is ready.<br>Free to join — approximately $5–10 / month at launch.</p>
-  <p class="waitlist-sub ja fade">スパムはありません。準備が整ったときに一通だけ。<br>登録無料。ローンチ時は月額500〜1,000円程度の予定です。</p>
+  <h2 class="waitlist-h ja fade">ã¦ã§ã¤ãã£ã³ã°ãªã¹ãã«ç»é²ããã</h2>
+  <p class="waitlist-sub en fade">No spam. One email when Stoic is ready.<br>Free to join â approximately $5â10 / month at launch.</p>
+  <p class="waitlist-sub ja fade">ã¹ãã ã¯ããã¾ãããæºåãæ´ã£ãã¨ãã«ä¸éã ãã<br>ç»é²ç¡æãã­ã¼ã³ãæã¯æé¡500ã1,000åç¨åº¦ã®äºå®ã§ãã</p>
   <div id="wl-wrap" class="fade">
     <form id="wl-form" action="https://formsubmit.co/dolphinstark@protonmail.com" method="POST">
-      <input type="hidden" name="_subject" value="Stoic — New Waitlist Registration">
+      <input type="hidden" name="_subject" value="Stoic â New Waitlist Registration">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="box">
       <div class="wl-field">
         <input class="wl-input" type="email" name="email" required placeholder="your@email.com" autocomplete="email">
-        <button class="wl-btn" type="submit" id="wl-btn"><span class="en">Join Waitlist</span><span class="ja">登録する</span></button>
+        <button class="wl-btn" type="submit" id="wl-btn"><span class="en">Join Waitlist</span><span class="ja">ç»é²ãã</span></button>
       </div>
       <p class="wl-note en">Your information is never shared. One email only.</p>
-      <p class="wl-note ja">個人情報は共有されません。お届けするのは一通だけです。</p>
+      <p class="wl-note ja">åäººæå ±ã¯å±æããã¾ããããå±ãããã®ã¯ä¸éã ãã§ãã</p>
     </form>
   </div>
-  <div class="wl-done" id="wl-done"><span class="en">✓ You're on the list. We'll be in touch when Stoic launches.</span><span class="ja">✓ 登録が完了しました。Stoicのローンチ時にご連絡いたします。</span></div>
+  <div class="wl-done" id="wl-done"><span class="en">â You're on the list. We'll be in touch when Stoic launches.</span><span class="ja">â ç»é²ãå®äºãã¾ãããStoicã®ã­ã¼ã³ãæã«ãé£çµ¡ãããã¾ãã</span></div>
 </div></div>
 
 <div class="contact-wrap"><div class="contact">
-  <p class="tag en">Questions?</p><p class="tag ja">お問い合わせ</p>
+  <p class="tag en">Questions?</p><p class="tag ja">ãåãåãã</p>
   <h2 class="h-title en">We'd like to hear from you.</h2>
-  <h2 class="h-title ja">ご質問があれば、お気軽に。</h2>
+  <h2 class="h-title ja">ãè³ªåãããã°ããæ°è»½ã«ã</h2>
   <p class="body-copy en center">Reach out and we'll get back to you as soon as possible.</p>
-  <p class="body-copy ja center">お問い合わせいただければ、できる限り早くご返答いたします。</p>
+  <p class="body-copy ja center">ãåãåããããã ããã°ãã§ããéãæ©ããè¿ç­ãããã¾ãã</p>
   <form id="q-form" action="https://formsubmit.co/dolphinstark@protonmail.com" method="POST" style="margin-top:44px;text-align:left;">
-    <input type="hidden" name="_subject" value="STOIC — お問い合わせ">
+    <input type="hidden" name="_subject" value="STOIC â ãåãåãã">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="box">
     <div class="cf-field">
       <input class="cf-input en" type="text" name="name" placeholder="Name" required>
-      <input class="cf-input ja" type="text" name="name" placeholder="お名前" required>
+      <input class="cf-input ja" type="text" name="name" placeholder="ãåå" required>
       <input class="cf-input en" type="email" name="email" placeholder="Email" required autocomplete="email">
-      <input class="cf-input ja" type="email" name="email" placeholder="メールアドレス" required autocomplete="email">
+      <input class="cf-input ja" type="email" name="email" placeholder="ã¡ã¼ã«ã¢ãã¬ã¹" required autocomplete="email">
     </div>
     <textarea class="cf-textarea en" name="message" rows="5" placeholder="Your message" required></textarea>
-    <textarea class="cf-textarea ja" name="message" rows="5" placeholder="メッセージ" required></textarea>
-    <div style="text-align:center;"><button class="cf-submit" type="submit"><span class="en">Send Message</span><span class="ja">送信する</span></button></div>
+    <textarea class="cf-textarea ja" name="message" rows="5" placeholder="ã¡ãã»ã¼ã¸" required></textarea>
+    <div style="text-align:center;"><button class="cf-submit" type="submit"><span class="en">Send Message</span><span class="ja">éä¿¡ãã</span></button></div>
   </form>
-  <div class="cf-done" id="q-done"><span class="en">✓ Message sent. We'll be in touch soon.</span><span class="ja">✓ 送信が完了しました。折り返しご連絡いたします。</span></div>
+  <div class="cf-done" id="q-done"><span class="en">â Message sent. We'll be in touch soon.</span><span class="ja">â éä¿¡ãå®äºãã¾ãããæãè¿ããé£çµ¡ãããã¾ãã</span></div>
 </div></div>
 
 <footer><div class="footer-in">
   <span class="footer-logo">STOIC BY DOLPHIN STARK</span>
   <div class="footer-links">
     <a href="disclaimer.html" class="footer-link en">Legal &amp; Sources</a>
-    <a href="disclaimer.html" class="footer-link ja">免責事項・出典</a>
-    <span class="footer-copy">© 2026 Dolphin Stark.</span>
+    <a href="disclaimer.html" class="footer-link ja">åè²¬äºé ã»åºå¸</a>
+    <span class="footer-copy">Â© 2026 Dolphin Stark.</span>
   </div>
 </div></footer>
 
