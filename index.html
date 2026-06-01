@@ -11,774 +11,215 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 img{display:block;max-width:100%}
-:root {
-  --black:   #000000;
-  --white:   #ffffff;
-  --gray-06: #f5f5f7;
-  --gray-12: #e8e8ed;
-  --gray-40: #6e6e73;
-  --gray-60: #48484a;
-  --gray-86: #1d1d1f;
-  --font: -apple-system, 'Inter', 'Noto Sans JP', BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-  --max: 980px;
-  --max-wide: 1200px;
-  --ease: cubic-bezier(0.4, 0, 0.2, 1);
-}
+:root{--black:#000;--white:#fff;--gray-06:#f5f5f7;--gray-12:#e8e8ed;--gray-40:#6e6e73;--gray-60:#48484a;--gray-86:#1d1d1f;--font:-apple-system,'Inter','Noto Sans JP',BlinkMacSystemFont,'Helvetica Neue',sans-serif;--max:980px;--max-wide:1200px;--ease:cubic-bezier(.4,0,.2,1)}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--gray-86);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.ja{display:none}body.lang-ja .ja{display:revert}body.lang-ja .en{display:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:48px;background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid rgba(0,0,0,.12)}
+.nav-in{max-width:var(--max-wide);margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:17px;font-weight:600;letter-spacing:-.02em;color:var(--gray-86);text-decoration:none}
+.nav-right{display:flex;align-items:center;gap:8px}
+.lang-sw{display:flex;border:.5px solid var(--gray-12);border-radius:980px;overflow:hidden;background:var(--gray-06)}
+.lng-btn{padding:4px 14px;font-size:11px;font-weight:500;border:none;background:transparent;color:var(--gray-40);cursor:pointer;font-family:var(--font);transition:background .2s,color .2s;border-radius:980px}
+.lng-btn.on{background:var(--gray-86);color:var(--white)}
+.nav-cta{padding:6px 16px;font-size:12px;color:#0071e3;text-decoration:none;border-radius:980px;transition:opacity .15s}
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;background:var(--white);position:relative}
+.hero-eyebrow{font-size:17px;font-weight:400;color:#0071e3;letter-spacing:-.01em;margin-bottom:12px}
+.hero-h1{font-size:clamp(40px,7vw,88px);font-weight:600;letter-spacing:-.04em;line-height:1.04;color:var(--gray-86);margin-bottom:20px}
+.hero-h1 span{color:var(--gray-40);display:block}
+.hero-sub{font-size:clamp(16px,2vw,21px);font-weight:300;color:var(--gray-60);line-height:1.6;max-width:560px;margin:0 auto 40px}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-primary{padding:13px 28px;font-size:15px;font-weight:400;background:#0071e3;color:#fff;border-radius:980px;text-decoration:none;transition:background .2s;white-space:nowrap}
+.btn-primary:hover{background:#0077ed}
+.btn-secondary{padding:13px 28px;font-size:15px;color:#0071e3;text-decoration:none;border-radius:980px;display:flex;align-items:center;gap:6px}
+.btn-secondary::after{content:'›';font-size:18px}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.3}
+.hero-scroll span{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-86)}
+.hero-scroll-line{width:1px;height:40px;background:var(--gray-86);animation:scrollline 1.8s ease-in-out infinite}
+@keyframes scrollline{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.stat-band{background:var(--gray-06);border-top:.5px solid var(--gray-12);border-bottom:.5px solid var(--gray-12)}
+.stat-band-in{max-width:var(--max-wide);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-cell{padding:56px 40px;text-align:center;border-right:.5px solid var(--gray-12)}
+.stat-cell:last-child{border-right:none}
+.stat-num{font-size:clamp(44px,5vw,64px);font-weight:200;letter-spacing:-.05em;line-height:1;color:var(--gray-86);margin-bottom:10px}
+.stat-num sup{font-size:.45em;font-weight:400;vertical-align:super;letter-spacing:0}
+.stat-label{font-size:13px;font-weight:400;color:var(--gray-40);line-height:1.5;max-width:160px;margin:0 auto}
+.section{padding:140px 24px;max-width:var(--max);margin:0 auto}
+.section-wide{padding:140px 24px;max-width:var(--max-wide);margin:0 auto}
+.tag{font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-40);margin-bottom:20px}
+.tag-blue{color:#0071e3}
+.h-display{font-size:clamp(28px,4.5vw,56px);font-weight:600;letter-spacing:-.03em;line-height:1.08;color:var(--gray-86);margin-bottom:20px}
+.h-title{font-size:clamp(22px,3vw,36px);font-weight:600;letter-spacing:-.025em;line-height:1.16;color:var(--gray-86);margin-bottom:14px}
+.body-copy{font-size:clamp(15px,1.8vw,19px);font-weight:300;color:var(--gray-60);line-height:1.7;max-width:600px}
+.body-copy+.body-copy{margin-top:18px}
+.body-copy strong{color:var(--gray-86);font-weight:500}
+.body-copy.center{margin:0 auto}
+hr.div{border:none;border-top:.5px solid var(--gray-12);margin:0}
+.empathy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:64px;background:var(--gray-12);border-radius:18px;overflow:hidden}
+.empathy-card{background:var(--gray-06);padding:40px 36px}
+.empathy-card-head{font-size:15px;font-weight:500;color:var(--gray-86);margin-bottom:10px;line-height:1.4}
+.empathy-card-body{font-size:14px;font-weight:300;color:var(--gray-40);line-height:1.75}
+.empathy-close{margin-top:48px;font-size:clamp(18px,2.5vw,26px);font-weight:300;color:var(--gray-86);line-height:1.45}
+.empathy-close strong{font-weight:500}
+.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:72px;background:var(--gray-12);border-radius:18px;overflow:hidden}
+.feature-card{background:var(--white);padding:48px 44px}
+.feature-num{font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--gray-40);margin-bottom:20px}
+.feature-title{font-size:clamp(18px,2.2vw,24px);font-weight:600;letter-spacing:-.02em;line-height:1.2;color:var(--gray-86);margin-bottom:14px}
+.feature-body{font-size:14px;font-weight:300;color:var(--gray-60);line-height:1.85}
+.cinematic{position:relative;height:65vh;min-height:420px;overflow:hidden}
+.cinematic-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%}
+.cinematic-gradient{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,.72) 100%)}
+.cinematic-copy{position:absolute;bottom:0;left:0;right:0;padding:52px 48px;max-width:var(--max-wide)}
+.cinematic-eyebrow{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:10px}
+.cinematic-line{font-size:clamp(13px,1.8vw,17px);font-weight:300;color:rgba(255,255,255,.62);line-height:1.65;max-width:580px}
+.cinematic-line strong{color:rgba(255,255,255,.88);font-weight:400;display:block;font-size:clamp(15px,2vw,20px);margin-bottom:8px}
+.manifesto-wrap{background:var(--black);color:var(--white)}
+.manifesto{max-width:var(--max);margin:0 auto;padding:140px 24px}
+.manifesto .tag{color:rgba(255,255,255,.3)}
+.manifesto-lead{font-size:clamp(26px,4vw,52px);font-weight:300;letter-spacing:-.03em;line-height:1.16;color:rgba(255,255,255,.9);margin-bottom:56px;max-width:780px}
+.manifesto-body{font-size:clamp(15px,1.8vw,18px);font-weight:300;color:rgba(255,255,255,.52);line-height:2;max-width:660px}
+.manifesto-body p+p{margin-top:22px}
+.manifesto-body strong{color:rgba(255,255,255,.88);font-weight:400}
+.manifesto-quote{margin-top:72px;padding-left:28px;border-left:2px solid rgba(255,255,255,.12);font-size:clamp(18px,2.4vw,26px);font-weight:300;color:rgba(255,255,255,.65);line-height:1.48;max-width:620px}
+.manifesto-close{margin-top:100px;text-align:center;font-size:clamp(26px,4vw,52px);font-weight:300;letter-spacing:-.03em;line-height:1.2;color:rgba(255,255,255,.9)}
+.manifesto-close em{font-style:normal;color:rgba(255,255,255,.35)}
+.waitlist-wrap{background:var(--gray-06)}
+.waitlist{max-width:640px;margin:0 auto;padding:120px 24px;text-align:center}
+.waitlist .tag{margin-bottom:16px}
+.waitlist-h{font-size:clamp(28px,4vw,48px);font-weight:600;letter-spacing:-.03em;line-height:1.08;color:var(--gray-86);margin-bottom:16px}
+.waitlist-sub{font-size:15px;font-weight:300;color:var(--gray-40);line-height:1.7;margin-bottom:44px}
+.wl-field{display:flex;background:var(--white);border:.5px solid var(--gray-12);border-radius:980px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);margin-bottom:14px}
+.wl-input{flex:1;padding:14px 22px;font-family:var(--font);font-size:15px;font-weight:300;color:var(--gray-86);background:transparent;border:none;outline:none;min-width:0}
+.wl-input::placeholder{color:var(--gray-40)}
+.wl-btn{padding:14px 24px;background:#0071e3;color:#fff;font-family:var(--font);font-size:14px;border:none;cursor:pointer;border-radius:980px;margin:4px;transition:background .2s;white-space:nowrap}
+.wl-btn:hover{background:#0077ed}
+.wl-btn:disabled{opacity:.45;cursor:not-allowed}
+.wl-note{font-size:12px;color:var(--gray-40);line-height:1.6}
+.wl-done{display:none;padding:20px 28px;background:var(--white);border:.5px solid var(--gray-12);border-radius:14px;font-size:15px;font-weight:300;color:var(--gray-60);line-height:1.65}
+.contact-wrap{background:var(--white)}
+.contact{max-width:580px;margin:0 auto;padding:120px 24px;text-align:center}
+.cf-field{display:flex;gap:10px;margin-bottom:10px}
+.cf-input,.cf-textarea{width:100%;padding:13px 18px;font-family:var(--font);font-size:14px;font-weight:300;color:var(--gray-86);background:var(--gray-06);border:.5px solid var(--gray-12);border-radius:10px;outline:none;transition:border-color .15s,background .15s}
+.cf-input:focus,.cf-textarea:focus{background:var(--white);border-color:rgba(0,113,227,.5)}
+.cf-input::placeholder,.cf-textarea::placeholder{color:var(--gray-40)}
+.cf-textarea{resize:vertical;display:block;margin-bottom:10px;line-height:1.7}
+.cf-submit{padding:13px 28px;background:#0071e3;color:#fff;font-family:var(--font);font-size:14px;border:none;border-radius:980px;cursor:pointer;transition:background .2s}
+.cf-submit:hover{background:#0077ed}
+.cf-done{display:none;margin-top:20px;padding:18px 22px;background:var(--gray-06);border:.5px solid var(--gray-12);border-radius:10px;font-size:14px;font-weight:300;color:var(--gray-60)}
+footer{background:var(--gray-06);border-top:.5px solid var(--gray-12);padding:20px 44px}
+.footer-in{max-width:var(--max-wide);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.footer-logo{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--gray-40)}
+.footer-links{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.footer-link{font-size:11px;color:var(--gray-40);text-decoration:none}
+.footer-copy{font-size:11px;color:var(--gray-40)}
+.fade{opacity:0;transform:translateY(20px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.fade.visible{opacity:1;transform:none}
+@media(max-width:768px){.stat-band-in{grid-template-columns:1fr 1fr}.stat-cell:nth-child(3){border-right:none;border-top:.5px solid var(--gray-12)}.stat-cell{padding:40px 24px}.empathy-grid,.feature-grid{grid-template-columns:1fr}.section,.manifesto,.waitlist,.contact{padding-left:20px;padding-right:20px}.cinematic-copy{padding:32px 24px}.nav-cta{display:none}.cf-field{flex-direction:column}}
+@media(max-width:480px){.stat-band-in{grid-template-columns:1fr}.stat-cell+.stat-cell{border-top:.5px solid var(--gray-12);border-right:none}.hero-h1{letter-spacing:-.03em}}
 </style>
 </head>
 <body class="lang-en">
-<p>TEST PASTE WORKS</p>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stoic — Reclaim Your Attention</title>
-<meta name="description" content="Stoic helps you design a life where your time and attention go exactly where you choose.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-img{display:block;max-width:100%}
-:root {
-  --black:   #000000;
-  --white:   #ffffff;
-  --gray-06: #f5f5f7;
-  --gray-12: #e8e8ed;
-  --gray-40: #6e6e73;
-  --gray-60: #48484a;
-  --gray-86: #1d1d1f;
-  --font: -apple-system, 'Inter', 'Noto Sans JP', BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-  --max: 980px;
-  --max-wide: 1200px;
-  --ease: cubic-bezier(0.4, 0, 0.2, 1);
-}
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font);
-  color: var(--gray-86);
-  background: var(--white);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-/* ── LANGUAGE ── */
-.ja { display: none; }
-body.lang-ja .ja { display: revert; }
-body.lang-ja .en { display: none; }
-/* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  height: 48px;
-  background: rgba(255,255,255,0.8);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 0.5px solid rgba(0,0,0,0.12);
-}
-.nav-in {
-  max-width: var(--max-wide); margin: 0 auto; padding: 0 24px;
-  height: 100%; display: flex; align-items: center; justify-content: space-between;
-}
-.nav-logo {
-  font-size: 17px; font-weight: 600; letter-spacing: -0.02em;
-  color: var(--gray-86); text-decoration: none;
-}
-.nav-right { display: flex; align-items: center; gap: 8px; }
-.lang-sw {
-  display: flex; border: 0.5px solid var(--gray-12);
-  border-radius: 980px; overflow: hidden; background: var(--gray-06);
-}
-.lng-btn {
-  padding: 4px 14px; font-size: 11px; font-weight: 500;
-  letter-spacing: 0.04em; border: none; background: transparent;
-  color: var(--gray-40); cursor: pointer; font-family: var(--font);
-  transition: background 0.2s var(--ease), color 0.2s var(--ease);
-  border-radius: 980px;
-}
-.lng-btn.on { background: var(--gray-86); color: var(--white); }
-.nav-cta {
-  padding: 6px 16px; font-size: 12px; font-weight: 400;
-  color: #0071e3; text-decoration: none; border-radius: 980px;
-  transition: opacity 0.15s;
-}
-.nav-cta:hover { opacity: 0.7; }
-/* ── HERO ── */
-.hero {
-  min-height: 100svh;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; padding: 120px 24px 80px;
-  background: var(--white);
-  position: relative;
-}
-.hero-eyebrow {
-  font-size: 17px; font-weight: 400; color: #0071e3;
-  letter-spacing: -0.01em; margin-bottom: 12px;
-}
-.hero-h1 {
-  font-size: clamp(40px, 7vw, 88px); font-weight: 600;
-  letter-spacing: -0.04em; line-height: 1.04;
-  color: var(--gray-86); margin-bottom: 20px;
-}
-.hero-h1 span { color: var(--gray-40); display: block; }
-.hero-sub {
-  font-size: clamp(16px, 2vw, 21px); font-weight: 300;
-  color: var(--gray-60); line-height: 1.6; max-width: 560px;
-  margin: 0 auto 40px;
-}
-.hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-.btn-primary {
-  padding: 13px 28px; font-size: 15px; font-weight: 400;
-  background: #0071e3; color: #fff; border-radius: 980px;
-  text-decoration: none; transition: background 0.2s var(--ease);
-  white-space: nowrap;
-}
-.btn-primary:hover { background: #0077ed; }
-.btn-secondary {
-  padding: 13px 28px; font-size: 15px; font-weight: 400;
-  color: #0071e3; text-decoration: none; border-radius: 980px;
-  transition: opacity 0.15s;
-  display: flex; align-items: center; gap: 6px;
-}
-.btn-secondary:hover { opacity: 0.7; }
-.btn-secondary::after { content: '›'; font-size: 18px; line-height: 1; }
-.hero-scroll {
-  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-  opacity: 0.3;
-}
-.hero-scroll span {
-  font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--gray-86);
-}
-.hero-scroll-line {
-  width: 1px; height: 40px; background: var(--gray-86);
-  animation: scrollline 1.8s ease-in-out infinite;
-}
-@keyframes scrollline {
-  0%   { transform: scaleY(0); transform-origin: top; }
-  50%  { transform: scaleY(1); transform-origin: top; }
-  51%  { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
-}
-/* ── STAT BAND ── */
-.stat-band {
-  background: var(--gray-06);
-  border-top: 0.5px solid var(--gray-12);
-  border-bottom: 0.5px solid var(--gray-12);
-}
-.stat-band-in {
-  max-width: var(--max-wide); margin: 0 auto;
-  display: grid; grid-template-columns: repeat(4,1fr);
-}
-.stat-cell {
-  padding: 56px 40px; text-align: center;
-  border-right: 0.5px solid var(--gray-12);
-}
-.stat-cell:last-child { border-right: none; }
-.stat-num {
-  font-size: clamp(44px, 5vw, 64px); font-weight: 200;
-  letter-spacing: -0.05em; line-height: 1; color: var(--gray-86);
-  margin-bottom: 10px;
-}
-.stat-num sup { font-size: 0.45em; font-weight: 400; vertical-align: super; letter-spacing: 0; }
-.stat-label {
-  font-size: 13px; font-weight: 400; color: var(--gray-40);
-  line-height: 1.5; max-width: 160px; margin: 0 auto;
-}
-/* ── SECTION WRAPPER ── */
-.section {
-  padding: 140px 24px;
-  max-width: var(--max); margin: 0 auto;
-}
-.section-wide {
-  padding: 140px 24px;
-  max-width: var(--max-wide); margin: 0 auto;
-}
-.section-center { text-align: center; }
-/* ── SECTION TAG ── */
-.tag {
-  font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
-  text-transform: uppercase; color: var(--gray-40); margin-bottom: 20px;
-}
-.tag-blue { color: #0071e3; }
-/* ── HEADINGS ── */
-.h-display {
-  font-size: clamp(28px, 4.5vw, 56px); font-weight: 600;
-  letter-spacing: -0.03em; line-height: 1.08; color: var(--gray-86);
-  margin-bottom: 20px;
-}
-.h-title {
-  font-size: clamp(22px, 3vw, 36px); font-weight: 600;
-  letter-spacing: -0.025em; line-height: 1.16; color: var(--gray-86);
-  margin-bottom: 14px;
-}
-.body-copy {
-  font-size: clamp(15px, 1.8vw, 19px); font-weight: 300;
-  color: var(--gray-60); line-height: 1.7;
-  max-width: 600px;
-}
-.body-copy + .body-copy { margin-top: 18px; }
-.body-copy strong { color: var(--gray-86); font-weight: 500; }
-.body-copy.center { margin: 0 auto; }
-/* ── DIVIDER ── */
-hr.div {
-  border: none; border-top: 0.5px solid var(--gray-12);
-  margin: 0;
-}
-/* ── EMPATHY CARDS ── */
-.empathy-grid {
-  display: grid; grid-template-columns: repeat(2,1fr);
-  gap: 2px; margin-top: 64px;
-  background: var(--gray-12); border-radius: 18px; overflow: hidden;
-}
-.empathy-card {
-  background: var(--gray-06); padding: 40px 36px;
-}
-.empathy-card-head {
-  font-size: 15px; font-weight: 500; color: var(--gray-86);
-  margin-bottom: 10px; line-height: 1.4;
-}
-.empathy-card-body {
-  font-size: 14px; font-weight: 300; color: var(--gray-40);
-  line-height: 1.75;
-}
-.empathy-close {
-  margin-top: 48px;
-  font-size: clamp(18px, 2.5vw, 26px); font-weight: 300;
-  color: var(--gray-86); line-height: 1.45; letter-spacing: -0.015em;
-}
-.empathy-close strong { font-weight: 500; }
-/* ── FEATURE GRID ── */
-.feature-grid {
-  display: grid; grid-template-columns: repeat(2,1fr);
-  gap: 1px; margin-top: 72px;
-  background: var(--gray-12); border-radius: 18px; overflow: hidden;
-}
-.feature-card {
-  background: var(--white); padding: 48px 44px;
-}
-.feature-num {
-  font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
-  color: var(--gray-40); margin-bottom: 20px;
-}
-.feature-title {
-  font-size: clamp(18px, 2.2vw, 24px); font-weight: 600;
-  letter-spacing: -0.02em; line-height: 1.2;
-  color: var(--gray-86); margin-bottom: 14px;
-}
-.feature-body {
-  font-size: 14px; font-weight: 300; color: var(--gray-60); line-height: 1.85;
-}
-/* ── PHOTO CINEMATIC ── */
-.cinematic {
-  position: relative; height: 65vh; min-height: 420px;
-  overflow: hidden;
-}
-.cinematic-img {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; object-position: center 38%;
-}
-.cinematic-gradient {
-  position: absolute; inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,0,0.0) 40%,
-    rgba(0,0,0,0.72) 100%
-  );
-}
-.cinematic-copy {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 52px 48px;
-  max-width: var(--max-wide);
-}
-.cinematic-eyebrow {
-  font-size: 10px; font-weight: 500; letter-spacing: 0.16em;
-  text-transform: uppercase; color: rgba(255,255,255,0.4);
-  margin-bottom: 10px;
-}
-.cinematic-line {
-  font-size: clamp(13px, 1.8vw, 17px); font-weight: 300;
-  color: rgba(255,255,255,0.62); line-height: 1.65; max-width: 580px;
-}
-.cinematic-line strong {
-  color: rgba(255,255,255,0.88); font-weight: 400; display: block;
-  font-size: clamp(15px, 2vw, 20px); margin-bottom: 8px;
-}
-/* ── MANIFESTO (dark) ── */
-.manifesto-wrap {
-  background: var(--black); color: var(--white);
-}
-.manifesto {
-  max-width: var(--max); margin: 0 auto; padding: 140px 24px;
-}
-.manifesto .tag { color: rgba(255,255,255,0.3); }
-.manifesto-lead {
-  font-size: clamp(26px, 4vw, 52px); font-weight: 300;
-  letter-spacing: -0.03em; line-height: 1.16;
-  color: rgba(255,255,255,0.9); margin-bottom: 56px; max-width: 780px;
-}
-.manifesto-body {
-  font-size: clamp(15px, 1.8vw, 18px); font-weight: 300;
-  color: rgba(255,255,255,0.52); line-height: 2; max-width: 660px;
-}
-.manifesto-body p + p { margin-top: 22px; }
-.manifesto-body strong { color: rgba(255,255,255,0.88); font-weight: 400; }
-.manifesto-quote {
-  margin-top: 72px; padding-left: 28px;
-  border-left: 2px solid rgba(255,255,255,0.12);
-  font-size: clamp(18px, 2.4vw, 26px); font-weight: 300;
-  color: rgba(255,255,255,0.65); line-height: 1.48; letter-spacing: -0.015em;
-  max-width: 620px;
-}
-.manifesto-close {
-  margin-top: 100px; text-align: center;
-  font-size: clamp(26px, 4vw, 52px); font-weight: 300;
-  letter-spacing: -0.03em; line-height: 1.2; color: rgba(255,255,255,0.9);
-}
-.manifesto-close em { font-style: normal; color: rgba(255,255,255,0.35); }
-/* ── WAITLIST ── */
-.waitlist-wrap { background: var(--gray-06); }
-.waitlist {
-  max-width: 640px; margin: 0 auto; padding: 120px 24px;
-  text-align: center;
-}
-.waitlist .tag { margin-bottom: 16px; }
-.waitlist-h {
-  font-size: clamp(28px, 4vw, 48px); font-weight: 600;
-  letter-spacing: -0.03em; line-height: 1.08; color: var(--gray-86);
-  margin-bottom: 16px;
-}
-.waitlist-sub {
-  font-size: 15px; font-weight: 300; color: var(--gray-40);
-  line-height: 1.7; margin-bottom: 44px;
-}
-.wl-field {
-  display: flex; gap: 0;
-  background: var(--white); border: 0.5px solid var(--gray-12);
-  border-radius: 980px; overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  margin-bottom: 14px;
-}
-.wl-input {
-  flex: 1; padding: 14px 22px; font-family: var(--font);
-  font-size: 15px; font-weight: 300; color: var(--gray-86);
-  background: transparent; border: none; outline: none;
-  min-width: 0;
-}
-.wl-input::placeholder { color: var(--gray-40); }
-.wl-btn {
-  padding: 14px 24px; background: #0071e3; color: #fff;
-  font-family: var(--font); font-size: 14px; font-weight: 400;
-  border: none; cursor: pointer; border-radius: 980px; margin: 4px;
-  transition: background 0.2s; white-space: nowrap;
-}
-.wl-btn:hover { background: #0077ed; }
-.wl-btn:disabled { opacity: 0.45; cursor: not-allowed; }
-.wl-note {
-  font-size: 12px; color: var(--gray-40); line-height: 1.6;
-}
-.wl-done {
-  display: none; padding: 20px 28px;
-  background: var(--white); border: 0.5px solid var(--gray-12);
-  border-radius: 14px; font-size: 15px; font-weight: 300;
-  color: var(--gray-60); line-height: 1.65;
-}
-/* ── CONTACT FORM ── */
-.contact-wrap { background: var(--white); }
-.contact {
-  max-width: 580px; margin: 0 auto; padding: 120px 24px;
-  text-align: center;
-}
-.contact .h-title { margin-bottom: 8px; }
-.contact .body-copy { margin: 0 auto 44px; }
-.cf-field {
-  display: flex; gap: 10px; margin-bottom: 10px;
-}
-.cf-input, .cf-textarea {
-  width: 100%; padding: 13px 18px; font-family: var(--font);
-  font-size: 14px; font-weight: 300; color: var(--gray-86);
-  background: var(--gray-06); border: 0.5px solid var(--gray-12);
-  border-radius: 10px; outline: none;
-  transition: border-color 0.15s, background 0.15s;
-}
-.cf-input:focus, .cf-textarea:focus {
-  background: var(--white); border-color: rgba(0,113,227,0.5);
-}
-.cf-input::placeholder, .cf-textarea::placeholder { color: var(--gray-40); }
-.cf-textarea { resize: vertical; display: block; margin-bottom: 10px; line-height: 1.7; }
-.cf-submit {
-  padding: 13px 28px; background: #0071e3; color: #fff;
-  font-family: var(--font); font-size: 14px; font-weight: 400;
-  border: none; border-radius: 980px; cursor: pointer;
-  transition: background 0.2s;
-}
-.cf-submit:hover { background: #0077ed; }
-.cf-done {
-  display: none; margin-top: 20px; padding: 18px 22px;
-  background: var(--gray-06); border: 0.5px solid var(--gray-12);
-  border-radius: 10px; font-size: 14px; font-weight: 300;
-  color: var(--gray-60);
-}
-/* ── FOOTER ── */
-footer {
-  background: var(--gray-06);
-  border-top: 0.5px solid var(--gray-12);
-  padding: 20px 44px;
-}
-.footer-in {
-  max-width: var(--max-wide); margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 8px;
-}
-.footer-logo {
-  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
-  color: var(--gray-40);
-}
-.footer-links { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
-.footer-link {
-  font-size: 11px; color: var(--gray-40); text-decoration: none;
-}
-.footer-link:hover { text-decoration: underline; }
-.footer-copy { font-size: 11px; color: var(--gray-40); }
-/* ── FADE-IN ANIMATION ── */
-.fade { opacity: 0; transform: translateY(20px); transition: opacity 0.75s var(--ease), transform 0.75s var(--ease); }
-.fade.visible { opacity: 1; transform: none; }
-/* ── RESPONSIVE ── */
-@media(max-width: 768px) {
-  .stat-band-in { grid-template-columns: 1fr 1fr; }
-  .stat-cell:nth-child(3) { border-right: none; border-top: 0.5px solid var(--gray-12); }
-  .stat-cell { padding: 40px 24px; }
-  .empathy-grid { grid-template-columns: 1fr; }
-  .feature-grid { grid-template-columns: 1fr; }
-  .section, .manifesto, .waitlist, .contact { padding-left: 20px; padding-right: 20px; }
-  .cinematic-copy { padding: 32px 24px; }
-  .nav-cta { display: none; }
-  .cf-field { flex-direction: column; }
-}
-@media(max-width: 480px) {
-  .stat-band-in { grid-template-columns: 1fr; }
-  .stat-cell + .stat-cell { border-top: 0.5px solid var(--gray-12); border-right: none; }
-  .hero-h1 { letter-spacing: -0.03em; }
-}
-</style>
-</head>
-<body class="lang-en">
-<!-- ── NAV ── -->
 <nav>
   <div class="nav-in">
     <a href="#" class="nav-logo">Stoic</a>
     <div class="nav-right">
       <div class="lang-sw">
         <button class="lng-btn on" id="btn-en" onclick="setLang('en')">EN</button>
-        <button class="lng-btn"    id="btn-ja" onclick="setLang('ja')">JP</button>
+        <button class="lng-btn" id="btn-ja" onclick="setLang('ja')">JP</button>
       </div>
       <a href="#waitlist" class="nav-cta en">Join Waitlist</a>
       <a href="#waitlist" class="nav-cta ja">登録する</a>
     </div>
   </div>
 </nav>
-<!-- ── HERO ── -->
 <section class="hero">
   <p class="hero-eyebrow en fade">Designed for the life you actually want.</p>
   <p class="hero-eyebrow ja fade">本当に送りたい人生のために、設計された。</p>
-  <h1 class="hero-h1 en fade">
-    Your attention<br>
-    <span>is the product.</span>
-  </h1>
-  <h1 class="hero-h1 ja fade">
-    あなたの注意が<br>
-    <span>商品にされている。</span>
-  </h1>
-  <p class="hero-sub en fade">
-    Stoic helps you take it back. Not through restriction — through design.
-  </p>
-  <p class="hero-sub ja fade">
-    STOICは、それを取り戻す手助けをします。制限ではなく、設計によって。
-  </p>
+  <h1 class="hero-h1 en fade">Your attention<br><span>is the product.</span></h1>
+  <h1 class="hero-h1 ja fade">あなたの注意が<br><span>商品にされている。</span></h1>
+  <p class="hero-sub en fade">Stoic helps you take it back. Not through restriction — through design.</p>
+  <p class="hero-sub ja fade">STOICは、それを取り戻す手助けをします。制限ではなく、設計によって。</p>
   <div class="hero-actions fade">
     <a href="#waitlist" class="btn-primary en">Join the Waitlist</a>
     <a href="#waitlist" class="btn-primary ja">ウェイティングリストに登録</a>
     <a href="#how" class="btn-secondary en">Learn more</a>
     <a href="#how" class="btn-secondary ja">詳細を見る</a>
   </div>
-  <div class="hero-scroll">
-    <span class="en">Scroll</span>
-    <span class="ja">スクロール</span>
-    <div class="hero-scroll-line"></div>
-  </div>
+  <div class="hero-scroll"><span class="en">Scroll</span><span class="ja">スクロール</span><div class="hero-scroll-line"></div></div>
 </section>
 <hr class="div">
-<!-- ── STATS ── -->
 <div class="stat-band" id="data">
   <div class="stat-band-in">
-    <div class="stat-cell fade">
-      <div class="stat-num">4.7<sup>h</sup></div>
-      <p class="stat-label en">Average daily smartphone use per adult</p>
-      <p class="stat-label ja">成人1人あたりの1日平均スマートフォン使用時間</p>
-    </div>
-    <div class="stat-cell fade">
-      <div class="stat-num">71<sup>d</sup></div>
-      <p class="stat-label en">Days lost each year to passive screen time</p>
-      <p class="stat-label ja">受動的なスクリーンタイムで失われる年間日数</p>
-    </div>
-    <div class="stat-cell fade">
-      <div class="stat-num">40<sup>%</sup></div>
-      <p class="stat-label en">Drop in deep-work capacity from digital interruptions</p>
-      <p class="stat-label ja">断続的な通知による深い集中力の低下率</p>
-    </div>
-    <div class="stat-cell fade">
-      <div class="stat-num">1,500<sup>+</sup></div>
-      <p class="stat-label en">TikTok engineers working only on keeping you scrolling</p>
-      <p class="stat-label ja">TikTokのエンゲージメント最適化専任エンジニアの数</p>
-    </div>
+    <div class="stat-cell fade"><div class="stat-num">4.7<sup>h</sup></div><p class="stat-label en">Average daily smartphone use per adult</p><p class="stat-label ja">成人1人あたりの1日平均スマートフォン使用時間</p></div>
+    <div class="stat-cell fade"><div class="stat-num">71<sup>d</sup></div><p class="stat-label en">Days lost each year to passive screen time</p><p class="stat-label ja">受動的なスクリーンタイムで失われる年間日数</p></div>
+    <div class="stat-cell fade"><div class="stat-num">40<sup>%</sup></div><p class="stat-label en">Drop in deep-work capacity from digital interruptions</p><p class="stat-label ja">断続的な通知による深い集中力の低下率</p></div>
+    <div class="stat-cell fade"><div class="stat-num">1,500<sup>+</sup></div><p class="stat-label en">TikTok engineers working only on keeping you scrolling</p><p class="stat-label ja">TikTokのエンゲージメント最適化専任エンジニアの数</p></div>
   </div>
 </div>
 <hr class="div">
-<!-- ── WHAT IS STOIC ── -->
 <div class="section fade" id="about">
-  <p class="tag tag-blue en">What Stoic is</p>
-  <p class="tag tag-blue ja">STOICとは</p>
-  <h2 class="h-display en">
-    Not a blocker.<br>A life design companion.
-  </h2>
-  <h2 class="h-display ja">
-    制限ツールではありません。<br>人生設計の伴走者です。
-  </h2>
+  <p class="tag tag-blue en">What Stoic is</p><p class="tag tag-blue ja">STOICとは</p>
+  <h2 class="h-display en">Not a blocker.<br>A life design companion.</h2>
+  <h2 class="h-display ja">制限ツールではありません。<br>人生設計の伴走者です。</h2>
   <div style="height:32px"></div>
-  <p class="body-copy en">
-    Stoic works alongside you — helping you build each day so that your time and attention
-    naturally flow toward what genuinely matters to you.
-  </p>
-  <p class="body-copy ja">
-    STOICはあなたの隣に立ち、時間と注意が本当に大切なことへと自然に向かえる毎日を
-    ともに作っていきます。
-  </p>
-  <p class="body-copy en" style="margin-top:16px;">
-    <strong>This is not about willpower. It's about building the right structure.</strong>
-  </p>
-  <p class="body-copy ja" style="margin-top:16px;">
-    <strong>これは意志力の話ではありません。正しい構造を作ることです。</strong>
-  </p>
+  <p class="body-copy en">Stoic works alongside you — helping you build each day so that your time and attention naturally flow toward what genuinely matters to you.</p>
+  <p class="body-copy ja">STOICはあなたの隣に立ち、時間と注意が本当に大切なことへと自然に向かえる毎日をともに作っていきます。</p>
+  <p class="body-copy en" style="margin-top:16px"><strong>This is not about willpower. It's about building the right structure.</strong></p>
+  <p class="body-copy ja" style="margin-top:16px"><strong>これは意志力の話ではありません。正しい構造を作ることです。</strong></p>
 </div>
 <hr class="div">
-<!-- ── EMPATHY ── -->
 <div class="section fade">
-  <p class="tag en">You've already tried.</p>
-  <p class="tag ja">すでに試してきたはずです。</p>
-  <h2 class="h-display en">
-    None of it worked.<br>Here's why.
-  </h2>
-  <h2 class="h-display ja">
-    どれもうまくいかなかった。<br>その理由があります。
-  </h2>
+  <p class="tag en">You've already tried.</p><p class="tag ja">すでに試してきたはずです。</p>
+  <h2 class="h-display en">None of it worked.<br>Here's why.</h2>
+  <h2 class="h-display ja">どれもうまくいかなかった。<br>その理由があります。</h2>
   <div class="empathy-grid">
-    <div class="empathy-card">
-      <p class="empathy-card-head en">You bought a phone lockbox.</p>
-      <p class="empathy-card-head ja">スマートフォン用のロックボックスを購入した。</p>
-      <p class="empathy-card-body en">It ended up on the shelf. Complete unreachability was too high a cost.</p>
-      <p class="empathy-card-body ja">完全に連絡が取れなくなるという抵抗感が大きすぎて、棚の上に置かれたまま。</p>
-    </div>
-    <div class="empathy-card">
-      <p class="empathy-card-head en">You installed a focus app.</p>
-      <p class="empathy-card-head ja">集中系のアプリを入れてタイマーを設定した。</p>
-      <p class="empathy-card-body en">The tree died. The streak reset. Nothing changed the next day.</p>
-      <p class="empathy-card-body ja">木は枯れ、記録はリセットされ、翌日には何も変わっていなかった。</p>
-    </div>
-    <div class="empathy-card">
-      <p class="empathy-card-head en">You turned on Screen Time.</p>
-      <p class="empathy-card-head ja">スクリーンタイムの制限を設定した。</p>
-      <p class="empathy-card-body en">You entered the passcode to override it approximately 30 seconds later.</p>
-      <p class="empathy-card-body ja">30秒後には、制限解除のパスコードを入力していた。</p>
-    </div>
-    <div class="empathy-card">
-      <p class="empathy-card-head en">You deleted the app entirely.</p>
-      <p class="empathy-card-head ja">アプリを完全に削除した。</p>
-      <p class="empathy-card-body en">By morning, it was back. "Just to check something."</p>
-      <p class="empathy-card-body ja">翌朝には再インストールしていた。「少し確認するだけ」と言い聞かせて。</p>
-    </div>
+    <div class="empathy-card"><p class="empathy-card-head en">You bought a phone lockbox.</p><p class="empathy-card-head ja">スマートフォン用のロックボックスを購入した。</p><p class="empathy-card-body en">It ended up on the shelf. Complete unreachability was too high a cost.</p><p class="empathy-card-body ja">完全に連絡が取れなくなるという抵抗感が大きすぎて、棚の上に置かれたまま。</p></div>
+    <div class="empathy-card"><p class="empathy-card-head en">You installed a focus app.</p><p class="empathy-card-head ja">集中系のアプリを入れてタイマーを設定した。</p><p class="empathy-card-body en">The tree died. The streak reset. Nothing changed the next day.</p><p class="empathy-card-body ja">木は枯れ、記録はリセットされ、翌日には何も変わっていなかった。</p></div>
+    <div class="empathy-card"><p class="empathy-card-head en">You turned on Screen Time.</p><p class="empathy-card-head ja">スクリーンタイムの制限を設定した。</p><p class="empathy-card-body en">You entered the passcode to override it approximately 30 seconds later.</p><p class="empathy-card-body ja">30秒後には、制限解除のパスコードを入力していた。</p></div>
+    <div class="empathy-card"><p class="empathy-card-head en">You deleted the app entirely.</p><p class="empathy-card-head ja">アプリを完全に削除した。</p><p class="empathy-card-body en">By morning, it was back. "Just to check something."</p><p class="empathy-card-body ja">翌朝には再インストールしていた。「少し確認するだけ」と言い聞かせて。</p></div>
   </div>
-  <p class="empathy-close en">
-    This didn't fail because you lack discipline.
-    <strong>These tools were simply not designed around how attention and habit actually work.</strong>
-  </p>
-  <p class="empathy-close ja">
-    うまくいかなかったのは、意志力が足りなかったからではありません。
-    <strong>それらのツールは、注意と習慣が実際にどう機能するかを理解せずに作られていたのです。</strong>
-  </p>
+  <p class="empathy-close en">This didn't fail because you lack discipline. <strong>These tools were simply not designed around how attention and habit actually work.</strong></p>
+  <p class="empathy-close ja">うまくいかなかったのは、意志力が足りなかったからではありません。<strong>それらのツールは、注意と習慣が実際にどう機能するかを理解せずに作られていたのです。</strong></p>
 </div>
 <hr class="div">
-<!-- ── HOW IT WORKS ── -->
 <div class="section-wide fade" id="how">
-  <div style="max-width:var(--max);margin:0 auto;">
-    <p class="tag en">How Stoic works</p>
-    <p class="tag ja">STOICの仕組み</p>
-    <h2 class="h-display en">
-      Four moments.<br>Redesigned.
-    </h2>
-    <h2 class="h-display ja">
-      4つの瞬間を<br>設計し直す。
-    </h2>
+  <div style="max-width:var(--max);margin:0 auto">
+    <p class="tag en">How Stoic works</p><p class="tag ja">STOICの仕組み</p>
+    <h2 class="h-display en">Four moments.<br>Redesigned.</h2>
+    <h2 class="h-display ja">4つの瞬間を<br>設計し直す。</h2>
   </div>
   <div class="feature-grid">
-    <div class="feature-card">
-      <p class="feature-num">01</p>
-      <h3 class="feature-title en">From overwhelm to first step</h3>
-      <h3 class="feature-title ja">「どこから始めるか」をなくす</h3>
-      <p class="feature-body en">
-        You sit down to work. Instead, you find yourself on Instagram 20 minutes later.
-        The task wasn't hard — it was vague. Stoic breaks any task into 3-minute concrete steps,
-        so there's always a clear next action.
-      </p>
-      <p class="feature-body ja">
-        仕事に取り掛かろうとしたのに、20分後にはSNSを見ていた。
-        タスクが難しかったわけではなく、曖昧だっただけ。
-        STOICは全てのタスクを3分以内の具体的なステップに整理します。
-      </p>
-    </div>
-    <div class="feature-card">
-      <p class="feature-num">02</p>
-      <h3 class="feature-title en">The 20-minute pause</h3>
-      <h3 class="feature-title ja">20分、待ってみる</h3>
-      <p class="feature-body en">
-        Want to open Instagram? Wait 20 minutes first — screen on, uninterrupted.
-        Leave, and the timer resets. By the time the wait ends, the urge is usually gone.
-        The cost of checking social media now exceeds the cost of finishing the task.
-      </p>
-      <p class="feature-body ja">
-        SNSを開きたい？まず20分待ちます。画面から離れるとタイマーがリセット。
-        20分後には、そのアプリを開きたいという衝動が消えていることがほとんど。
-        SNSを確認するコストが、タスクを終わらせるコストを上回るよう設計されています。
-      </p>
-    </div>
-    <div class="feature-card">
-      <p class="feature-num">03</p>
-      <h3 class="feature-title en">Instant recognition of progress</h3>
-      <h3 class="feature-title ja">進んだことを、すぐに実感する</h3>
-      <p class="feature-body en">
-        Every time you complete a step, Stoic responds immediately.
-        Not a badge or streak — just the clean, direct sensation of having moved forward.
-        More reliable than any notification your phone could send.
-      </p>
-      <p class="feature-body ja">
-        ステップを完了するたびに、STOICはすぐに応答します。
-        バッジでも連続記録でもなく、前に進んだという純粋な実感。
-        スマートフォンのどんな通知よりも速く、確実に届きます。
-      </p>
-    </div>
-    <div class="feature-card">
-      <p class="feature-num">04</p>
-      <h3 class="feature-title en">Informed choice at the right moment</h3>
-      <h3 class="feature-title ja">選ぶ前に、事実を知る</h3>
-      <p class="feature-body en">
-        Before you unlock a social app, Stoic shows you — calmly, factually, without judgment —
-        how that platform is designed to use your time. Not guilt. Just the right information
-        at the exact moment you need it.
-      </p>
-      <p class="feature-body ja">
-        SNSを解除しようとする瞬間、そのプラットフォームがあなたの時間をどう設計しているかを
-        静かに、事実として提示します。批判ではなく、意識的な選択をするために必要な情報を、
-        最も必要な瞬間に。
-      </p>
-    </div>
+    <div class="feature-card"><p class="feature-num">01</p><h3 class="feature-title en">From overwhelm to first step</h3><h3 class="feature-title ja">「どこから始めるか」をなくす</h3><p class="feature-body en">You sit down to work. Instead, you find yourself on Instagram 20 minutes later. The task wasn't hard — it was vague. Stoic breaks any task into 3-minute concrete steps, so there's always a clear next action.</p><p class="feature-body ja">仕事に取り掛かろうとしたのに、20分後にはSNSを見ていた。タスクが難しかったわけではなく、曖昧だっただけ。STOICは全てのタスクを3分以内の具体的なステップに整理します。</p></div>
+    <div class="feature-card"><p class="feature-num">02</p><h3 class="feature-title en">The 20-minute pause</h3><h3 class="feature-title ja">20分、待ってみる</h3><p class="feature-body en">Want to open Instagram? Wait 20 minutes first — screen on, uninterrupted. Leave, and the timer resets. By the time the wait ends, the urge is usually gone.</p><p class="feature-body ja">SNSを開きたい？まず20分待ちます。画面から離れるとタイマーがリセット。20分後には、そのアプリを開きたいという衝動が消えていることがほとんど。</p></div>
+    <div class="feature-card"><p class="feature-num">03</p><h3 class="feature-title en">Instant recognition of progress</h3><h3 class="feature-title ja">進んだことを、すぐに実感する</h3><p class="feature-body en">Every time you complete a step, Stoic responds immediately. Not a badge or streak — just the clean, direct sensation of having moved forward.</p><p class="feature-body ja">ステップを完了するたびに、STOICはすぐに応答します。バッジでも連続記録でもなく、前に進んだという純粋な実感。</p></div>
+    <div class="feature-card"><p class="feature-num">04</p><h3 class="feature-title en">Informed choice at the right moment</h3><h3 class="feature-title ja">選ぶ前に、事実を知る</h3><p class="feature-body en">Before you unlock a social app, Stoic shows you — calmly, factually, without judgment — how that platform is designed to use your time.</p><p class="feature-body ja">SNSを解除しようとする瞬間、そのプラットフォームがあなたの時間をどう設計しているかを静かに、事実として提示します。</p></div>
   </div>
 </div>
-<!-- ── CINEMATIC PHOTO ── -->
 <div class="cinematic">
-  <img
-    class="cinematic-img"
-    src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&w=1920&q=80"
-    alt="Times Square, New York City"
-    loading="lazy"
-  >
+  <img class="cinematic-img" src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&w=1920&q=80" alt="Times Square" loading="lazy">
   <div class="cinematic-gradient"></div>
   <div class="cinematic-copy">
-    <p class="cinematic-eyebrow en">Exhibit A</p>
-    <p class="cinematic-eyebrow ja">実例</p>
-    <p class="cinematic-line en">
-      <strong>Times Square, New York City.</strong>
-      Every surface rented by the second. Every pixel optimized to prevent your eyes from looking away.
-      This is not design. This is extraction — at city scale.
-    </p>
-    <p class="cinematic-line ja">
-      <strong>ニューヨーク、タイムズスクエア。</strong>
-      あらゆる表面が秒単位で貸し出され、あらゆる光があなたの目を逸らさせないよう最適化されている。
-      これはデザインではありません。都市スケールの収奪です。
-    </p>
+    <p class="cinematic-eyebrow en">Exhibit A</p><p class="cinematic-eyebrow ja">実例</p>
+    <p class="cinematic-line en"><strong>Times Square, New York City.</strong> Every surface rented by the second. Every pixel optimized to prevent your eyes from looking away. This is not design. This is extraction — at city scale.</p>
+    <p class="cinematic-line ja"><strong>ニューヨーク、タイムズスクエア。</strong>あらゆる表面が秒単位で貸し出され、あらゆる光があなたの目を逸らさせないよう最適化されている。これはデザインではありません。都市スケールの収奪です。</p>
   </div>
 </div>
-<!-- ── MANIFESTO ── -->
 <div class="manifesto-wrap">
   <div class="manifesto">
-    <p class="tag en">The uncomfortable truth</p>
-    <p class="tag ja">不都合な現実</p>
-    <p class="manifesto-lead en">
-      Every time you open Instagram, TikTok, or X —<br>
-      you enter a behavioral experiment.
-    </p>
-    <p class="manifesto-lead ja">
-      あなたがInstagram、TikTok、Xを開くたびに、<br>
-      あなたは行動実験の被験者になっています。
-    </p>
-    <div class="manifesto-body en">
-      <p>
-        The platform observes your actions. Measures your response time. Records what made you stop scrolling —
-        and what made you keep going. It updates its model of you, in real time, with one goal:
-        keep you inside for one more second. And one after that.
-      </p>
-      <p>
-        You are not a user. <strong>You are a subject.</strong>
-      </p>
-      <p>
-        Your restlessness, your boredom, your anxiety — these are not side effects.
-        They are <strong>product features</strong>.
-        Every second of your attention is revenue.
-      </p>
-      <p>
-        <strong>We are living inside the largest attention extraction experiment in human history.
-        Most of us never consciously agreed to it.</strong>
-      </p>
-    </div>
-    <div class="manifesto-body ja">
-      <p>
-        プラットフォームはあなたの行動を観察します。反応時間を計測します。
-        何があなたのスクロールを止め、何があなたを続けさせたかを記録します。
-        あなたをアプリの中にもう1秒引き留めるという明確な目的のもと、
-        リアルタイムであなたのモデルを更新し続けています。
-      </p>
-      <p>
-        あなたは「ユーザー」ではありません。<strong>実験対象者です。</strong>
-      </p>
-      <p>
-        あなたの落ち着きのなさ、退屈さ、不安——これらは副作用ではありません。
-        <strong>製品の機能です。</strong>あなたの注意の1秒1秒が、収益です。
-      </p>
-      <p>
-        <strong>私たちは今、人類史上最大規模の注意収奪実験の中で生きています。
-        そしてほとんどの人が、同意した覚えがありません。</strong>
-      </p>
-    </div>
-    <blockquote class="manifesto-quote en">
-      "You are not weak.<br>You are outmatched by design.<br>Stoic changes the design."
-    </blockquote>
-    <blockquote class="manifesto-quote ja">
-      「あなたが弱いのではありません。<br>設計によって圧倒されているのです。<br>STOICはその設計を変えます。」
-    </blockquote>
-    <p class="manifesto-close en">
-      Knowing this —<br><em>what will you decide?</em>
-    </p>
-    <p class="manifesto-close ja">
-      今、あなたはどのような<em>判断をしますか。</em>
-    </p>
+    <p class="tag en">The uncomfortable truth</p><p class="tag ja">不都合な現実</p>
+    <p class="manifesto-lead en">Every time you open Instagram, TikTok, or X —<br>you enter a behavioral experiment.</p>
+    <p class="manifesto-lead ja">あなたがInstagram、TikTok、Xを開くたびに、<br>あなたは行動実験の被験者になっています。</p>
+    <div class="manifesto-body en"><p>The platform observes your actions. Measures your response time. Records what made you stop scrolling — and what made you keep going. It updates its model of you, in real time, with one goal: keep you inside for one more second.</p><p>You are not a user. <strong>You are a subject.</strong></p><p>Your restlessness, your boredom, your anxiety — these are not side effects. They are <strong>product features</strong>. Every second of your attention is revenue.</p><p><strong>We are living inside the largest attention extraction experiment in human history. Most of us never consciously agreed to it.</strong></p></div>
+    <div class="manifesto-body ja"><p>プラットフォームはあなたの行動を観察します。反応時間を計測します。何があなたのスクロールを止め、何があなたを続けさせたかを記録します。</p><p>あなたは「ユーザー」ではありません。<strong>実験対象者です。</strong></p><p>あなたの落ち着きのなさ、退屈さ、不安——これらは副作用ではありません。<strong>製品の機能です。</strong></p><p><strong>私たちは今、人類史上最大規模の注意収奪実験の中で生きています。</strong></p></div>
+    <blockquote class="manifesto-quote en">"You are not weak.<br>You are outmatched by design.<br>Stoic changes the design."</blockquote>
+    <blockquote class="manifesto-quote ja">「あなたが弱いのではありません。<br>設計によって圧倒されているのです。<br>STOICはその設計を変えます。」</blockquote>
+    <p class="manifesto-close en">Knowing this —<br><em>what will you decide?</em></p>
+    <p class="manifesto-close ja">今、あなたはどのような<em>判断をしますか。</em></p>
   </div>
 </div>
-<!-- ── WAITLIST ── -->
 <div class="waitlist-wrap" id="waitlist">
   <div class="waitlist">
-    <p class="tag tag-blue en fade">Early Access</p>
-    <p class="tag tag-blue ja fade">アーリーアクセス</p>
+    <p class="tag tag-blue en fade">Early Access</p><p class="tag tag-blue ja fade">アーリーアクセス</p>
     <h2 class="waitlist-h en fade">Join the waitlist.</h2>
     <h2 class="waitlist-h ja fade">ウェイティングリストに登録する。</h2>
     <p class="waitlist-sub en fade">No spam. One email when Stoic is ready.<br>Free to join — approximately $5–10 / month at launch.</p>
@@ -803,16 +244,14 @@ footer {
     </div>
   </div>
 </div>
-<!-- ── CONTACT ── -->
 <div class="contact-wrap">
   <div class="contact">
-    <p class="tag en">Questions?</p>
-    <p class="tag ja">お問い合わせ</p>
+    <p class="tag en">Questions?</p><p class="tag ja">お問い合わせ</p>
     <h2 class="h-title en">We'd like to hear from you.</h2>
     <h2 class="h-title ja">ご質問があれば、お気軽に。</h2>
     <p class="body-copy en center">Reach out and we'll get back to you as soon as possible.</p>
     <p class="body-copy ja center">お問い合わせいただければ、できる限り早くご返答いたします。</p>
-    <form id="q-form" action="https://formsubmit.co/dolphinstark@protonmail.com" method="POST" style="margin-top:44px;text-align:left;">
+    <form id="q-form" action="https://formsubmit.co/dolphinstark@protonmail.com" method="POST" style="margin-top:44px;text-align:left">
       <input type="hidden" name="_subject" value="STOIC — お問い合わせ">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="box">
@@ -824,17 +263,11 @@ footer {
       </div>
       <textarea class="cf-textarea en" name="message" rows="5" placeholder="Your message" required></textarea>
       <textarea class="cf-textarea ja" name="message" rows="5" placeholder="メッセージ" required></textarea>
-      <div style="text-align:center;">
-        <button class="cf-submit" type="submit"><span class="en">Send Message</span><span class="ja">送信する</span></button>
-      </div>
+      <div style="text-align:center"><button class="cf-submit" type="submit"><span class="en">Send Message</span><span class="ja">送信する</span></button></div>
     </form>
-    <div class="cf-done" id="q-done">
-      <span class="en">✓ Message sent. We'll be in touch soon.</span>
-      <span class="ja">✓ 送信が完了しました。折り返しご連絡いたします。</span>
-    </div>
+    <div class="cf-done" id="q-done"><span class="en">✓ Message sent. We'll be in touch soon.</span><span class="ja">✓ 送信が完了しました。折り返しご連絡いたします。</span></div>
   </div>
 </div>
-<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-in">
     <span class="footer-logo">STOIC BY DOLPHIN STARK</span>
