@@ -24,6 +24,37 @@ img{display:block;max-width:100%}
   --max-wide: 1200px;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
+</style>
+</head>
+<body class="lang-en">
+<p>TEST PASTE WORKS</p>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stoic — Reclaim Your Attention</title>
+<meta name="description" content="Stoic helps you design a life where your time and attention go exactly where you choose.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+img{display:block;max-width:100%}
+:root {
+  --black:   #000000;
+  --white:   #ffffff;
+  --gray-06: #f5f5f7;
+  --gray-12: #e8e8ed;
+  --gray-40: #6e6e73;
+  --gray-60: #48484a;
+  --gray-86: #1d1d1f;
+  --font: -apple-system, 'Inter', 'Noto Sans JP', BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --max: 980px;
+  --max-wide: 1200px;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font);
@@ -748,33 +779,19 @@ footer {
   <div class="waitlist">
     <p class="tag tag-blue en fade">Early Access</p>
     <p class="tag tag-blue ja fade">アーリーアクセス</p>
-    <h2 class="waitlist-h en fade">
-      Join the waitlist.
-    </h2>
-    <h2 class="waitlist-h ja fade">
-      ウェイティングリストに登録する。
-    </h2>
-    <p class="waitlist-sub en fade">
-      No spam. One email when Stoic is ready.<br>
-      Free to join — approximately $5–10 / month at launch.
-    </p>
-    <p class="waitlist-sub ja fade">
-      スパムはありません。準備が整ったときに一通だけ。<br>
-      登録無料。ローンチ時は月額500〜1,000円程度の予定です。
-    </p>
+    <h2 class="waitlist-h en fade">Join the waitlist.</h2>
+    <h2 class="waitlist-h ja fade">ウェイティングリストに登録する。</h2>
+    <p class="waitlist-sub en fade">No spam. One email when Stoic is ready.<br>Free to join — approximately $5–10 / month at launch.</p>
+    <p class="waitlist-sub ja fade">スパムはありません。準備が整ったときに一通だけ。<br>登録無料。ローンチ時は月額500〜1,000円程度の予定です。</p>
     <div id="wl-wrap" class="fade">
       <form id="wl-form" action="https://formsubmit.co/dolphinstark@protonmail.com" method="POST">
         <input type="hidden" name="_subject" value="Stoic — New Waitlist Registration">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="box">
-        <input type="hidden" name="_autoresponse"
-          value="Thank you for joining the Stoic waitlist. We will be in touch as soon as we launch. — Dolphin Stark // Stoicのウェイティングリストへのご登録ありがとうございます。ローンチの際に改めてご連絡いたします。— Dolphin Stark">
+        <input type="hidden" name="_autoresponse" value="Thank you for joining the Stoic waitlist. — Dolphin Stark">
         <div class="wl-field">
           <input class="wl-input" type="email" name="email" required placeholder="your@email.com" autocomplete="email">
-          <button class="wl-btn" type="submit" id="wl-btn">
-            <span class="en">Join Waitlist</span>
-            <span class="ja">登録する</span>
-          </button>
+          <button class="wl-btn" type="submit" id="wl-btn"><span class="en">Join Waitlist</span><span class="ja">登録する</span></button>
         </div>
         <p class="wl-note en">Your information is never shared. One email only.</p>
         <p class="wl-note ja">個人情報は共有されません。お届けするのは一通だけです。</p>
@@ -808,10 +825,7 @@ footer {
       <textarea class="cf-textarea en" name="message" rows="5" placeholder="Your message" required></textarea>
       <textarea class="cf-textarea ja" name="message" rows="5" placeholder="メッセージ" required></textarea>
       <div style="text-align:center;">
-        <button class="cf-submit" type="submit">
-          <span class="en">Send Message</span>
-          <span class="ja">送信する</span>
-        </button>
+        <button class="cf-submit" type="submit"><span class="en">Send Message</span><span class="ja">送信する</span></button>
       </div>
     </form>
     <div class="cf-done" id="q-done">
@@ -832,52 +846,13 @@ footer {
   </div>
 </footer>
 <script>
-/* Language */
-function setLang(l) {
-  document.body.className = 'lang-' + l;
-  document.getElementById('btn-en').classList.toggle('on', l === 'en');
-  document.getElementById('btn-ja').classList.toggle('on', l === 'ja');
-  try { localStorage.setItem('stoic-lang', l); } catch(e){}
-}
-(function(){
-  try {
-    const s = localStorage.getItem('stoic-lang');
-    if (s) { setLang(s); return; }
-  } catch(e){}
-  if (navigator.language && navigator.language.startsWith('ja')) setLang('ja');
-})();
-/* Scroll fade */
-document.querySelectorAll('.hero .fade').forEach(el => el.classList.add('visible'));
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }});
-}, { threshold: 0.05 });
-document.querySelectorAll('.fade:not(.visible)').forEach(el => io.observe(el));
-/* Waitlist */
-document.getElementById('wl-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const btn = document.getElementById('wl-btn');
-  btn.disabled = true;
-  try {
-    const r = await fetch(this.action, { method:'POST', body: new FormData(this), headers:{'Accept':'application/json'} });
-    if (r.ok) {
-      document.getElementById('wl-wrap').style.display = 'none';
-      document.getElementById('wl-done').style.display = 'block';
-    } else throw 0;
-  } catch { btn.disabled = false; alert('Something went wrong. Please try again.'); }
-});
-/* Contact */
-document.getElementById('q-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const btn = this.querySelector('.cf-submit');
-  btn.disabled = true;
-  try {
-    const r = await fetch(this.action, { method:'POST', body: new FormData(this), headers:{'Accept':'application/json'} });
-    if (r.ok) {
-      this.style.display = 'none';
-      document.getElementById('q-done').style.display = 'block';
-    } else throw 0;
-  } catch { btn.disabled = false; alert('Something went wrong. Please try again.'); }
-});
+function setLang(l){document.body.className='lang-'+l;document.getElementById('btn-en').classList.toggle('on',l==='en');document.getElementById('btn-ja').classList.toggle('on',l==='ja');try{localStorage.setItem('stoic-lang',l);}catch(e){}}
+(function(){try{const s=localStorage.getItem('stoic-lang');if(s){setLang(s);return;}}catch(e){}if(navigator.language&&navigator.language.startsWith('ja'))setLang('ja');})();
+document.querySelectorAll('.hero .fade').forEach(el=>el.classList.add('visible'));
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.05});
+document.querySelectorAll('.fade:not(.visible)').forEach(el=>io.observe(el));
+document.getElementById('wl-form').addEventListener('submit',async function(e){e.preventDefault();const btn=document.getElementById('wl-btn');btn.disabled=true;try{const r=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});if(r.ok){document.getElementById('wl-wrap').style.display='none';document.getElementById('wl-done').style.display='block';}else throw 0;}catch{btn.disabled=false;alert('Something went wrong. Please try again.');}});
+document.getElementById('q-form').addEventListener('submit',async function(e){e.preventDefault();const btn=this.querySelector('.cf-submit');btn.disabled=true;try{const r=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});if(r.ok){this.style.display='none';document.getElementById('q-done').style.display='block';}else throw 0;}catch{btn.disabled=false;alert('Something went wrong. Please try again.');}});
 </script>
 </body>
 </html>
