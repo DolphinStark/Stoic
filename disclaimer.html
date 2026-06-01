@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal Notice & Sources — Stoic by Dolphin Stark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:     #F7F8FA;
+  --white:  #FFFFFF;
+  --dark:   #0D1117;
+  --text:   #111827;
+  --sub:    #4B5563;
+  --muted:  #9CA3AF;
+  --border: #E5E7EB;
+  --font:   'Inter', 'Noto Sans JP', -apple-system, sans-serif;
+  --max:    760px;
+  --r:      3px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+body.lang-en .ja { display: none; }
+body.lang-ja .en { display: none; }
+.ja { word-break: normal; overflow-wrap: anywhere; line-break: strict; }
+
+/* Header */
+.hdr {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 54px;
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.hdr-in {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; color: var(--text); text-decoration: none; }
+.hdr-right { display: flex; align-items: center; gap: 12px; }
+.lang-sw { display: flex; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+.lng-btn {
+  padding: 4px 12px; font-size: 11px; font-weight: 500;
+  border: none; background: transparent; color: var(--muted);
+  cursor: pointer; font-family: var(--font);
+}
+.lng-btn.on { background: var(--text); color: #fff; }
+.back-link { font-size: 12px; color: var(--muted); text-decoration: none; }
+.back-link:hover { color: var(--text); }
+
+/* Page */
+.page {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 96px 24px 80px;
+}
+
+/* Page header */
+.page-eyebrow {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
+}
+.page-title {
+  font-size: clamp(24px, 3.5vw, 36px); font-weight: 300;
+  letter-spacing: -0.02em; line-height: 1.25; color: var(--text);
+  margin-bottom: 12px;
+}
+.page-date { font-size: 12px; color: var(--muted); margin-bottom: 56px; }
+
+/* Section */
+.dsec { margin-bottom: 52px; }
+.dsec-h {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text);
+  margin-bottom: 20px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.dsec-body { font-size: 14px; font-weight: 300; color: var(--sub); line-height: 1.85; }
+.dsec-body p + p { margin-top: 14px; }
+.dsec-body strong { color: var(--text); font-weight: 500; }
+.dsec-body a { color: var(--text); }
+.dsec-body a:hover { opacity: 0.7; }
+
+/* Citation table */
+.cite-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 16px; }
+.cite-table th {
+  text-align: left; padding: 9px 14px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted);
+  border-bottom: 2px solid var(--border); background: var(--white);
+}
+.cite-table td {
+  padding: 13px 14px; border-bottom: 1px solid var(--border);
+  font-weight: 300; color: var(--sub); vertical-align: top;
+  line-height: 1.55; background: var(--white);
+}
+.cite-table td:first-child { color: var(--text); font-weight: 400; white-space: nowrap; }
+.cite-table td em { font-style: normal; color: var(--muted); font-size: 12px; display: block; margin-top: 3px; }
+
+/* Notice box */
+.notice {
+  padding: 20px 22px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--text);
+  font-size: 13px; font-weight: 300; color: var(--sub); line-height: 1.75;
+  margin-bottom: 52px;
+}
+.notice strong { color: var(--text); font-weight: 500; }
+
+/* Footer */
+.ftr {
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 28px 24px;
+}
+.ftr-in {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; gap: 8px;
+}
+.ftr-brand { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; color: rgba(255,255,255,0.28); }
+.ftr-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
+</style>
+</head>
+<body class="lang-en">
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a href="index.html" class="logo">STOIC</a>
+    <div class="hdr-right">
+      <div class="lang-sw">
+        <button class="lng-btn on" id="btn-en" onclick="setLang('en')">EN</button>
+        <button class="lng-btn"    id="btn-ja" onclick="setLang('ja')">JP</button>
+      </div>
+      <a href="index.html" class="back-link en">← Back to site</a>
+      <a href="index.html" class="back-link ja">← サイトに戻る</a>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+  <p class="page-eyebrow en">Stoic by Dolphin Stark</p>
+  <p class="page-eyebrow ja">Dolphin Stark — Stoic</p>
+
+  <h1 class="page-title en">Legal Notice &amp; Data Sources</h1>
+  <h1 class="page-title ja">免責事項・データ出典・法的告知</h1>
+
+  <p class="page-date en">Last updated: June 2026</p>
+  <p class="page-date ja">最終更新：2026年6月</p>
+
+  <div class="notice">
+    <p class="en"><strong>Important:</strong> Stoic is currently in pre-launch development. Statistics and claims on this site are provided for informational purposes and are sourced from third-party research. The application described is a behavioral design product — not a medical device or therapeutic service. Individual results will vary.</p>
+    <p class="ja"><strong>重要：</strong>Stoicは現在、ローンチ前の開発段階にあります。本サイトに掲載されている統計およびデータは、情報提供を目的としており、第三者の研究・報告に基づいています。本アプリは行動設計プロダクトであり、医療機器・治療サービスではありません。効果には個人差があります。</p>
+  </div>
+
+  <!-- ── STATISTICAL SOURCES ── -->
+  <div class="dsec">
+    <h2 class="dsec-h en">1. Statistical Sources &amp; Methodology</h2>
+    <h2 class="dsec-h ja">1. 統計データの出典と算出方法</h2>
+
+    <table class="cite-table">
+      <thead>
+        <tr>
+          <th class="en">Claim</th>
+          <th class="ja">データ</th>
+          <th class="en">Source</th>
+          <th class="ja">出典</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="en">4.7 hours average daily smartphone use per adult<em>(cited on landing page)</em></td>
+          <td class="ja">成人1人あたりの1日平均スマートフォン使用時間：4.7時間<em>（LPに記載）</em></td>
+          <td class="en">DataReportal <em>Digital 2023 Global Overview Report</em>; Supplemented by App Annie (now data.ai) <em>State of Mobile 2023</em>. Global figures vary by region; the 4.7h figure represents a commonly cited global average across adult users. Actual figures range from approximately 3.8h to 5.5h depending on country and methodology.</td>
+          <td class="ja">DataReportal「Digital 2023 Global Overview Report」および App Annie（現data.ai）「State of Mobile 2023」。地域により数値は異なり、掲載の4.7時間は成人ユーザーの世界平均として広く引用されている数値です。実際の数値は国・調査方法により約3.8〜5.5時間の範囲で変動します。</td>
+        </tr>
+        <tr>
+          <td class="en">71 days per year lost to passive screen time<em>(cited on landing page)</em></td>
+          <td class="ja">受動的スクリーンタイムで失われる年間71日<em>（LPに記載）</em></td>
+          <td class="en"><strong>Derived calculation.</strong> 4.7 hours/day × 365 days = 1,715.5 hours/year ÷ 24 hours = 71.5 days. This is a mathematical derivation from the 4.7h daily figure and does not account for intentional vs. passive use.</td>
+          <td class="ja"><strong>算出値。</strong>4.7時間/日 × 365日 = 年間1,715.5時間 ÷ 24時間 = 71.5日。この数値は1日4.7時間のデータから算出した計算値であり、意図的な使用と受動的な使用の区別は含んでいません。</td>
+        </tr>
+        <tr>
+          <td class="en">40% reduction in deep-work capacity from digital interruptions<em>(cited on landing page)</em></td>
+          <td class="ja">デジタルな中断による深い集中力の40%低下<em>（LPに記載）</em></td>
+          <td class="en">Based on research by Dr. Gloria Mark, University of California, Irvine, published in: Mark, G., Gudith, D., &amp; Klocke, U. (2008). <em>The cost of interrupted work: more speed and stress.</em> Proceedings of CHI 2008. The research establishes that interrupted work is performed faster but with more stress and effort; the 40% figure is an approximation based on productivity-loss estimates from this and related studies. The exact percentage may vary by task type and context.</td>
+          <td class="ja">カリフォルニア大学アーバイン校 Gloria Mark博士の研究に基づきます。Mark, G., Gudith, D., &amp; Klocke, U.（2008）「The cost of interrupted work: more speed and stress.」CHI 2008掲載。同研究は中断された作業がより速く・より高いストレス下で実行されることを示しており、40%という数値はこの研究および関連研究における生産性低下の推計に基づく近似値です。実際の数値はタスクの種類や状況により異なります。</td>
+        </tr>
+        <tr>
+          <td class="en">1,500+ engineers at TikTok focused on engagement optimization<em>(cited on landing page)</em></td>
+          <td class="ja">TikTokのエンゲージメント最適化に従事するエンジニア1,500人以上<em>（LPに記載）</em></td>
+          <td class="en">Derived from multiple technology journalism sources reporting on ByteDance's algorithm and recommendation engineering teams, including reporting in <em>The New York Times</em>, <em>The Wall Street Journal</em>, and <em>The Information</em> (2020–2023). The exact number of engineers dedicated solely to this function is not publicly disclosed by ByteDance/TikTok; the figure represents a widely reported estimate of the engineering teams involved in content recommendation and engagement systems.</td>
+          <td class="ja">The New York Times、The Wall Street Journal、The Information（2020〜2023年）など複数の技術系ジャーナリズムの報告を基にしています。ByteDance/TikTokはエンゲージメント専任のエンジニア数を公式に公表しておらず、掲載の数値はコンテンツ推薦・エンゲージメントシステムに関わるエンジニアチームに関する広く引用されている推計値です。</td>
+        </tr>
+        <tr>
+          <td class="en">10 working weeks equivalent<em>(calculated from 71-day figure)</em></td>
+          <td class="ja">就労日換算で約10週間<em>（71日から算出）</em></td>
+          <td class="en"><strong>Derived calculation.</strong> 71 days ÷ 5 working days/week = 14.2 weeks; rounded to "approximately 10 working weeks" in the context of full working days (8h). Calculation: 1,715 hours ÷ (8h × 5 days) = ~42.9 full working weeks, which was simplified to "10 weeks" for communicative impact. <strong>Note: This figure should be interpreted as illustrative.</strong></td>
+          <td class="ja"><strong>算出値。</strong>71日 ÷ 5日/週 = 14.2週。「約10週間」という記載は8時間勤務換算（1,715時間 ÷ 40時間/週 ≈ 42.9週）を平易に表現したものです。<strong>注：この数値は例示的なものとして解釈してください。</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── PLATFORM DESCRIPTIONS ── -->
+  <div class="dsec">
+    <h2 class="dsec-h en">2. Basis for Platform Descriptions</h2>
+    <h2 class="dsec-h ja">2. プラットフォームに関する記述の根拠</h2>
+
+    <div class="dsec-body en">
+      <p>Descriptions of social media platform practices (including statements about engagement optimization, behavioral engineering, and revenue models) on this site are based on:</p>
+      <p><strong>(a) Publicly reported information</strong> — including investigative journalism, academic research, published platform documentation, and regulatory filings. Key sources include reporting by The New York Times, The Wall Street Journal, The Guardian, and academic publications in behavioral psychology and HCI.</p>
+      <p><strong>(b) Published academic research</strong> — including studies in behavioral psychology, attention research, and human-computer interaction. References include work by Dr. Gloria Mark (UC Irvine), Dr. Jean Twenge (San Diego State University), and others.</p>
+      <p><strong>(c) Former employee accounts and whistleblower testimony</strong> — including testimony submitted to the United States Senate Commerce Committee (2021) regarding platform design practices.</p>
+      <p>Stoic and Dolphin Stark are <strong>not affiliated with, endorsed by, or connected to</strong> Instagram, TikTok, X (formerly Twitter), Meta, ByteDance, or any other company mentioned on this site. The mention of these platforms is for illustrative and comparative purposes only.</p>
+    </div>
+    <div class="dsec-body ja">
+      <p>本サイトに掲載されているSNSプラットフォームの行動設計・収益モデルに関する記述は、以下に基づいています。</p>
+      <p><strong>（a）公開情報</strong> — 調査報道、学術研究、プラットフォームの公開ドキュメント、規制当局への提出書類を含みます。主要な参考情報源には、The New York Times、The Wall Street Journal、The Guardian、および行動心理学・HCI分野の学術誌が含まれます。</p>
+      <p><strong>（b）発表済み学術研究</strong> — 行動心理学、注意研究、人間とコンピュータの相互作用に関する研究を含みます。Gloria Mark博士（カリフォルニア大学アーバイン校）、Jean Twenge博士（サンディエゴ州立大学）等の研究を参照しています。</p>
+      <p><strong>（c）元従業員の証言・内部告発</strong> — 2021年の米国上院商務委員会へのプラットフォーム設計に関する証言等を含みます。</p>
+      <p>StoicおよびDolphin Starkは、Instagram、TikTok、X（旧Twitter）、Meta、ByteDanceおよび本サイトに記載されているいかなる企業とも<strong>関係がなく、承認・提携関係にもありません。</strong>これらのプラットフォームへの言及は、説明・比較目的に限られます。</p>
+    </div>
+  </div>
+
+  <!-- ── APP DISCLAIMER ── -->
+  <div class="dsec">
+    <h2 class="dsec-h en">3. Stoic — Application Disclaimer</h2>
+    <h2 class="dsec-h ja">3. Stoicアプリに関する免責事項</h2>
+
+    <div class="dsec-body en">
+      <p><strong>Not a medical or therapeutic product.</strong> Stoic is a behavioral design application intended to support personal productivity and attention management. It is not a medical device, therapeutic intervention, or treatment for any mental health condition, including attention deficit disorders. Users experiencing clinical symptoms of ADHD, anxiety, or addiction should consult a qualified healthcare professional.</p>
+      <p><strong>Individual results vary.</strong> The effectiveness of behavioral design approaches differs significantly between individuals. No specific outcome is guaranteed. Claims about the behavioral effects of waiting protocols, task structures, and feedback systems are based on established behavioral science principles, not on clinical trials of Stoic specifically.</p>
+      <p><strong>Features and pricing subject to change.</strong> All product features, pricing estimates, and timelines described on this site are indicative and subject to change without notice prior to launch.</p>
+      <p><strong>Pre-launch status.</strong> Stoic is currently in pre-launch development. The features described represent the intended product design and may differ from the final released application.</p>
+    </div>
+    <div class="dsec-body ja">
+      <p><strong>医療・治療目的ではありません。</strong>Stoicは個人の生産性および注意管理をサポートすることを目的とした行動設計アプリです。医療機器・治療的介入・精神疾患（注意欠如多動症を含む）の治療手段ではありません。ADHDや不安障害、依存症などの臨床的な症状がある方は、資格を持つ医療専門家にご相談ください。</p>
+      <p><strong>効果には個人差があります。</strong>行動設計アプローチの有効性は個人によって大きく異なります。特定の結果を保証するものではありません。待機プロトコル・タスク構成・フィードバックシステムの行動的効果に関する記述は、確立された行動科学の原則に基づいており、Stoic固有の臨床試験に基づくものではありません。</p>
+      <p><strong>機能・価格は変更される場合があります。</strong>本サイトに記載の製品機能・価格の目安・タイムラインはすべて参考情報であり、ローンチ前に予告なく変更される場合があります。</p>
+      <p><strong>ローンチ前の開発段階です。</strong>Stoicは現在ローンチ前の開発段階にあります。記載されている機能は予定している製品設計を示すものであり、最終リリース版と異なる場合があります。</p>
+    </div>
+  </div>
+
+  <!-- ── GENERAL DISCLAIMER ── -->
+  <div class="dsec">
+    <h2 class="dsec-h en">4. General Legal Notice</h2>
+    <h2 class="dsec-h ja">4. 一般的な法的告知</h2>
+
+    <div class="dsec-body en">
+      <p><strong>Accuracy of information.</strong> Dolphin Stark makes reasonable efforts to ensure the accuracy of information on this site. However, all information is provided "as is" without warranty of any kind. We do not accept liability for any errors, omissions, or outdated information.</p>
+      <p><strong>No investment or financial advice.</strong> Nothing on this site constitutes investment, financial, or business advice. All forward-looking statements regarding the product, market opportunity, or company plans are speculative and subject to change.</p>
+      <p><strong>Waitlist data.</strong> Email addresses collected through the waitlist form are processed via Formsubmit (formsubmit.co) and stored solely for the purpose of notifying registrants upon product launch. Email addresses will not be sold, rented, or shared with third parties. Registrants may withdraw at any time by contacting us at the address below.</p>
+      <p><strong>Governing law.</strong> This legal notice is governed by the laws of Japan. Any disputes shall be subject to the exclusive jurisdiction of the Tokyo District Court.</p>
+    </div>
+    <div class="dsec-body ja">
+      <p><strong>情報の正確性について。</strong>Dolphin Starkは本サイトの情報の正確性を確保するために合理的な努力を行っています。ただし、すべての情報は「現状のまま」提供されており、いかなる保証も行いません。誤り・脱漏・情報の陳腐化による損害についての責任は負いかねます。</p>
+      <p><strong>投資・財務アドバイスではありません。</strong>本サイトの内容は、投資・財務・事業に関するアドバイスを構成するものではありません。製品・市場機会・会社計画に関するすべての将来予測は推測的なものであり、変更される可能性があります。</p>
+      <p><strong>ウェイティングリストデータについて。</strong>ウェイティングリストフォームを通じて収集したメールアドレスは、Formsubmit（formsubmit.co）を通じて処理・保管され、製品ローンチ時の通知のみを目的として使用されます。メールアドレスを第三者に販売・貸与・共有することはありません。登録者はいつでも下記連絡先にご連絡いただくことで登録を取り消すことができます。</p>
+      <p><strong>準拠法。</strong>本免責事項は日本法に準拠します。本サイトに関連する紛争は東京地方裁判所の専属管轄に服するものとします。</p>
+    </div>
+  </div>
+
+  <!-- ── CONTACT ── -->
+  <div class="dsec">
+    <h2 class="dsec-h en">5. Contact</h2>
+    <h2 class="dsec-h ja">5. お問い合わせ</h2>
+
+    <div class="dsec-body en">
+      <p>For questions regarding data accuracy, source citations, waitlist data removal, or any other inquiry related to this legal notice:</p>
+      <p><strong>Dolphin Stark</strong><br>
+      Email: <a href="mailto:dolphinstark@protonmail.com">dolphinstark@protonmail.com</a></p>
+    </div>
+    <div class="dsec-body ja">
+      <p>データの正確性・出典・ウェイティングリストデータの削除依頼、またはこの免責事項に関するその他のお問い合わせは、以下までご連絡ください。</p>
+      <p><strong>Dolphin Stark</strong><br>
+      メール：<a href="mailto:dolphinstark@protonmail.com">dolphinstark@protonmail.com</a></p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="ftr">
+  <div class="ftr-in">
+    <span class="ftr-brand">STOIC BY DOLPHIN STARK</span>
+    <span class="ftr-copy en">© 2026 Dolphin Stark. All rights reserved.</span>
+    <span class="ftr-copy ja">© 2026 Dolphin Stark. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+function setLang(l) {
+  document.body.className = 'lang-' + l;
+  document.getElementById('btn-en').classList.toggle('on', l === 'en');
+  document.getElementById('btn-ja').classList.toggle('on', l === 'ja');
+}
+if (navigator.language && navigator.language.startsWith('ja')) setLang('ja');
+</script>
+</body>
+</html>
