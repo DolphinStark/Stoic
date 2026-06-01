@@ -393,8 +393,32 @@ body.lang-ja .en { display: none; }
 /* Fear section — white */
 .fear-sec { background: var(--white); }
 
-/* Sec-bg — white (unify) */
+/* Sec-bg — white default */
 .sec-bg { background: var(--white) !important; }
+
+/* Pain section on dark */
+.pain-sec.sec-dark .pain-lead { color: rgba(255,255,255,0.88); }
+.pain-sec.sec-dark .pain-grid { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); }
+.pain-sec.sec-dark .pain-item { background: var(--dark); }
+.pain-sec.sec-dark .pain-item-h { color: rgba(255,255,255,0.82); }
+.pain-sec.sec-dark .pain-item-p { color: rgba(255,255,255,0.48); }
+.pain-sec.sec-dark .pain-close { color: rgba(255,255,255,0.55); }
+.pain-sec.sec-dark .pain-close strong { color: #fff; }
+
+/* How it works on dark */
+.sec-dark .how-h2 { color: rgba(255,255,255,0.88); }
+.sec-dark .feat-grid { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); }
+.sec-dark .feat { background: rgba(255,255,255,0.03); }
+.sec-dark .feat-n { color: rgba(255,255,255,0.26); }
+.sec-dark .feat-h { color: rgba(255,255,255,0.85); }
+.sec-dark .feat-p { color: rgba(255,255,255,0.5); }
+
+/* Fear section on dark */
+.fear-sec.sec-dark { background: var(--dark) !important; }
+.fear-sec.sec-dark .fear-body { color: rgba(255,255,255,0.58); }
+.fear-sec.sec-dark .fear-body strong { color: #fff; }
+.fear-sec.sec-dark .fear-close { border-top-color: rgba(255,255,255,0.1); }
+.fear-sec.sec-dark .fear-q { color: #fff; }
 
 /* Dark section modifier */
 .sec-dark { background: var(--dark) !important; }
@@ -941,7 +965,7 @@ mark {
 </section>
 
 <!-- PAIN / EMPATHY SECTION -->
-<section class="pain-sec" id="problem">
+<section class="pain-sec sec-dark" id="problem">
   <div class="sec-in">
     <p class="stag en rv">We understand</p>
     <p class="stag ja rv">あなたの経験を、私たちは知っています</p>
@@ -996,7 +1020,7 @@ mark {
 </section>
 
 <!-- PROBLEM ANALYSIS -->
-<section class="sec sec-dark">
+<section class="sec">
   <div class="sec-in">
     <p class="stag en rv">Analysis</p>
     <p class="stag ja rv">背景</p>
@@ -1068,7 +1092,7 @@ mark {
 </div>
 
 <!-- HOW IT WORKS -->
-<section class="sec-bg" id="how">
+<section class="sec-bg sec-dark" id="how">
   <div class="sec-in">
     <p class="stag en rv">How Stoic Works</p>
     <p class="stag ja rv">Stoicの仕組み</p>
@@ -1164,7 +1188,7 @@ mark {
 </section>
 
 <!-- COMPARISON -->
-<section class="sec sec-dark">
+<section class="sec">
   <div class="sec-in">
     <p class="stag en rv">Comparison</p>
     <p class="stag ja rv">比較</p>
@@ -1233,7 +1257,7 @@ mark {
 </section>
 
 <!-- FEAR / REALITY CHECK -->
-<section class="fear-sec">
+<section class="fear-sec sec-dark">
   <div class="sec-in narrow">
     <p class="stag en rv">The uncomfortable truth</p>
     <p class="stag ja rv">不都合な現実</p>
