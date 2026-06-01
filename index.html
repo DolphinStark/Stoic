@@ -250,15 +250,15 @@ body.lang-ja .en { display: none; }
 .feat-p { font-size: 14px; font-weight: 300; color: var(--sub); line-height: 1.85; }
 
 /* ═══ THE REALITY + WAITLIST — DARK ═══ */
-.reality-sec { background: var(--dark); }
-.reality-in { max-width: 660px; margin: 0 auto; padding: 96px 24px; }
+.fear-sec { background: var(--dark); }
+.fear-in { max-width: var(--max); margin: 0 auto; padding: 96px 24px; }
 
 /* Fear text */
 .fear-body { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.9; max-width: 640px; }
 .fear-body p + p { margin-top: 18px; }
 .fear-body strong { color: #fff; font-weight: 500; }
 .fear-q {
-  margin-top: 36px; font-size: clamp(20px, 3vw, 28px); font-weight: 600;
+  margin-top: 36px; text-align: center; font-size: clamp(20px, 3vw, 28px); font-weight: 600;
   color: #fff; line-height: 1.4; letter-spacing: -0.015em;
 }
 
@@ -268,6 +268,10 @@ body.lang-ja .en { display: none; }
   background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.2) 30%, rgba(255,255,255,0.2) 70%, transparent 100%);
   margin: 72px 0 0;
 }
+
+/* Waitlist section — white, full width */
+.wl-sec { background: var(--white); }
+.wl-in { max-width: 860px; margin: 0 auto; padding: 96px 48px; }
 
 /* Waitlist panel */
 .wl-panel {
@@ -279,21 +283,21 @@ margin-top: 0;
 }
 
 /* Waitlist */
-.wl-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 24px; }
+.wl-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
 .wl-h2 {
   font-size: clamp(22px, 3vw, 32px); font-weight: 300;
-  line-height: 1.28; letter-spacing: -0.022em; color: #fff; margin-bottom: 12px;
+  line-height: 1.28; letter-spacing: -0.022em; color: var(--text); margin-bottom: 12px;
 }
-.wl-sub { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 40px; }
+.wl-sub { font-size: 14px; font-weight: 300; color: var(--sub); line-height: 1.8; margin-bottom: 40px; }
 .wl-row { display: flex; gap: 8px; margin-bottom: 14px; }
 .wl-email {
   flex: 1; padding: 12px 16px;
-  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.16);
-  border-radius: var(--r); color: #fff; font-family: var(--font);
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--r); color: var(--text); font-family: var(--font);
   font-size: 14px; font-weight: 300; outline: none; transition: border-color 0.15s;
 }
-.wl-email:focus { border-color: rgba(255,255,255,0.45); }
-.wl-email::placeholder { color: rgba(255,255,255,0.26); }
+.wl-email:focus { border-color: var(--sub); }
+.wl-email::placeholder { color: var(--muted); }
 .wl-submit {
   padding: 12px 22px; background: #fff; color: var(--text);
   font-family: var(--font); font-size: 13px; font-weight: 500; letter-spacing: 0.02em;
@@ -301,7 +305,7 @@ margin-top: 0;
 }
 .wl-submit:hover { opacity: 0.88; }
 .wl-submit:disabled { opacity: 0.4; cursor: not-allowed; }
-.wl-note { font-size: 12px; color: rgba(255,255,255,0.25); line-height: 1.65; }
+.wl-note { font-size: 12px; color: var(--muted); line-height: 1.65; }
 .wl-done {
   display: none; padding: 22px 24px;
   background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
@@ -310,13 +314,13 @@ margin-top: 0;
 }
 
 /* ═══ FOOTER ═══ */
-.ftr { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); padding: 28px 24px; }
+.ftr { background: var(--white); border-top: 1px solid var(--border); padding: 28px 24px; }
 .ftr-in { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-.ftr-brand { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; color: rgba(255,255,255,0.28); }
+.ftr-brand { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; color: var(--muted); }
 .ftr-links { display: flex; gap: 20px; align-items: center; }
-.ftr-link { font-size: 11px; color: rgba(255,255,255,0.28); text-decoration: underline; text-underline-offset: 3px; }
-.ftr-link:hover { color: rgba(255,255,255,0.5); }
-.ftr-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
+.ftr-link { font-size: 11px; color: var(--sub); text-decoration: underline; text-underline-offset: 3px; }
+.ftr-link:hover { color: var(--text); }
+.ftr-copy { font-size: 11px; color: var(--muted); }
 
 /* ═══ SCROLL REVEAL ═══ */
 .rv { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -731,8 +735,8 @@ margin-top: 0;
 <!-- ══════════════════
      THE REALITY + WAITLIST — DARK
 ══════════════════ -->
-<section class="reality-sec" id="waitlist">
-  <div class="reality-in">
+<section class="fear-sec">
+  <div class="fear-in">
 
     <p class="stag-dark en rv">The uncomfortable truth</p>
     <p class="stag-dark ja rv">不都合な現実</p>
@@ -755,10 +759,14 @@ margin-top: 0;
     <p class="fear-q en rv">Knowing this —<br>what will you decide?</p>
     <p class="fear-q ja rv">今、あなたはどのような判断をしますか。</p>
 
-    <div class="reality-divider rv"></div>
+    </div>
+</section>
 
-    <!-- Waitlist -->
-    <div class="wl-panel">
+<!-- ══════════════════
+WAITLIST — WHITE
+══════════════════ -->
+<section class="wl-sec" id="waitlist">
+<div class="wl-in">
     <p class="wl-tag en rv">Early Access</p>
     <p class="wl-tag ja rv">アーリーアクセス</p>
 
@@ -804,7 +812,7 @@ margin-top: 0;
       <span class="ja">✓ 登録が完了しました。Stoicのローンチ時にご連絡いたします。</span>
     </div>
 
-  </div>
+</div>
 </section>
 
 <!-- FOOTER -->
