@@ -10,15 +10,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 
-/* ═══════════════════════════════
-   RESET
-═══════════════════════════════ */
+/* ═══ RESET ═══ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 img { display: block; max-width: 100%; }
 
-/* ═══════════════════════════════
-   VARIABLES
-═══════════════════════════════ */
+/* ═══ VARIABLES ═══ */
 :root {
   --bg:     #F7F8FA;
   --white:  #FFFFFF;
@@ -44,781 +40,299 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ═══════════════════════════════
-   LANGUAGE
-═══════════════════════════════ */
+/* ═══ LANGUAGE ═══ */
 body.lang-en .ja { display: none; }
 body.lang-ja .en { display: none; }
+.ja { word-break: normal; overflow-wrap: anywhere; line-break: strict; }
 
-.ja {
-  word-break: normal;
-  overflow-wrap: anywhere;
-  line-break: strict;
-}
-
-/* ═══════════════════════════════
-   HEADER
-═══════════════════════════════ */
+/* ═══ HEADER ═══ */
 .hdr {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  height: 54px;
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100; height: 54px;
   background: rgba(255,255,255,0.94);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
 }
 .hdr-in {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0 24px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  max-width: var(--max); margin: 0 auto; padding: 0 24px;
+  height: 100%; display: flex; align-items: center; justify-content: space-between;
 }
-.logo {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  color: var(--text);
-}
-.hdr-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.lang-sw {
-  display: flex;
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  overflow: hidden;
-}
+.logo { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; color: var(--text); }
+.hdr-right { display: flex; align-items: center; gap: 12px; }
+.lang-sw { display: flex; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
 .lng-btn {
-  padding: 4px 12px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  border: none;
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-  font-family: var(--font);
-  transition: background 0.15s, color 0.15s;
+  padding: 4px 12px; font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+  border: none; background: transparent; color: var(--muted);
+  cursor: pointer; font-family: var(--font); transition: background 0.15s, color 0.15s;
 }
 .lng-btn.on { background: var(--text); color: #fff; }
 .hdr-cta {
-  padding: 7px 16px;
-  background: var(--text);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  text-decoration: none;
-  border-radius: var(--r);
-  transition: opacity 0.15s;
+  padding: 7px 16px; background: var(--text); color: #fff;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.03em;
+  text-decoration: none; border-radius: var(--r); transition: opacity 0.15s;
 }
 .hdr-cta:hover { opacity: 0.82; }
 
-/* ═══════════════════════════════
-   HERO
-═══════════════════════════════ */
+/* ═══ HERO ═══ */
 .hero {
-  position: relative;
-  height: 100vh;
-  min-height: 600px;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
+  position: relative; height: 100vh; min-height: 600px;
+  display: flex; align-items: flex-end; overflow: hidden;
 }
 .hero-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 50%;
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 55%;
 }
-/* Stronger overlay for NY bright lights — text readability */
 .hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.25) 0%,
-    rgba(0,0,0,0.50) 40%,
-    rgba(0,0,0,0.88) 100%
-  );
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.48) 40%, rgba(0,0,0,0.88) 100%);
 }
 .hero-body {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0 24px 80px;
+  position: relative; z-index: 1; width: 100%;
+  max-width: var(--max); margin: 0 auto; padding: 0 24px 80px;
 }
 .hero-label {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: 18px;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+  font-size: 10px; font-weight: 500; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(255,255,255,0.52); margin-bottom: 18px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
 }
 .hero-h1 {
-  font-size: clamp(26px, 4vw, 48px);
-  font-weight: 300;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: #fff;
-  margin-bottom: 16px;
+  font-size: clamp(26px, 4vw, 48px); font-weight: 300;
+  line-height: 1.2; letter-spacing: -0.022em; color: #fff; margin-bottom: 16px;
   text-shadow: 0 2px 12px rgba(0,0,0,0.7);
 }
-.hero-h1 strong {
-  font-weight: 600;
-  display: block;
-}
+.hero-h1 strong { font-weight: 600; display: block; }
 .hero-p {
-  font-size: clamp(14px, 1.7vw, 16px);
-  font-weight: 400;
-  color: rgba(255,255,255,0.92);
-  max-width: 480px;
-  line-height: 1.8;
-  margin-bottom: 32px;
+  font-size: clamp(14px, 1.7vw, 16px); font-weight: 400;
+  color: rgba(255,255,255,0.92); max-width: 480px; line-height: 1.8; margin-bottom: 32px;
   text-shadow: 0 1px 8px rgba(0,0,0,0.9);
-  background: rgba(0,0,0,0.18);
-  padding: 12px 16px;
-  border-radius: var(--r);
-  backdrop-filter: blur(2px);
+  background: rgba(0,0,0,0.2); padding: 12px 16px; border-radius: var(--r);
 }
-.hero-btns {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+.hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
 .btn-solid {
-  padding: 11px 26px;
-  background: #fff;
-  color: var(--text);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  text-decoration: none;
-  border-radius: var(--r);
-  transition: opacity 0.15s;
+  padding: 11px 26px; background: #fff; color: var(--text);
+  font-size: 13px; font-weight: 500; letter-spacing: 0.01em;
+  text-decoration: none; border-radius: var(--r); transition: opacity 0.15s;
 }
 .btn-solid:hover { opacity: 0.88; }
 .btn-ghost {
-  padding: 11px 22px;
-  background: transparent;
-  color: rgba(255,255,255,0.85);
-  font-size: 13px;
-  font-weight: 400;
-  text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.4);
-  border-radius: var(--r);
+  padding: 11px 22px; background: transparent; color: rgba(255,255,255,0.85);
+  font-size: 13px; font-weight: 400; text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.35); border-radius: var(--r);
   transition: border-color 0.15s, color 0.15s;
 }
 .btn-ghost:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
 
-/* ═══════════════════════════════
-   STATS
-═══════════════════════════════ */
+/* ═══ STATS — WHITE ═══ */
 .stats { background: var(--white); border-bottom: 1px solid var(--border); }
 .stats-grid {
-  max-width: var(--max);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  max-width: var(--max); margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid var(--border);
 }
-.stat {
-  padding: 52px 28px;
-  border-right: 1px solid var(--border);
-}
+.stat { padding: 52px 28px; border-right: 1px solid var(--border); }
 .stat:last-child { border-right: none; }
 .stat-n {
-  font-size: clamp(34px, 4vw, 50px);
-  font-weight: 300;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  color: var(--text);
-  margin-bottom: 12px;
+  font-size: clamp(34px, 4vw, 50px); font-weight: 300;
+  letter-spacing: -0.04em; line-height: 1; color: var(--text); margin-bottom: 12px;
 }
-.stat-n em {
-  font-style: normal;
-  color: #B91C1C;
-}
-.stat-d {
-  font-size: 12px;
-  font-weight: 300;
-  color: var(--sub);
-  line-height: 1.65;
-}
+.stat-n em { font-style: normal; color: #B91C1C; }
+.stat-d { font-size: 12px; font-weight: 300; color: var(--sub); line-height: 1.65; }
 
-/* ═══════════════════════════════
-   SECTION BASE
-═══════════════════════════════ */
-.sec { background: var(--white); }
-.sec-bg { background: var(--bg); }
-.sec-in {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 96px 24px;
+/* ═══ WHAT IS STOIC — WHITE ═══ */
+.what-sec { background: var(--white); border-top: 1px solid var(--border); }
+.what-in {
+  max-width: var(--max); margin: 0 auto; padding: 96px 24px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start;
 }
-.sec-in.narrow { max-width: 660px; }
-.stag {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 36px;
+.what-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 24px;
 }
+.what-h {
+  font-size: clamp(22px, 3vw, 30px); font-weight: 300;
+  line-height: 1.35; letter-spacing: -0.02em; color: var(--text); margin-bottom: 20px;
+}
+.what-p { font-size: 15px; font-weight: 300; color: var(--sub); line-height: 1.85; }
+.what-p + .what-p { margin-top: 14px; }
+.what-p strong { color: var(--text); font-weight: 500; }
+.what-points { display: flex; flex-direction: column; gap: 0; }
+.what-pt {
+  padding: 20px 0; border-bottom: 1px solid var(--border);
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.what-pt:first-child { border-top: 1px solid var(--border); }
+.what-pt-dash { color: var(--muted); font-size: 14px; flex-shrink: 0; padding-top: 2px; }
+.what-pt-body {}
+.what-pt-h { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+.what-pt-p { font-size: 13px; font-weight: 300; color: var(--sub); line-height: 1.65; }
 
-/* ═══════════════════════════════
-   PARTNER / REASSURANCE SECTION
-═══════════════════════════════ */
-.partner-sec { background: var(--white); color: var(--text); border-top: 1px solid var(--border); }
-.partner-in {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 80px 24px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-}
-.partner-label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 24px;
-}
-.partner-h {
-  font-size: clamp(22px, 3vw, 30px);
-  font-weight: 300;
-  line-height: 1.35;
-  letter-spacing: -0.02em;
-  color: var(--text);
-  margin-bottom: 20px;
-}
-.partner-p {
-  font-size: 15px;
-  font-weight: 300;
-  color: var(--sub);
-  line-height: 1.85;
-}
-.partner-p + .partner-p { margin-top: 14px; }
-.partner-p strong { color: var(--text); font-weight: 500; }
-.partner-right {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.partner-card {
-  padding: 22px 24px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-}
-.partner-card-h {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 6px;
-}
-.partner-card-p {
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--sub);
-  line-height: 1.6;
-}
+/* ═══ THE PROBLEM — DARK ═══ */
+.problem-sec { background: var(--dark); }
+.problem-in { max-width: var(--max); margin: 0 auto; padding: 96px 24px; }
 
-/* ═══════════════════════════════
-   PAIN / EMPATHY SECTION
-═══════════════════════════════ */
-.pain-sec { background: var(--white); }
+/* Pain grid on dark */
 .pain-lead {
-  font-size: clamp(20px, 2.6vw, 27px);
-  font-weight: 300;
-  line-height: 1.42;
-  letter-spacing: -0.018em;
-  color: var(--text);
+  font-size: clamp(20px, 2.6vw, 27px); font-weight: 300;
+  line-height: 1.42; letter-spacing: -0.018em; color: rgba(255,255,255,0.88);
   margin-bottom: 48px;
 }
 .pain-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  margin-bottom: 48px;
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1px; background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.07); margin-bottom: 48px;
 }
-.pain-item {
-  background: var(--white);
-  padding: 28px 28px;
-}
-.pain-item-h {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-.pain-item-p {
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--sub);
-  line-height: 1.75;
-}
-.pain-close {
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--sub);
-  line-height: 1.85;
-  max-width: 640px;
-}
-.pain-close strong { color: var(--text); font-weight: 500; }
+.pain-item { background: var(--dark); padding: 28px; }
+.pain-item-h { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.82); margin-bottom: 8px; line-height: 1.4; }
+.pain-item-p { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.45); line-height: 1.75; }
 
-/* Reduce gap: pain → analysis */
-.pain-sec .sec-in { padding-bottom: 40px; }
-.pain-sec + .sec .sec-in { padding-top: 40px; }
-
-/* Fear section — white */
-.fear-sec { background: var(--white); }
-
-/* Sec-bg — white default */
-.sec-bg { background: var(--white) !important; }
-
-/* Pain section on dark */
-.pain-sec.sec-dark .pain-lead { color: rgba(255,255,255,0.88); }
-.pain-sec.sec-dark .pain-grid { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); }
-.pain-sec.sec-dark .pain-item { background: var(--dark); }
-.pain-sec.sec-dark .pain-item-h { color: rgba(255,255,255,0.82); }
-.pain-sec.sec-dark .pain-item-p { color: rgba(255,255,255,0.48); }
-.pain-sec.sec-dark .pain-close { color: rgba(255,255,255,0.55); }
-.pain-sec.sec-dark .pain-close strong { color: #fff; }
-
-/* How it works on dark */
-.sec-dark .how-h2 { color: rgba(255,255,255,0.88); }
-.sec-dark .feat-grid { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); }
-.sec-dark .feat { background: rgba(255,255,255,0.03); }
-.sec-dark .feat-n { color: rgba(255,255,255,0.26); }
-.sec-dark .feat-h { color: rgba(255,255,255,0.85); }
-.sec-dark .feat-p { color: rgba(255,255,255,0.5); }
-
-/* Fear section on dark */
-.fear-sec.sec-dark { background: var(--dark) !important; }
-.fear-sec.sec-dark .fear-body { color: rgba(255,255,255,0.58); }
-.fear-sec.sec-dark .fear-body strong { color: #fff; }
-.fear-sec.sec-dark .fear-close { border-top-color: rgba(255,255,255,0.1); }
-.fear-sec.sec-dark .fear-q { color: #fff; }
-
-/* Dark section modifier */
-.sec-dark { background: var(--dark) !important; }
-.sec-dark .stag { color: rgba(255,255,255,0.3); }
-.sec-dark .prob-lead { color: rgba(255,255,255,0.88); }
-.sec-dark .prob-body { color: rgba(255,255,255,0.55); }
-.sec-dark .prob-body strong { color: #fff; }
-.sec-dark .pullquote {
-  border-left-color: rgba(255,255,255,0.3);
-  color: rgba(255,255,255,0.82);
+/* Divider inside problem */
+.problem-divider {
+  width: 40px; height: 1px; background: rgba(255,255,255,0.2);
+  margin: 56px 0;
 }
-.sec-dark mark {
-  background: rgba(250,204,21,0.22);
-  color: rgba(255,255,255,0.9);
-}
-.sec-dark .cmp-h2 { color: rgba(255,255,255,0.88); }
-.sec-dark .cmp-tbl th {
-  color: rgba(255,255,255,0.38);
-  border-bottom: 1px solid rgba(255,255,255,0.12);
-  background: transparent;
-}
-.sec-dark .cmp-tbl td {
-  color: rgba(255,255,255,0.48);
-  border-bottom-color: rgba(255,255,255,0.08);
-  background: transparent;
-}
-.sec-dark .cmp-tbl td:first-child { color: rgba(255,255,255,0.82); }
-.sec-dark .cmp-tbl th:last-child { color: #fff; }
-.sec-dark .cmp-tbl td:last-child { color: rgba(255,255,255,0.82); }
-.sec-dark .ck { color: #6EE7B7; }
-.sec-dark .cx { color: rgba(255,255,255,0.28); }
 
-/* Photo break */
+/* Analysis text on dark */
+.stag-dark {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 36px;
+}
+.prob-lead {
+  font-size: clamp(20px, 2.6vw, 27px); font-weight: 300;
+  line-height: 1.42; letter-spacing: -0.018em; color: rgba(255,255,255,0.88);
+  margin-bottom: 36px;
+}
+.prob-body { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.52); line-height: 1.9; max-width: 640px; }
+.prob-body p + p { margin-top: 18px; }
+.prob-body strong { color: rgba(255,255,255,0.88); font-weight: 500; }
+.prob-body mark { background: rgba(250,204,21,0.22); padding: 0 3px; border-radius: 2px; color: rgba(255,255,255,0.92); }
+.pullquote {
+  margin: 40px 0 0; padding: 22px 28px;
+  border-left: 2px solid rgba(255,255,255,0.25);
+  font-size: clamp(17px, 2.2vw, 21px); font-weight: 400;
+  color: rgba(255,255,255,0.82); line-height: 1.55; letter-spacing: -0.01em;
+}
+.pain-close { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.52); line-height: 1.85; max-width: 640px; }
+.pain-close strong { color: rgba(255,255,255,0.88); font-weight: 500; }
+
+/* ═══ PHOTO BREAK ═══ */
 .photo-break {
-  position: relative;
-  height: 55vh;
-  min-height: 360px;
-  overflow: hidden;
+  position: relative; height: 55vh; min-height: 360px; overflow: hidden;
 }
 .photo-break-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 40%;
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 40%;
 }
 .photo-break-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.52);
-  display: flex;
-  align-items: flex-end;
-  padding: 48px;
+  position: absolute; inset: 0; background: rgba(0,0,0,0.52);
+  display: flex; align-items: flex-end; padding: 48px;
 }
 .photo-break-caption {
-  font-size: clamp(14px, 1.6vw, 17px);
-  font-weight: 300;
-  color: rgba(255,255,255,0.6);
-  letter-spacing: 0.02em;
-  max-width: 560px;
+  font-size: clamp(13px, 1.5vw, 15px); font-weight: 300;
+  color: rgba(255,255,255,0.55); letter-spacing: 0.02em; max-width: 560px;
 }
-.photo-break-caption strong {
-  color: rgba(255,255,255,0.9);
-  font-weight: 400;
-}
-.fear-body {
-  font-size: 15px;
-  font-weight: 300;
-  color: var(--sub);
-  line-height: 1.9;
-  max-width: 640px;
-}
-.fear-body p + p { margin-top: 18px; }
-.fear-body strong { color: var(--text); font-weight: 500; }
-.fear-close {
-  margin-top: 64px;
-  padding-top: 56px;
-  text-align: center;
-  border-top: 1px solid var(--border);
-}
-.fear-q {
-  font-size: clamp(20px, 3vw, 28px);
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.4;
-  letter-spacing: -0.015em;
-}
+.photo-break-caption strong { color: rgba(255,255,255,0.85); font-weight: 400; }
 
-/* ── Inline highlight ── */
-mark {
-  background: rgba(250, 204, 21, 0.22);
-  padding: 1px 3px;
-  border-radius: 2px;
-  color: inherit;
-  font-style: normal;
-}
-
-/* ── Pull quote ── */
-.pullquote {
-  margin: 40px 0 0;
-  padding: 22px 28px;
-  border-left: 2px solid var(--text);
-  font-size: clamp(17px, 2.2vw, 21px);
-  font-weight: 400;
-  color: var(--text);
-  line-height: 1.55;
-  letter-spacing: -0.01em;
-}
-
-/* ── Fear numbered points ── */
-.fear-pts {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin-bottom: 36px;
-  max-width: 640px;
-}
-.fear-pt {
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-}
-.fear-pt-n {
-  flex-shrink: 0;
-  width: 26px;
-  height: 26px;
-  background: var(--text);
-  color: #fff;
-  font-size: 10px;
-  font-weight: 600;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 3px;
-}
-.fear-pt-p {
-  font-size: 15px;
-  font-weight: 300;
-  color: var(--sub);
-  line-height: 1.85;
-}
-.fear-pt-p strong { color: var(--text); font-weight: 500; }
-
-/* ── Fear callout ── */
-.fear-callout {
-  margin: 8px 0 36px;
-  padding: 28px 32px;
-  background: var(--dark);
-  color: #fff;
-  font-size: clamp(16px, 2vw, 19px);
-  font-weight: 400;
-  line-height: 1.6;
-  letter-spacing: -0.01em;
-  max-width: 640px;
-}
-.fear-callout strong { color: #FDA4AF; }
-
-/* ── Disclaimer link ── */
-.ftr-links { display: flex; gap: 20px; align-items: center; }
-.ftr-link {
-  font-size: 11px;
-  color: rgba(255,255,255,0.28);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.ftr-link:hover { color: rgba(255,255,255,0.5); }
-
-/* ═══════════════════════════════
-   PROBLEM ANALYSIS
-═══════════════════════════════ */
-.prob-lead {
-  font-size: clamp(20px, 2.6vw, 27px);
-  font-weight: 300;
-  line-height: 1.42;
-  letter-spacing: -0.018em;
-  color: var(--text);
-  margin-bottom: 36px;
-}
-.prob-body {
-  font-size: 15px;
-  font-weight: 300;
-  color: var(--sub);
-  line-height: 1.9;
-  max-width: 640px;
-}
-.prob-body p + p { margin-top: 18px; }
-.prob-body strong { color: var(--text); font-weight: 500; }
-
-/* ═══════════════════════════════
-   FEATURES
-═══════════════════════════════ */
+/* ═══ HOW IT WORKS — WHITE ═══ */
+.how-sec { background: var(--white); }
+.sec-in { max-width: var(--max); margin: 0 auto; padding: 96px 24px; }
+.sec-in.narrow { max-width: 660px; }
+.stag { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 36px; }
 .how-h2 {
-  font-size: clamp(20px, 2.8vw, 28px);
-  font-weight: 300;
-  line-height: 1.38;
-  letter-spacing: -0.02em;
-  color: var(--text);
-  margin-bottom: 52px;
+  font-size: clamp(20px, 2.8vw, 28px); font-weight: 300;
+  line-height: 1.38; letter-spacing: -0.02em; color: var(--text); margin-bottom: 52px;
 }
 .feat-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1px; background: var(--border); border: 1px solid var(--border);
 }
 .feat { background: var(--white); padding: 40px 32px; }
-.feat-n {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: var(--muted);
-  margin-bottom: 14px;
-}
-.feat-h {
-  font-size: 17px;
-  font-weight: 500;
-  line-height: 1.35;
-  color: var(--text);
-  margin-bottom: 10px;
-}
-.feat-p {
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--sub);
-  line-height: 1.85;
+.feat-n { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; color: var(--muted); margin-bottom: 14px; }
+.feat-h { font-size: 17px; font-weight: 500; line-height: 1.35; color: var(--text); margin-bottom: 10px; }
+.feat-p { font-size: 14px; font-weight: 300; color: var(--sub); line-height: 1.85; }
+
+/* ═══ THE REALITY + WAITLIST — DARK ═══ */
+.reality-sec { background: var(--dark); }
+.reality-in { max-width: 660px; margin: 0 auto; padding: 96px 24px; }
+
+/* Fear text */
+.fear-body { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.9; max-width: 640px; }
+.fear-body p + p { margin-top: 18px; }
+.fear-body strong { color: #fff; font-weight: 500; }
+.fear-q {
+  margin-top: 52px; font-size: clamp(20px, 3vw, 28px); font-weight: 600;
+  color: #fff; line-height: 1.4; letter-spacing: -0.015em;
 }
 
-/* ═══════════════════════════════
-   COMPARISON
-═══════════════════════════════ */
-.cmp-h2 {
-  font-size: clamp(18px, 2.4vw, 24px);
-  font-weight: 300;
-  line-height: 1.4;
-  letter-spacing: -0.015em;
-  color: var(--text);
-  margin-bottom: 44px;
+/* Divider between fear and waitlist */
+.reality-divider {
+  width: 100%; height: 1px; background: rgba(255,255,255,0.1);
+  margin: 64px 0;
 }
-.cmp-tbl {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-.cmp-tbl th {
-  text-align: left;
-  padding: 11px 18px;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border-bottom: 2px solid var(--border);
-  background: var(--white);
-}
-.cmp-tbl th:last-child { color: var(--text); }
-.cmp-tbl td {
-  padding: 15px 18px;
-  border-bottom: 1px solid var(--border);
-  font-weight: 300;
-  vertical-align: middle;
-  line-height: 1.5;
-  background: var(--white);
-}
-.cmp-tbl td:first-child { color: var(--text); font-weight: 400; }
-.cmp-tbl td:nth-child(2) { color: var(--muted); }
-.ck { color: var(--green); margin-right: 5px; }
-.cx { color: var(--muted); }
 
-/* ═══════════════════════════════
-   WAITLIST
-═══════════════════════════════ */
-.wl { background: var(--dark); color: #fff; }
-.wl-tag {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  margin-bottom: 24px;
-}
+/* Waitlist */
+.wl-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 24px; }
 .wl-h2 {
-  font-size: clamp(24px, 3.5vw, 36px);
-  font-weight: 300;
-  line-height: 1.28;
-  letter-spacing: -0.022em;
-  color: #fff;
-  margin-bottom: 14px;
+  font-size: clamp(22px, 3vw, 32px); font-weight: 300;
+  line-height: 1.28; letter-spacing: -0.022em; color: #fff; margin-bottom: 12px;
 }
-.wl-sub {
-  font-size: 14px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.48);
-  line-height: 1.8;
-  margin-bottom: 44px;
-}
-.wl-row {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 14px;
-}
+.wl-sub { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 40px; }
+.wl-row { display: flex; gap: 8px; margin-bottom: 14px; }
 .wl-email {
-  flex: 1;
-  padding: 12px 16px;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.16);
-  border-radius: var(--r);
-  color: #fff;
-  font-family: var(--font);
-  font-size: 14px;
-  font-weight: 300;
-  outline: none;
-  transition: border-color 0.15s;
+  flex: 1; padding: 12px 16px;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.16);
+  border-radius: var(--r); color: #fff; font-family: var(--font);
+  font-size: 14px; font-weight: 300; outline: none; transition: border-color 0.15s;
 }
 .wl-email:focus { border-color: rgba(255,255,255,0.45); }
 .wl-email::placeholder { color: rgba(255,255,255,0.26); }
 .wl-submit {
-  padding: 12px 22px;
-  background: #fff;
-  color: var(--text);
-  font-family: var(--font);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  border: none;
-  border-radius: var(--r);
-  cursor: pointer;
-  white-space: nowrap;
-  transition: opacity 0.15s;
+  padding: 12px 22px; background: #fff; color: var(--text);
+  font-family: var(--font); font-size: 13px; font-weight: 500; letter-spacing: 0.02em;
+  border: none; border-radius: var(--r); cursor: pointer; white-space: nowrap; transition: opacity 0.15s;
 }
 .wl-submit:hover { opacity: 0.88; }
 .wl-submit:disabled { opacity: 0.4; cursor: not-allowed; }
-.wl-note {
-  font-size: 12px;
-  color: rgba(255,255,255,0.25);
-  line-height: 1.65;
-}
+.wl-note { font-size: 12px; color: rgba(255,255,255,0.25); line-height: 1.65; }
 .wl-done {
-  display: none;
-  padding: 22px 24px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: var(--r);
-  font-size: 14px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.72);
-  line-height: 1.7;
+  display: none; padding: 22px 24px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r); font-size: 14px; font-weight: 300;
+  color: rgba(255,255,255,0.72); line-height: 1.7;
 }
 
-/* ═══════════════════════════════
-   FOOTER
-═══════════════════════════════ */
-.ftr {
-  background: var(--dark);
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 28px 24px;
-}
-.ftr-in {
-  max-width: var(--max);
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
+/* ═══ FOOTER ═══ */
+.ftr { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); padding: 28px 24px; }
+.ftr-in { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
 .ftr-brand { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; color: rgba(255,255,255,0.28); }
+.ftr-links { display: flex; gap: 20px; align-items: center; }
+.ftr-link { font-size: 11px; color: rgba(255,255,255,0.28); text-decoration: underline; text-underline-offset: 3px; }
+.ftr-link:hover { color: rgba(255,255,255,0.5); }
 .ftr-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
 
-/* ═══════════════════════════════
-   SCROLL REVEAL
-═══════════════════════════════ */
-.rv {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
+/* ═══ INLINE HIGHLIGHT ═══ */
+mark { background: rgba(250,204,21,0.22); padding: 1px 3px; border-radius: 2px; color: inherit; }
+
+/* ═══ SCROLL REVEAL ═══ */
+.rv { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .rv.in { opacity: 1; transform: none; }
 
-/* ═══════════════════════════════
-   RESPONSIVE
-═══════════════════════════════ */
+/* ═══ RESPONSIVE ═══ */
 @media (max-width: 720px) {
-  .sec-in { padding: 64px 20px; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .stat:nth-child(2) { border-right: none; }
-  .stat:nth-child(3) { border-right: 1px solid rgba(255,255,255,0.07); }
+  .stat:nth-child(3) { border-right: 1px solid var(--border); }
+  .what-in { grid-template-columns: 1fr; gap: 40px; }
   .feat-grid { grid-template-columns: 1fr; }
   .pain-grid { grid-template-columns: 1fr; }
-  .partner-in { grid-template-columns: 1fr; gap: 40px; }
   .wl-row { flex-direction: column; }
   .hero-body { padding: 0 20px 64px; }
-  .cmp-tbl { display: block; overflow-x: auto; }
+  .problem-in, .sec-in, .reality-in { padding-left: 20px; padding-right: 20px; }
   .hdr-cta { display: none; }
+  .photo-break-overlay { padding: 28px; }
 }
 @media (max-width: 480px) {
   .stats-grid { grid-template-columns: 1fr; }
-  .stat { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .stat { border-right: none !important; border-bottom: 1px solid var(--border); }
   .stat:last-child { border-bottom: none; }
 }
 
@@ -841,14 +355,15 @@ mark {
   </div>
 </header>
 
-<!-- HERO -->
+<!-- ══════════════════
+     HERO
+══════════════════ -->
 <section class="hero">
   <img
     class="hero-img"
     src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1920&q=80"
     alt="New York City skyline at night"
-    loading="eager"
-    fetchpriority="high"
+    loading="eager" fetchpriority="high"
   >
   <div class="hero-overlay"></div>
   <div class="hero-body">
@@ -882,7 +397,9 @@ mark {
   </div>
 </section>
 
-<!-- STATS -->
+<!-- ══════════════════
+     STATS — WHITE
+══════════════════ -->
 <div class="stats" id="data">
   <div class="stats-grid">
     <div class="stat">
@@ -897,7 +414,7 @@ mark {
     </div>
     <div class="stat">
       <div class="stat-n"><em>40</em>%</div>
-      <p class="stat-d en">Reduction in deep-work capacity<br>from repeated digital interruptions<br>— University of California, Irvine</p>
+      <p class="stat-d en">Reduction in deep-work capacity<br>from repeated digital interruptions<br>— UC Irvine Study</p>
       <p class="stat-d ja">断続的な通知による深い集中力の低下率<br>（カリフォルニア大学アーバイン校）</p>
     </div>
     <div class="stat">
@@ -908,75 +425,89 @@ mark {
   </div>
 </div>
 
-<!-- PARTNER / REASSURANCE SECTION -->
-<section class="partner-sec">
-  <div class="partner-in">
-    <div class="partner-left">
-      <p class="partner-label en">What Stoic actually is</p>
-      <p class="partner-label ja">Stoicとは何か</p>
-      <h2 class="partner-h en">
-        Not a restriction app.<br>
+<!-- ══════════════════
+     WHAT IS STOIC — WHITE
+══════════════════ -->
+<section class="what-sec">
+  <div class="what-in">
+    <div>
+      <p class="what-label en rv">What Stoic actually is</p>
+      <p class="what-label ja rv">Stoicとは何か</p>
+      <h2 class="what-h en rv">
+        Not a restriction.<br>
         A companion for the life<br>you actually want to live.
       </h2>
-      <h2 class="partner-h ja">
-        制限するアプリではありません。<br>
-        あなたが本当に送りたい人生のための<br>伴走者です。
+      <h2 class="what-h ja rv">
+        制限ではありません。<br>
+        あなたが本当に送りたい<br>人生のための伴走者です。
       </h2>
-      <p class="partner-p en">
+      <p class="what-p en rv">
         Stoic combines focused restriction with life design support.
-        It works alongside you — helping you build each day so that your time and attention
-        naturally flow toward what genuinely matters to you.
+        It works alongside you — helping you build each day so that your time
+        and attention naturally flow toward what genuinely matters to you.
       </p>
-      <p class="partner-p ja">
+      <p class="what-p ja rv">
         Stoicは、集中を守るための仕組みと、毎日の生活を設計するためのサポートを
         組み合わせています。あなたの隣に立ちながら、あなたの時間と注意が
         本当に大切なことへと自然に向かえる毎日を、ともに作っていきます。
       </p>
-      <p class="partner-p en">
-        <strong>This is not about willpower. It's about building a structure that makes
-        the right choices feel natural — every day.</strong>
+      <p class="what-p en rv">
+        <strong>This is not about willpower. It's about building a structure
+        that makes the right choices feel natural — every day.</strong>
       </p>
-      <p class="partner-p ja">
+      <p class="what-p ja rv">
         <strong>これは意志力の話ではありません。正しい選択が自然にできる環境を、
         毎日、一緒に作っていくことです。</strong>
       </p>
     </div>
-    <div class="partner-right">
-      <div class="partner-card">
-        <p class="partner-card-h en">More than a blocker</p>
-        <p class="partner-card-h ja">ブロッカー以上の存在</p>
-        <p class="partner-card-p en">Stoic helps you understand why you reach for your phone — and redesigns that moment.</p>
-        <p class="partner-card-p ja">なぜスマートフォンを手に取るのか。Stoicはその瞬間を理解し、設計し直します。</p>
+    <div class="what-points rv">
+      <div class="what-pt">
+        <span class="what-pt-dash">—</span>
+        <div>
+          <p class="what-pt-h en">More than a blocker</p>
+          <p class="what-pt-h ja">ブロッカー以上の存在</p>
+          <p class="what-pt-p en">Stoic helps you understand why you reach for your phone — and redesigns that moment.</p>
+          <p class="what-pt-p ja">なぜスマートフォンを手に取るのか。Stoicはその瞬間を理解し、設計し直します。</p>
+        </div>
       </div>
-      <div class="partner-card">
-        <p class="partner-card-h en">Built around your goals</p>
-        <p class="partner-card-h ja">あなたの目標を中心に</p>
-        <p class="partner-card-p en">Whether it's studying, building a business, or simply being present — Stoic is designed around what you want your life to look like.</p>
-        <p class="partner-card-p ja">勉強でも、仕事でも、大切な人との時間でも。あなたが望む人生の姿に合わせて、Stoicは設計されています。</p>
+      <div class="what-pt">
+        <span class="what-pt-dash">—</span>
+        <div>
+          <p class="what-pt-h en">Built around your goals</p>
+          <p class="what-pt-h ja">あなたの目標を中心に</p>
+          <p class="what-pt-p en">Whether it's studying, building a business, or being present — Stoic is designed around what you want your life to look like.</p>
+          <p class="what-pt-p ja">勉強でも、仕事でも、大切な人との時間でも。あなたが望む人生の姿に合わせて、Stoicは設計されています。</p>
+        </div>
       </div>
-      <div class="partner-card">
-        <p class="partner-card-h en">No judgment. Ever.</p>
-        <p class="partner-card-h ja">批判は、一切ありません。</p>
-        <p class="partner-card-p en">Stoic never shames you for slipping. It simply makes it easier to choose differently, every time.</p>
-        <p class="partner-card-p ja">うまくいかない日があっても、Stoicは責めません。次の一歩を選びやすくするだけです。</p>
+      <div class="what-pt">
+        <span class="what-pt-dash">—</span>
+        <div>
+          <p class="what-pt-h en">No judgment. Ever.</p>
+          <p class="what-pt-h ja">批判は、一切ありません。</p>
+          <p class="what-pt-p en">Stoic never shames you for slipping. It simply makes it easier to choose differently, every time.</p>
+          <p class="what-pt-p ja">うまくいかない日があっても、Stoicは責めません。次の一歩を選びやすくするだけです。</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PAIN / EMPATHY SECTION -->
-<section class="pain-sec sec-dark" id="problem">
-  <div class="sec-in">
-    <p class="stag en rv">We understand</p>
-    <p class="stag ja rv">あなたの経験を、私たちは知っています</p>
+<!-- ══════════════════
+     THE PROBLEM — DARK
+     (Pain + Analysis merged)
+══════════════════ -->
+<section class="problem-sec" id="problem">
+  <div class="problem-in">
+
+    <!-- Pain / empathy -->
+    <p class="stag-dark en rv">Sound familiar?</p>
+    <p class="stag-dark ja rv">あなたの経験を、私たちは知っています</p>
 
     <p class="pain-lead en rv">
-      You've already tried.<br>
-      Probably more than once.
+      You've already tried.<br>Probably more than once.
     </p>
     <p class="pain-lead ja rv">
-      あなたはすでに、様々な方法を試してきたはずです。<br>
-      一度ではなく、何度も。
+      あなたはすでに、様々な方法を試してきたはずです。<br>一度ではなく、何度も。
     </p>
 
     <div class="pain-grid rv">
@@ -1016,14 +547,12 @@ mark {
       <strong>これらの方法は、注意と習慣が実際にどのように機能するかを理解せずに設計されていたのです。</strong>
       Stoicは違います。
     </p>
-  </div>
-</section>
 
-<!-- PROBLEM ANALYSIS -->
-<section class="sec">
-  <div class="sec-in">
-    <p class="stag en rv">Analysis</p>
-    <p class="stag ja rv">背景</p>
+    <div class="problem-divider rv"></div>
+
+    <!-- Analysis -->
+    <p class="stag-dark en rv">Analysis</p>
+    <p class="stag-dark ja rv">背景</p>
 
     <p class="prob-lead en rv">
       This is not a personal discipline problem.<br>
@@ -1038,61 +567,67 @@ mark {
     <div class="prob-body en rv">
       <p>
         Social media platforms are not designed to inform or connect people.
-        They are designed to maximize <mark class="en">time spent in the app</mark> — a metric
+        They are designed to maximize <mark>time spent in the app</mark> — a metric
         directly tied to advertising revenue. Every feature, every notification pattern,
         every scroll mechanic is the outcome of continuous behavioral testing on hundreds
         of millions of users.
       </p>
       <p>
         Their instruments: variable reward schedules, social validation loops, infinite
-        content feeds. The result is an environment <mark class="en">deliberately calibrated
+        content feeds. The result is an environment <mark>deliberately calibrated
         to override your intentions</mark> — every time you reach for your phone.
       </p>
     </div>
-    <blockquote class="pullquote en rv">
-      "You are not weak. You are outmatched by design. Stoic changes the design."
-    </blockquote>
     <div class="prob-body ja rv">
       <p>
         SNSプラットフォームは、情報を届けたり人々を繋げるために作られていません。
-        広告収益に直結する指標、<mark class="ja">アプリ内の滞在時間の最大化</mark>のために設計されています。
+        広告収益に直結する指標、<mark>アプリ内の滞在時間の最大化</mark>のために設計されています。
         あらゆる機能、通知の設計、スクロールのメカニズムは、
         数億人のユーザーを対象にした継続的な行動実験の産物です。
       </p>
       <p>
         彼らが使うのは、変動報酬スケジュール、社会的承認ループ、無限のコンテンツフィードです。
         その結果として作られた環境は、あなたがスマートフォンを手にするたびに、
-        <mark class="ja">あなたの意図を上書きするよう設計</mark>されています。
+        <mark>あなたの意図を上書きするよう設計</mark>されています。
       </p>
     </div>
+
+    <blockquote class="pullquote en rv">
+      "You are not weak. You are outmatched by design. Stoic changes the design."
+    </blockquote>
     <blockquote class="pullquote ja rv">
       「あなたが弱いのではありません。設計によって圧倒されているのです。Stoicはその設計を変えます。」
     </blockquote>
+
   </div>
 </section>
 
-<!-- PHOTO BREAK -->
+<!-- ══════════════════
+     PHOTO BREAK — TIMES SQUARE
+══════════════════ -->
 <div class="photo-break">
   <img
     class="photo-break-img"
-    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1920&q=80"
-    alt="People absorbed in smartphones"
+    src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&w=1920&q=80"
+    alt="Times Square, New York City"
     loading="lazy"
   >
   <div class="photo-break-overlay">
     <p class="photo-break-caption en">
-      <strong>2.65 billion people</strong> open social media today.<br>
-      Most of them did not decide to.
+      <strong>Times Square, New York City.</strong><br>
+      Designed, at every scale, to capture your attention for as long as possible.
     </p>
     <p class="photo-break-caption ja">
-      <strong>26億5,000万人</strong>が今日もSNSを開く。<br>
-      その大半は、意図して開いたわけではない。
+      <strong>ニューヨーク、タイムズスクエア。</strong><br>
+      あらゆる規模で、できるだけ長くあなたの注意を引きつけるために設計されている。
     </p>
   </div>
 </div>
 
-<!-- HOW IT WORKS -->
-<section class="sec-bg sec-dark" id="how">
+<!-- ══════════════════
+     HOW IT WORKS — WHITE
+══════════════════ -->
+<section class="how-sec" id="how">
   <div class="sec-in">
     <p class="stag en rv">How Stoic Works</p>
     <p class="stag ja rv">Stoicの仕組み</p>
@@ -1102,7 +637,7 @@ mark {
       in your day where attention slips.
     </h2>
     <h2 class="how-h2 ja rv">
-      4つのアプローチ。それぞれが、日常の中で<br>
+      4つのアプローチ。日常の中で<br>
       集中が乱れるリアルな瞬間に対応しています。
     </h2>
 
@@ -1172,7 +707,7 @@ mark {
         <p class="feat-p en">
           Before you unlock a social app, Stoic shows you — calmly, factually,
           without judgment — how that platform is designed to use your time.
-          No shame. No lecture. Just the right information at the exact moment
+          Not guilt. Not shame. Just the right information at the exact moment
           you need it to make a conscious choice.
         </p>
         <p class="feat-p ja">
@@ -1187,80 +722,14 @@ mark {
   </div>
 </section>
 
-<!-- COMPARISON -->
-<section class="sec">
-  <div class="sec-in">
-    <p class="stag en rv">Comparison</p>
-    <p class="stag ja rv">比較</p>
+<!-- ══════════════════
+     THE REALITY + WAITLIST — DARK
+══════════════════ -->
+<section class="reality-sec" id="waitlist">
+  <div class="reality-in">
 
-    <h2 class="cmp-h2 en rv">
-      Why other approaches don't address the root cause —<br>
-      and what Stoic does differently.
-    </h2>
-    <h2 class="cmp-h2 ja rv">
-      他のアプリが根本原因に対処できていない理由と、<br>
-      Stoicが何を変えるのか。
-    </h2>
-
-    <table class="cmp-tbl rv">
-      <thead>
-        <tr>
-          <th><span class="en">Capability</span><span class="ja">機能</span></th>
-          <th><span class="en">Other apps</span><span class="ja">他のアプリ</span></th>
-          <th>Stoic</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <span class="en">Addresses why you reach for your phone in the first place</span>
-            <span class="ja">「なぜスマートフォンを手にするのか」への対処</span>
-          </td>
-          <td><span class="cx">—</span></td>
-          <td><span class="ck">✓</span><span class="en">Step-by-step task clarity</span><span class="ja">ステップ別のタスク明確化</span></td>
-        </tr>
-        <tr>
-          <td>
-            <span class="en">Cannot be bypassed in seconds</span>
-            <span class="ja">数秒での回避が不可能</span>
-          </td>
-          <td><span class="cx">—</span></td>
-          <td><span class="ck">✓</span><span class="en">20-min wait + full reset</span><span class="ja">20分待機＋フルリセット</span></td>
-        </tr>
-        <tr>
-          <td>
-            <span class="en">Gives immediate sense of progress when you complete a step</span>
-            <span class="ja">ステップ完了時の即時の達成感</span>
-          </td>
-          <td><span class="cx">Delayed or gamified</span></td>
-          <td><span class="ck">✓</span><span class="en">On every micro-step</span><span class="ja">一つひとつのステップで</span></td>
-        </tr>
-        <tr>
-          <td>
-            <span class="en">Works for people who struggle with focus</span>
-            <span class="ja">集中が続きにくい方への対応</span>
-          </td>
-          <td><span class="cx">—</span></td>
-          <td><span class="ck">✓</span><span class="en">Designed specifically for this</span><span class="ja">そのために設計されています</span></td>
-        </tr>
-        <tr>
-          <td>
-            <span class="en">Shows platform design at the moment of decision</span>
-            <span class="ja">意思決定の瞬間にプラットフォームの設計を提示</span>
-          </td>
-          <td><span class="cx">—</span></td>
-          <td><span class="ck">✓</span><span class="en">Built into the unlock flow</span><span class="ja">解除フローに組み込み済み</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- FEAR / REALITY CHECK -->
-<section class="fear-sec sec-dark">
-  <div class="sec-in narrow">
-    <p class="stag en rv">The uncomfortable truth</p>
-    <p class="stag ja rv">不都合な現実</p>
+    <p class="stag-dark en rv">The uncomfortable truth</p>
+    <p class="stag-dark ja rv">不都合な現実</p>
 
     <div class="fear-body en rv">
       <p>Every time you open Instagram, TikTok, or X, you enter a behavioral experiment.</p>
@@ -1269,7 +738,6 @@ mark {
       <p>The engineers running these systems do not use the word "engagement" lightly. Engagement is the metric their performance is measured by. Every second of your attention generates revenue. Your restlessness, your boredom, your anxiety — these are not side effects. They are <strong>product features</strong>.</p>
       <p><strong>We are, without exaggeration, living inside the largest attention extraction experiment in human history. And most of us have never consciously agreed to it.</strong></p>
     </div>
-
     <div class="fear-body ja rv">
       <p>あなたがInstagram、TikTok、Xを開くたびに、あなたは行動実験の被験者になっています。</p>
       <p>プラットフォームはあなたの行動を観察します。反応時間を計測します。何があなたのスクロールを止め、何があなたを続けさせたかを記録します。そして、あなたをアプリの中にもう1秒引き留めるという明確な目的のもと、リアルタイムであなたのモデルを更新し続けています。</p>
@@ -1278,70 +746,49 @@ mark {
       <p><strong>誇張ではなく、私たちは今、人類史上最大規模の注意収奪実験の中で生きています。そしてそのほとんどの人が、同意した覚えがありません。</strong></p>
     </div>
 
-    <div class="fear-close rv">
-      <p class="fear-q en">Knowing this —<br>what will you decide?</p>
-      <p class="fear-q ja">今、あなたはどのような判断をしますか。</p>
-    </div>
-  </div>
-</section>
+    <p class="fear-q en rv">Knowing this —<br>what will you decide?</p>
+    <p class="fear-q ja rv">今、あなたはどのような判断をしますか。</p>
 
-<!-- WAITLIST -->
-<section class="wl" id="waitlist">
-  <div class="sec-in narrow">
-    <p class="wl-tag en">Early Access</p>
-    <p class="wl-tag ja">アーリーアクセス</p>
+    <div class="reality-divider rv"></div>
 
-    <h2 class="wl-h2 en">
+    <!-- Waitlist -->
+    <p class="wl-tag en rv">Early Access</p>
+    <p class="wl-tag ja rv">アーリーアクセス</p>
+
+    <h2 class="wl-h2 en rv">
       Join the waitlist.<br>
       Be first when we launch.
     </h2>
-    <h2 class="wl-h2 ja">
+    <h2 class="wl-h2 ja rv">
       ウェイティングリストに登録する。<br>
       ローンチ時に最初にアクセスできます。
     </h2>
 
-    <p class="wl-sub en">
+    <p class="wl-sub en rv">
       No spam. One email when Stoic is ready for you.<br>
       Free to join — approximately $5–10 / month at launch.
     </p>
-    <p class="wl-sub ja">
+    <p class="wl-sub ja rv">
       スパムはありません。準備が整ったときに一通だけお届けします。<br>
       登録無料。ローンチ時は月額500〜1,000円程度の予定です。
     </p>
 
-    <div id="wl-wrap">
-      <form
-        id="wl-form"
-        action="https://formsubmit.co/dolphinstark@protonmail.com"
-        method="POST"
-      >
+    <div id="wl-wrap" class="rv">
+      <form id="wl-form" action="https://formsubmit.co/dolphinstark@protonmail.com" method="POST">
         <input type="hidden" name="_subject" value="Stoic — New Waitlist Registration">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="box">
         <input type="hidden" name="_autoresponse"
           value="Thank you for joining the Stoic waitlist. We will be in touch as soon as we launch. — Dolphin Stark // Stoicのウェイティングリストへのご登録ありがとうございます。ローンチの際に改めてご連絡いたします。— Dolphin Stark">
         <div class="wl-row">
-          <input
-            class="wl-email"
-            type="email"
-            name="email"
-            required
-            placeholder="your@email.com"
-            autocomplete="email"
-          >
+          <input class="wl-email" type="email" name="email" required placeholder="your@email.com" autocomplete="email">
           <button class="wl-submit" type="submit" id="wl-btn">
             <span class="en">Join Waitlist</span>
             <span class="ja">登録する</span>
           </button>
         </div>
-        <p class="wl-note en">
-          A confirmation email will be sent to your address automatically.
-          Your information is handled securely and never shared.
-        </p>
-        <p class="wl-note ja">
-          ご入力のアドレスに確認メールが自動でお届けされます。
-          個人情報は安全に管理され、第三者に共有されることはありません。
-        </p>
+        <p class="wl-note en">A confirmation email will be sent to your address automatically. Your information is never shared.</p>
+        <p class="wl-note ja">ご入力のアドレスに確認メールが自動でお届けされます。個人情報は第三者に共有されません。</p>
       </form>
     </div>
 
@@ -1349,6 +796,7 @@ mark {
       <span class="en">✓ You're on the list. We'll be in touch when Stoic launches.</span>
       <span class="ja">✓ 登録が完了しました。Stoicのローンチ時にご連絡いたします。</span>
     </div>
+
   </div>
 </section>
 
@@ -1366,45 +814,33 @@ mark {
 </footer>
 
 <script>
-/* Language */
 function setLang(l) {
   document.body.className = 'lang-' + l;
   document.getElementById('btn-en').classList.toggle('on', l === 'en');
   document.getElementById('btn-ja').classList.toggle('on', l === 'ja');
 }
 
-/* Form */
 document.getElementById('wl-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = document.getElementById('wl-btn');
-  btn.disabled = true;
-  btn.style.opacity = '0.4';
+  btn.disabled = true; btn.style.opacity = '0.4';
   try {
-    const res = await fetch(this.action, {
-      method: 'POST',
-      body: new FormData(this),
-      headers: { 'Accept': 'application/json' }
-    });
+    const res = await fetch(this.action, { method: 'POST', body: new FormData(this), headers: { 'Accept': 'application/json' } });
     if (res.ok) {
       document.getElementById('wl-wrap').style.display = 'none';
       document.getElementById('wl-done').style.display = 'block';
     } else { throw new Error(); }
   } catch {
-    btn.disabled = false;
-    btn.style.opacity = '1';
+    btn.disabled = false; btn.style.opacity = '1';
     alert('Something went wrong. Please try again.');
   }
 });
 
-/* Scroll reveal */
 const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
-  });
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
 }, { threshold: 0.08 });
 document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 
-/* Auto-detect Japanese */
 if (navigator.language && navigator.language.startsWith('ja')) setLang('ja');
 </script>
 </body>
