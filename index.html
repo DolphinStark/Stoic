@@ -505,6 +505,7 @@ function fixJaOrphans(){
     el.dataset.orphanFixed='1';
   });
 }
+if(location.hash)history.replaceState(null,'','/');
 function setLang(l){document.body.className='lang-'+l;document.getElementById('btn-en').classList.toggle('on',l==='en');document.getElementById('btn-ja').classList.toggle('on',l==='ja');
   if(l==='ja')setTimeout(fixJaOrphans,80);try{localStorage.setItem('stoic-lang',l);}catch(e){}}
 (function(){try{const s=localStorage.getItem('stoic-lang');if(s){setLang(s);return;}}catch(e){}if(navigator.language&&navigator.language.startsWith('ja'))setLang('ja');
