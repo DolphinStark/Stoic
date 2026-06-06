@@ -100,19 +100,11 @@ footer{background:var(--white);border-top:0.5px solid var(--gray-12);padding:20p
 <input type="hidden" name="_template" value="box">
 <input type="hidden" id="cf-ar" name="_autoresponse" value="">
 <div class="cf-row">
-<div class="cf-field">
-<input type="text" name="name" data-en="Name" data-ja="お名前" placeholder="Name" required>
+<div class="cf-field"><input type="text" name="name" data-en="Name" data-ja="お名前" placeholder="Name" required></div>
+<div class="cf-field"><input type="email" name="email" data-en="Email" data-ja="メールアドレス" placeholder="Email" required></div>
 </div>
-<div class="cf-field">
-<input type="email" name="email" data-en="Email" data-ja="メールアドレス" placeholder="Email" required>
-</div>
-</div>
-<div class="cf-field">
-<textarea name="message" rows="6" data-en="Your message" data-ja="メッセージ" placeholder="Your message" required></textarea>
-</div>
-<button class="cf-btn" type="submit" id="cf-btn">
-<span class="en">Send message</span><span class="ja">送信する</span>
-</button>
+<div class="cf-field"><textarea name="message" rows="6" data-en="Your message" data-ja="メッセージ" placeholder="Your message" required></textarea></div>
+<button class="cf-btn" type="submit" id="cf-btn"><span class="en">Send message</span><span class="ja">送信する</span></button>
 </form>
 <div class="cf-done-msg" id="cf-done">
 <span class="en">✓ Message sent. We'll be in touch soon.</span>
@@ -146,17 +138,15 @@ try{var s=localStorage.getItem('stoic-lang');if(s){setLang(s);return;}}catch(e){
 if(navigator.language&&navigator.language.startsWith('ja'))setLang('ja');
 })();
 function showSuccessModal(t){
-const ja=document.body.classList.contains('lang-ja');
-const m=document.getElementById('su-modal');
-const titleWL='登録が完了しました';
-const titleCF='送信が完了しました';
-const bodyWL='ローンチ時に最初にご連絡いたします。楽しみにお待ちください。';
-const bodyCF='内容を確認後、できる限り迅速にご返答いたします。';
-const closeJA='閉じる';
-const c=ja?{title:t==='wl'?titleWL:titleCF,body:t==='wl'?bodyWL:bodyCF,close:closeJA}:{title:t==='wl'?"You're on the list.":"Message received.",body:t==='wl'?"We'll reach out the moment Stoic launches. Stay tuned.":"We'll get back to you as soon as possible.",close:'Close'};
-m.innerHTML='<div style="background:#fff;border-radius:24px;padding:56px 44px;max-width:400px;width:90%;text-align:center;animation:su-slide 0.45s cubic-bezier(0.4,0,0.2,1)"><svg width="76" height="76" viewBox="0 0 76 76" style="margin-bottom:24px"><circle cx="38" cy="38" r="36" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-dasharray="226.2" stroke-dashoffset="226.2" style="animation:su-circle 0.7s cubic-bezier(0.4,0,0.2,1) forwards"/><path d="M22 39l13 13 21-23" fill="none" stroke="#1d1d1f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="54" stroke-dashoffset="54" style="animation:su-check 0.4s ease 0.8s forwards"/></svg><p style="font-size:22px;font-weight:600;letter-spacing:-0.022em;color:#1d1d1f;margin:0 0 12px">'+c.title+'</p><p style="font-size:15px;font-weight:300;color:#48484a;line-height:1.75;margin:0 0 36px">'+c.body+'</p><button onclick="document.getElementById('su-modal').style.display='none'" style="padding:13px 36px;background:#1d1d1f;color:#fff;border:none;border-radius:980px;font-size:14px;font-weight:400;font-family:inherit;cursor:pointer;letter-spacing:-0.01em">'+c.close+'</button></div>';
+var ja=document.body.classList.contains('lang-ja');
+var m=document.getElementById('su-modal');
+var title=ja?(t==='wl'?'登録が完了しました':'送信が完了しました'):(t==='wl'?"You're on the list.":"Message received.");
+var body=ja?(t==='wl'?'ローンチ時に最初にご連絡いたします。楽しみにお待ちください。':'内容を確認後、できる限り迅速にご返答いたします。'):(t==='wl'?"We'll reach out the moment Stoic launches. Stay tuned.":"We'll get back to you as soon as possible.");
+var close=ja?'閉じる':'Close';
+m.innerHTML='<div style="background:#fff;border-radius:24px;padding:56px 44px;max-width:400px;width:90%;text-align:center;animation:su-slide 0.45s cubic-bezier(0.4,0,0.2,1)"><svg width="76" height="76" viewBox="0 0 76 76" style="margin-bottom:24px"><circle cx="38" cy="38" r="36" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-dasharray="226.2" stroke-dashoffset="226.2" style="animation:su-circle 0.7s cubic-bezier(0.4,0,0.2,1) forwards"/><path d="M22 39l13 13 21-23" fill="none" stroke="#1d1d1f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="54" stroke-dashoffset="54" style="animation:su-check 0.4s ease 0.8s forwards"/></svg><p style="font-size:22px;font-weight:600;letter-spacing:-0.022em;color:#1d1d1f;margin:0 0 12px">'+title+'</p><p style="font-size:15px;font-weight:300;color:#48484a;line-height:1.75;margin:0 0 36px">'+body+'</p><button class="su-close" style="padding:13px 36px;background:#1d1d1f;color:#fff;border:none;border-radius:980px;font-size:14px;font-weight:400;font-family:inherit;cursor:pointer;letter-spacing:-0.01em">'+close+'</button></div>';
+m.querySelector('.su-close').onclick=function(){m.style.display='none';};
 m.style.display='flex';
-m.onclick=e=>{if(e.target===m)m.style.display='none';};
+m.onclick=function(e){if(e.target===m)m.style.display='none';};
 }
 document.getElementById('cf').addEventListener('submit',async function(e){
 e.preventDefault();
