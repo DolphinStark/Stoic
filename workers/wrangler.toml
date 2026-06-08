@@ -1,1 +1,8 @@
+name = "stoic-mailer"
+main = "stoic-mailer.js"
+compatibility_date = "2026-06-08"
 
+[[d1_databases]]
+binding = "DB"
+database_name = "stoic-waitlist"
+database_id = "cdcda180-50e0-4677-a17d-5d846dbb8ceb"
