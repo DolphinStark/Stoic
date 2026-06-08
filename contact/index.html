@@ -86,6 +86,164 @@ footer{background:var(--white);border-top:0.5px solid var(--gray-12);padding:20p
 <h1 class="cp-title ja">お気軽にご連絡ください。</h1>
 <p class="cp-sub en">Questions, feedback, or just a thought — anything is welcome.</p>
 <p class="cp-sub ja">ご質問・ご意見・フィードバック、どんな内容でも歓迎します。</p>
+<form class="cf" id="cf"><div class="cf-row">
+<div class="cf-field"><input type="text" name="name" data-en="Name" data-ja="お名前" placeholder="Name" required></div>
+<div class="cf-field"><input type="email" name="email" data-en="Email" data-ja="メールアドレス" placeholder="Email" required></div>
+</div>
+<div class="cf-field"><textarea name="message" rows="6" data-en="Your message" data-ja="メッセージ" placeholder="Your message" required></textarea></div>
+<button class="cf-btn" type="submit" id="cf-btn"><span class="en">Send message</span><span class="ja">送信する</span></button>
+</form>
+<div class="cf-done-msg" id="cf-done">
+<span class="en">✓ Message sent. We'll be in touch soon.</span>
+<span class="ja">✓ 送信が完了しました。折り返しご連絡いたします。</span>
+</div>
+</div>
+</div>
+<footer>
+<div class="footer-in">
+<span class="footer-logo">STOIC BY DOLPHIN STARK</span>
+<div class="footer-links">
+<a href="/disclaimer/" class="footer-link en">Legal &amp; Sources</a>
+<a href="/disclaimer/" class="footer-link ja">免責事項・出典</a>
+<span class="footer-copy">© 2026 Dolphin Stark.</span>
+</div>
+</div>
+</footer>
+<script>
+function setLang(l){
+document.body.className='lang-'+l;
+document.getElementById('btn-en').classList.toggle('on',l==='en');
+document.getElementById('btn-ja').classList.toggle('on',l==='ja');
+document.querySelectorAll('[data-en]').forEach(function(el){
+var v=l==='ja'?el.dataset.ja:el.dataset.en;
+if(v!==undefined)el.placeholder=v;
+});
+try{localStorage.setItem('stoic-lang',l);}catch(e){}
+}
+(function(){
+try{var s=localStorage.getItem('stoic-lang');if(s){setLang(s);return;}}catch(e){}
+if(navigator.language&&navigator.language.startsWith('ja'))setLang('ja');
+})();
+function showSuccessModal(t){
+var ja=document.body.classList.contains('lang-ja');
+var m=document.getElementById('su-modal');
+var title=ja?(t==='wl'?'登録が完了しました':'送信が完了しました'):(t==='wl'?"You're on the list.":"Message received.");
+var body=ja?(t==='wl'?'ローンチ時に最初にご連絡いたします。楽しみにお待ちください。':'内容を確認後、できる限り迅速にご返答いたします。'):(t==='wl'?"We'll reach out the moment Stoic launches. Stay tuned.":"We'll get back to you as soon as possible.");
+var close=ja?'閉じる':'Close';
+m.innerHTML='<div style="background:#fff;border-radius:24px;padding:56px 44px;max-width:400px;width:90%;text-align:center;animation:su-slide 0.45s cubic-bezier(0.4,0,0.2,1)"><svg width="76" height="76" viewBox="0 0 76 76" style="margin-bottom:24px"><circle cx="38" cy="38" r="36" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-dasharray="226.2" stroke-dashoffset="226.2" style="animation:su-circle 0.7s cubic-bezier(0.4,0,0.2,1) forwards"/><path d="M22 39l13 13 21-23" fill="none" stroke="#1d1d1f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="54" stroke-dashoffset="54" style="animation:su-check 0.4s ease 0.8s forwards"/></svg><p style="font-size:22px;font-weight:600;letter-spacing:-0.022em;color:#1d1d1f;margin:0 0 12px">'+title+'</p><p style="font-size:15px;font-weight:300;color:#48484a;line-height:1.75;margin:0 0 36px">'+body+'</p><button class="su-close" style="padding:13px 36px;background:#1d1d1f;color:#fff;border:none;border-radius:980px;font-size:14px;font-weight:400;font-family:inherit;cursor:pointer;letter-spacing:-0.01em">'+close+'</button></div>';
+m.querySelector('.su-close').onclick=function(){m.style.display='none';};
+m.style.display='flex';
+m.onclick=function(e){if(e.target===m)m.style.display='none';};
+}
+document.getElementById('cf').addEventListener('submit',async function(e){
+e.preventDefault();
+var btn=document.getElementById('cf-btn');
+btn.disabled=true;
+var name=this.querySelector('[name="name"]').value;
+var email=this.querySelector('[name="email"]').value;
+var message=this.querySelector('[name="message"]').value;
+try{
+var r=await fetch('https://stoic-mailer.oikawa830-z.workers.dev/contact',{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify({name:name,email:email,message:message})
+});
+if(r.ok){this.reset();btn.disabled=false;showSuccessModal('cf');}
+else throw 0;
+}catch(err){btn.disabled=false;alert('Something went wrong. Please try again.');}
+});
+</script>
+<div id="su-modal" style="display:none"></div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Stoic by Dolphin Stark</title>
+<meta name="description" content="Stoic helps you design a life where your time and attention go exactly where you choose.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+img{display:block;max-width:100%}
+:root{--black:#000000;--white:#ffffff;--gray-06:#f5f5f7;--gray-12:#e8e8ed;--gray-40:#6e6e73;--gray-60:#48484a;--gray-86:#1d1d1f;--font:-apple-system,'Inter','Noto Sans JP',BlinkMacSystemFont,'Helvetica Neue',sans-serif;--max:980px;--max-wide:1200px;--ease:cubic-bezier(0.4,0,0.2,1);}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);color:var(--gray-86);background:var(--white);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;}
+.ja{display:none;text-wrap:pretty;}
+body.lang-en .ja{display:none!important;}
+body.lang-ja .en{display:none!important;}
+body.lang-ja .ja{display:revert;text-wrap:pretty;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:48px;background:var(--white);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:0.5px solid rgba(0,0,0,0.12);}
+.nav-in{max-width:var(--max-wide);margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-size:17px;font-weight:600;letter-spacing:-0.02em;color:var(--gray-86);text-decoration:none;text-transform:uppercase;}
+.nav-right{display:flex;align-items:center;gap:8px;}
+.lang-sw{display:flex;border:0.5px solid var(--gray-12);border-radius:980px;overflow:hidden;background:var(--gray-06);}
+.lng-btn{padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:0.04em;border:none;background:transparent;color:var(--gray-40);cursor:pointer;font-family:var(--font);transition:background 0.2s var(--ease),color 0.2s var(--ease);border-radius:980px;}
+.lng-btn.on{background:var(--gray-86);color:var(--white);}
+.nav-cta{padding:6px 16px;font-size:12px;font-weight:400;color:#0071e3;text-decoration:none;border-radius:980px;transition:opacity 0.15s;}
+.nav-cta:hover{opacity:0.7;}
+/* Page layout */
+.cp-wrap{min-height:100svh;padding:120px 24px 100px;display:flex;align-items:flex-start;justify-content:center;}
+.cp-inner{width:100%;max-width:560px;}
+/* Back link */
+.cp-back{display:inline-flex;align-items:center;gap:4px;font-size:13px;color:var(--gray-40);text-decoration:none;letter-spacing:-0.01em;transition:color 0.15s;margin-bottom:72px;}
+.cp-back:hover{color:var(--gray-86);}
+/* Header */
+.cp-tag{font-size:11px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#0071e3;margin-bottom:20px;}
+.cp-title.en{font-size:clamp(40px,6vw,60px);}.cp-title.ja{font-size:clamp(28px,4vw,44px);white-space:nowrap;}.cp-title{font-weight:600;line-height:1.04;letter-spacing:-0.035em;color:var(--black);margin-bottom:20px;}
+.cp-sub{font-size:17px;font-weight:300;color:var(--gray-60);line-height:1.65;margin-bottom:64px;max-width:440px;}
+/* Form */
+.cf{display:flex;flex-direction:column;gap:14px;}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.cf-field input,.cf-field textarea{width:100%;padding:16px 18px;font-size:15px;font-family:inherit;background:var(--white);border:1px solid var(--gray-12);border-radius:12px;color:var(--black);outline:none;transition:border-color 0.2s,box-shadow 0.2s;-webkit-appearance:none;}
+.cf-field input::placeholder,.cf-field textarea::placeholder{color:var(--gray-40);}
+.cf-field input:focus,.cf-field textarea:focus{border-color:#0071e3;box-shadow:0 0 0 3px rgba(0,113,227,0.1);}
+.cf-field textarea{resize:none;min-height:160px;line-height:1.65;}
+.cf-btn{margin-top:12px;width:100%;padding:17px;font-size:15px;font-weight:500;font-family:inherit;background:var(--black);color:var(--white);border:none;border-radius:980px;cursor:pointer;letter-spacing:-0.01em;transition:opacity 0.2s;}
+.cf-btn:hover{opacity:0.75;}
+.cf-btn:disabled{opacity:0.3;cursor:not-allowed;}
+.cf-done-msg{display:none;margin-top:32px;padding:20px 24px;background:var(--gray-06);border-radius:12px;font-size:15px;color:var(--gray-60);line-height:1.6;}
+/* Footer */
+footer{background:var(--white);border-top:0.5px solid var(--gray-12);padding:20px 44px;}
+.footer-in{max-width:var(--max-wide);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.footer-logo{font-size:11px;font-weight:600;letter-spacing:0.1em;color:var(--gray-86);}
+.footer-links{display:flex;gap:18px;align-items:center;flex-wrap:wrap;}
+.footer-link{font-size:11px;color:var(--gray-86);text-decoration:none;}
+.footer-link:hover{text-decoration:underline;}
+.footer-copy{font-size:11px;color:var(--gray-86);}
+@media(max-width:768px){.nav-cta{display:none;}.cp-wrap{padding:96px 24px 80px;}.cp-back{margin-bottom:48px;}}
+@media(max-width:600px){.cf-row{grid-template-columns:1fr;}}
+#su-modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+@keyframes su-slide{from{transform:translateY(28px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes su-circle{to{stroke-dashoffset:0}}
+@keyframes su-check{to{stroke-dashoffset:0}}
+</style>
+</head>
+<body class="lang-en">
+<nav>
+<div class="nav-in">
+<a href="/" class="nav-logo">Stoic</a>
+<div class="nav-right">
+<div class="lang-sw">
+<button class="lng-btn on" id="btn-en" onclick="setLang('en')">EN</button>
+<button class="lng-btn" id="btn-ja" onclick="setLang('ja')">JP</button>
+</div>
+<a href="/#waitlist" class="nav-cta en">Join Waitlist</a>
+<a href="/#waitlist" class="nav-cta ja">登録する</a>
+</div>
+</div>
+</nav>
+<div class="cp-wrap">
+<div class="cp-inner">
+<a href="/" class="cp-back"><span class="en">← Back</span><span class="ja">← 戻る</span></a>
+<p class="cp-tag"><span class="en">Contact</span><span class="ja">お問い合わせ</span></p>
+<h1 class="cp-title en">We'd love to<br>hear from you.</h1>
+<h1 class="cp-title ja">お気軽にご連絡ください。</h1>
+<p class="cp-sub en">Questions, feedback, or just a thought — anything is welcome.</p>
+<p class="cp-sub ja">ご質問・ご意見・フィードバック、どんな内容でも歓迎します。</p>
 <form class="cf" id="cf" action="https://formsubmit.co/dolphinstark@protonmail.com" method="POST">
 <input type="hidden" name="_subject" value="Stoic — お問い合わせ">
 <input type="hidden" name="_captcha" value="false">
