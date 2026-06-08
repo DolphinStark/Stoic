@@ -1096,10 +1096,10 @@ function setLang(l){document.body.className='lang-'+l;document.getElementById('b
 (function(){try{const s=localStorage.getItem('stoic-lang');if(s){setLang(s);return;}}catch(e){}if(navigator.language&&navigator.language.startsWith('ja'))setLang('ja');
 setTimeout(fixJaOrphans,120);})();
 document.querySelectorAll('.hero .fade').forEach(el=>el.classList.add('visible'));
-const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.05});
+{const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.05});
 if(window.IntersectionObserver){var jaObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)fixJaOrphans();});},{threshold:0.1});document.querySelectorAll('.ja').forEach(function(el){jaObs.observe(el);});}
 
-document.querySelectorAll('.fade:not(.visible)').forEach(el=>io.observe(el));
+document.querySelectorAll('.fade:not(.visible)').forEach(el=>io.observe(el));}
 function showSuccessModal(t){
   const ja=document.body.classList.contains('lang-ja');
   const m=document.getElementById('su-modal');
