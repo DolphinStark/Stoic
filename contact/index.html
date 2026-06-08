@@ -86,11 +86,7 @@ footer{background:var(--white);border-top:0.5px solid var(--gray-12);padding:20p
 <h1 class="cp-title ja">お気軽にご連絡ください。</h1>
 <p class="cp-sub en">Questions, feedback, or just a thought — anything is welcome.</p>
 <p class="cp-sub ja">ご質問・ご意見・フィードバック、どんな内容でも歓迎します。</p>
-<form class="cf" id="cf" action="https://formsubmit.co/dolphinstark@protonmail.com" method="POST">
-<input type="hidden" name="_subject" value="Stoic — お問い合わせ">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_template" value="box">
-<input type="hidden" id="cf-ar" name="_autoresponse" value="">
+<form class="cf" id="cf">
 <div class="cf-row">
 <div class="cf-field"><input type="text" name="name" data-en="Name" data-ja="お名前" placeholder="Name" required></div>
 <div class="cf-field"><input type="email" name="email" data-en="Email" data-ja="メールアドレス" placeholder="Email" required></div>
@@ -144,11 +140,11 @@ document.getElementById('cf').addEventListener('submit',async function(e){
 e.preventDefault();
 var btn=document.getElementById('cf-btn');
 btn.disabled=true;
-var ja=document.body.classList.contains('lang-ja');
-document.getElementById('cf-ar').value=ja?'お問い合わせありがとうございます。内容を確認のうえ、できる限り迅速にご返答いたします。— Dolphin Stark / Stoic':'Thank you for reaching out. We will get back to you as soon as possible. — Dolphin Stark / Stoic';
+var data={name:this.querySelector('[name="name"]').value,email:this.querySelector('[name="email"]').value,message:this.querySelector('[name="message"]').value};
 try{
-var r=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});
-if(r.ok){this.reset();btn.disabled=false;showSuccessModal('cf');}
+var r=await fetch('https://stoic-mailer.oikawa830-z.workers.dev/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+var j=await r.json();
+if(r.ok&&j.success){this.style.display='none';showSuccessModal('cf');}
 else throw 0;
 }catch(err){btn.disabled=false;alert('Something went wrong. Please try again.');}
 });
