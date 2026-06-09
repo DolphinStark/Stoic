@@ -69,24 +69,34 @@ async function handleWaitlist(request, env, ctx) {
     if (existing) return jsonResponse({ error: 'already_registered' }, 409);
     await env.DB.prepare('INSERT INTO waitlist (email, lang) VALUES (?, ?)').bind(email, lang || 'en').run();
     const isJa = lang === 'ja';
-    ctx.waitUntil(sendEmail(env.RESEND_API_KEY, {
-      from: 'noreply@dolphinstark.com',
-      to: email,
-      subject: isJa ? 'ウェイトリスト登録完了' : 'Waitlist Registration Confirmed',
-      text: isJa
-        ? `ウェイトリストへのご登録ありがとうございます。\nサービス開始時にご連絡いたします。\n\nDolphin Stark`
-        : `Thank you for joining our waitlist!\nWe'll notify you when the service launches.\n\nDolphin Stark`,
-    }).catch(e => console.error('Email failed:', e.message)));
+
+    // DEBUG: await to surface Resend errors
+    let emailDebug = null;
+    try {
+      const r = await sendEmail(env.RESEND_API_KEY, {
+        from: 'noreply@dolphinstark.com',
+        to: email,
+        subject: isJa ? 'ウェイトリスト登録完了' : 'Waitlist Registration Confirmed',
+        text: isJa
+          ? 'ウェイトリストへのご登録ありがとうございます。\nサービス開始時にご連絡いたします。\n\nDolphin Stark'
+          : "Thank you for joining our waitlist!\nWe'll notify you when the service launches.\n\nDolphin Stark",
+      });
+      emailDebug = { ok: true, id: r.id };
+    } catch (e) {
+      emailDebug = { ok: false, error: e.message };
+    }
+
     ctx.waitUntil(sendEmail(env.RESEND_API_KEY, {
       from: 'noreply@dolphinstark.com',
       to: 'dolphinstark@protonmail.com',
       subject: '[ウェイトリスト] 新規登録',
       text: `新規ウェイトリスト登録\nメール: ${email}\n言語: ${lang || 'en'}`,
     }).catch(e => console.error('Email failed:', e.message)));
-    return jsonResponse({ success: true });
+
+    return jsonResponse({ success: true, debug: emailDebug });
   } catch (err) {
     console.error(err);
-    return jsonResponse({ error: 'Internal server error' }, 500);
+    return jsonResponse({ error: err.message || 'Internal server error' }, 500);
   }
 }
 
