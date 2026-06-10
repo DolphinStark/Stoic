@@ -11,16 +11,15 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:     #F7F8FA;
-  --white:  #FFFFFF;
-  --dark:   #0D1117;
-  --text:   #111827;
-  --sub:    #4B5563;
-  --muted:  #9CA3AF;
-  --border: #E5E7EB;
-  --font:   'Inter', 'Noto Sans JP', -apple-system, sans-serif;
-  --max:    760px;
-  --r:      3px;
+  --black:   #000000;
+  --white:   #ffffff;
+  --gray-06: #f5f5f7;
+  --gray-12: #e8e8ed;
+  --gray-40: #6e6e73;
+  --gray-60: #48484a;
+  --gray-86: #1d1d1f;
+  --font:    -apple-system, 'Inter', 'Noto Sans JP', BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --max:     760px;
 }
 
 html { scroll-behavior: smooth; }
@@ -29,8 +28,8 @@ body {
   font-family: var(--font);
   font-size: 15px;
   line-height: 1.75;
-  color: var(--text);
-  background: var(--bg);
+  color: var(--gray-86);
+  background: var(--white);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -46,7 +45,7 @@ body.lang-ja .en { display: none; }
   height: 54px;
   background: rgba(255,255,255,0.94);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 0.5px solid var(--gray-12);
 }
 .hdr-in {
   max-width: var(--max);
@@ -57,17 +56,17 @@ body.lang-ja .en { display: none; }
   align-items: center;
   justify-content: space-between;
 }
-.logo { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; color: var(--text); text-decoration: none; }
+.logo { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; color: var(--gray-86); text-decoration: none; }
 .hdr-right { display: flex; align-items: center; gap: 12px; }
-.lang-sw { display: flex; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+.lang-sw { display: flex; border: 0.5px solid var(--gray-12); border-radius: 980px; overflow: hidden; background: var(--gray-06); }
 .lng-btn {
   padding: 4px 12px; font-size: 11px; font-weight: 500;
-  border: none; background: transparent; color: var(--muted);
+  border: none; background: transparent; color: var(--gray-40);
   cursor: pointer; font-family: var(--font);
 }
-.lng-btn.on { background: var(--text); color: #fff; }
-.back-link { font-size: 12px; color: var(--muted); text-decoration: none; }
-.back-link:hover { color: var(--text); }
+.lng-btn.on { background: var(--gray-86); color: #fff; }
+.back-link { font-size: 12px; color: var(--gray-40); text-decoration: none; }
+.back-link:hover { color: var(--gray-86); }
 
 /* Page */
 .page {
@@ -79,27 +78,27 @@ body.lang-ja .en { display: none; }
 /* Page header */
 .page-eyebrow {
   font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
+  text-transform: uppercase; color: var(--gray-40); margin-bottom: 16px;
 }
 .page-title {
   font-size: clamp(24px, 3.5vw, 36px); font-weight: 300;
-  letter-spacing: -0.02em; line-height: 1.25; color: var(--text);
+  letter-spacing: -0.02em; line-height: 1.25; color: var(--gray-86);
   margin-bottom: 12px;
 }
-.page-date { font-size: 12px; color: var(--muted); margin-bottom: 56px; }
+.page-date { font-size: 12px; color: var(--gray-40); margin-bottom: 56px; }
 
 /* Section */
 .dsec { margin-bottom: 52px; }
 .dsec-h {
   font-size: 13px; font-weight: 600; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--text);
+  text-transform: uppercase; color: var(--gray-86);
   margin-bottom: 20px; padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 0.5px solid var(--gray-12);
 }
-.dsec-body { font-size: 14px; font-weight: 300; color: var(--sub); line-height: 1.85; }
+.dsec-body { font-size: 14px; font-weight: 300; color: var(--gray-60); line-height: 1.85; }
 .dsec-body p + p { margin-top: 14px; }
-.dsec-body strong { color: var(--text); font-weight: 500; }
-.dsec-body a { color: var(--text); }
+.dsec-body strong { color: var(--gray-86); font-weight: 500; }
+.dsec-body a { color: var(--gray-86); }
 .dsec-body a:hover { opacity: 0.7; }
 
 /* Citation table */
@@ -107,33 +106,34 @@ body.lang-ja .en { display: none; }
 .cite-table th {
   text-align: left; padding: 9px 14px;
   font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--muted);
-  border-bottom: 2px solid var(--border); background: var(--white);
+  text-transform: uppercase; color: var(--gray-40);
+  border-bottom: 1px solid var(--gray-12); background: var(--white);
 }
 .cite-table td {
-  padding: 13px 14px; border-bottom: 1px solid var(--border);
-  font-weight: 300; color: var(--sub); vertical-align: top;
+  padding: 13px 14px; border-bottom: 0.5px solid var(--gray-12);
+  font-weight: 300; color: var(--gray-60); vertical-align: top;
   line-height: 1.55; background: var(--white);
 }
-.cite-table td:first-child { color: var(--text); font-weight: 400; white-space: nowrap; }
-.cite-table td em { font-style: normal; color: var(--muted); font-size: 12px; display: block; margin-top: 3px; }
+.cite-table td:first-child { color: var(--gray-86); font-weight: 400; white-space: nowrap; }
+.cite-table td em { font-style: normal; color: var(--gray-40); font-size: 12px; display: block; margin-top: 3px; }
 
 /* Notice box */
 .notice {
   padding: 20px 22px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--text);
-  font-size: 13px; font-weight: 300; color: var(--sub); line-height: 1.75;
+  background: var(--gray-06);
+  border: 0.5px solid var(--gray-12);
+  border-left: 3px solid var(--gray-86);
+  border-radius: 4px;
+  font-size: 13px; font-weight: 300; color: var(--gray-60); line-height: 1.75;
   margin-bottom: 52px;
 }
-.notice strong { color: var(--text); font-weight: 500; }
+.notice strong { color: var(--gray-86); font-weight: 500; }
 
 /* Footer */
 .ftr {
-  background: var(--dark);
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 28px 24px;
+  background: var(--white);
+  border-top: 0.5px solid var(--gray-12);
+  padding: 20px 24px;
 }
 .ftr-in {
   max-width: var(--max);
@@ -143,8 +143,8 @@ body.lang-ja .en { display: none; }
   align-items: center;
   flex-wrap: wrap; gap: 8px;
 }
-.ftr-brand { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; color: rgba(255,255,255,0.28); }
-.ftr-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
+.ftr-brand { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; color: var(--gray-86); }
+.ftr-copy { font-size: 11px; color: var(--gray-86); }
 </style>
 </head>
 <body class="lang-en">
@@ -276,13 +276,13 @@ body.lang-ja .en { display: none; }
     <div class="dsec-body en">
       <p><strong>Accuracy of information.</strong> Dolphin Stark makes reasonable efforts to ensure the accuracy of information on this site. However, all information is provided "as is" without warranty of any kind. We do not accept liability for any errors, omissions, or outdated information.</p>
       <p><strong>No investment or financial advice.</strong> Nothing on this site constitutes investment, financial, or business advice. All forward-looking statements regarding the product, market opportunity, or company plans are speculative and subject to change.</p>
-      <p><strong>Waitlist data.</strong> Email addresses collected through the waitlist form are processed via Formsubmit (formsubmit.co) and stored solely for the purpose of notifying registrants upon product launch. Email addresses will not be sold, rented, or shared with third parties. Registrants may withdraw at any time by contacting us at the address below.</p>
+      <p><strong>Waitlist data.</strong> Email addresses collected through the waitlist form are processed and stored via Cloudflare Workers and Cloudflare D1 database, solely for the purpose of notifying registrants upon product launch. Email addresses will not be sold, rented, or shared with third parties. Registrants may withdraw at any time by contacting us at the address below.</p>
       <p><strong>Governing law.</strong> This legal notice is governed by the laws of Japan. Any disputes shall be subject to the exclusive jurisdiction of the Tokyo District Court.</p>
     </div>
     <div class="dsec-body ja">
       <p><strong>情報の正確性について。</strong>Dolphin Starkは本サイトの情報の正確性を確保するために合理的な努力を行っています。ただし、すべての情報は「現状のまま」提供されており、いかなる保証も行いません。誤り・脱漏・情報の陳腐化による損害についての責任は負いかねます。</p>
       <p><strong>投資・財務アドバイスではありません。</strong>本サイトの内容は、投資・財務・事業に関するアドバイスを構成するものではありません。製品・市場機会・会社計画に関するすべての将来予測は推測的なものであり、変更される可能性があります。</p>
-      <p><strong>ウェイティングリストデータについて。</strong>ウェイティングリストフォームを通じて収集したメールアドレスは、Formsubmit（formsubmit.co）を通じて処理・保管され、製品ローンチ時の通知のみを目的として使用されます。メールアドレスを第三者に販売・貸与・共有することはありません。登録者はいつでも下記連絡先にご連絡いただくことで登録を取り消すことができます。</p>
+      <p><strong>ウェイティングリストデータについて。</strong>ウェイティングリストフォームを通じて収集したメールアドレスは、Cloudflare WorkersおよびCloudflare D1データベースを通じて処理・保管され、製品ローンチ時の通知のみを目的として使用されます。メールアドレスを第三者に販売・貸与・共有することはありません。登録者はいつでも下記連絡先にご連絡いただくことで登録を取り消すことができます。</p>
       <p><strong>準拠法。</strong>本免責事項は日本法に準拠します。本サイトに関連する紛争は東京地方裁判所の専属管轄に服するものとします。</p>
     </div>
   </div>
