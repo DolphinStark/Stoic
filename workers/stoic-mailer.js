@@ -36,7 +36,7 @@ async function handleContact(request, env, ctx) {
         from: 'noreply@dolphinstark.com',
         to: email,
         subject: 'お問合せを承りました / Thank you for your inquiry',
-        html: contactConfirmHtml(name),
+        html: contactConfirmHtml(name, message),
       });
     })().catch(e => console.error('Contact emails failed:', e.message)));
     return jsonResponse({ success: true });
@@ -105,7 +105,9 @@ function waitlistConfirmHtml(isJa) {
 </body></html>`;
 }
 
-function contactConfirmHtml(name) {
+function contactConfirmHtml(name, message) {
+  const safeName = escapeHtml(name);
+  const safeMsg = escapeHtml(message);
   return `<!DOCTYPE html>
 <html lang="ja">
 <head><meta charset="UTF-8"><title>お問合せを承りました</title></head>
@@ -117,9 +119,13 @@ function contactConfirmHtml(name) {
 <p style="margin:0;font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);">STOIC</p>
 </td></tr>
 <tr><td style="background:#ffffff;border-radius:0 0 12px 12px;padding:48px 40px 40px;">
-<h1 style="margin:0 0 24px;font-size:26px;font-weight:600;line-height:1.3;letter-spacing:-0.02em;color:#1d1d1f;">${name}様、<br>ご連絡ありがとうございます。</h1>
+<h1 style="margin:0 0 24px;font-size:26px;font-weight:600;line-height:1.3;letter-spacing:-0.02em;color:#1d1d1f;">${safeName}様、<br>ご連絡ありがとうございます。</h1>
 <p style="margin:0 0 16px;font-size:15px;line-height:1.75;color:#48484a;">お問合せを承りました。内容を確認後、できるだけ早くご返答いたします。</p>
-<p style="margin:0 0 40px;font-size:15px;line-height:1.75;color:#6e6e73;">Thank you for reaching out. We'll get back to you as soon as possible.</p>
+<p style="margin:0 0 28px;font-size:15px;line-height:1.75;color:#6e6e73;">Thank you for reaching out. We'll get back to you as soon as possible.</p>
+<div style="background:#f5f5f7;border-radius:10px;padding:20px 22px;margin:0 0 32px;">
+<p style="margin:0 0 10px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6e6e73;">お問い合わせ内容 / Your message</p>
+<p style="margin:0;font-size:14px;line-height:1.75;color:#1d1d1f;white-space:pre-wrap;">${safeMsg}</p>
+</div>
 <hr style="border:none;border-top:1px solid #e8e8ed;margin:0 0 24px;">
 <p style="margin:0;font-size:11px;color:#6e6e73;line-height:1.6;">このメールはSTOICお問合せフォームからの自動返信です。</p>
 <p style="margin:8px 0 0;font-size:11px;color:#6e6e73;">© 2026 Dolphin Stark · dolphinstark.com</p>
@@ -144,6 +150,14 @@ async function sendEmail(apiKey, { from, to, subject, html, text }) {
   });
   if (!res.ok) throw new Error(`Resend error: ${await res.text()}`);
   return res.json();
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
 function sleep(ms) {
