@@ -20,9 +20,13 @@ export default {
 
 async function handleContact(request, env, ctx) {
   try {
-    const { name, email, message, lang } = await request.json();
+    const { name, email, message, lang, company } = await request.json();
+    if (company) return jsonResponse({ success: true });
     if (!name || !email || !message) {
       return jsonResponse({ error: 'Missing required fields' }, 400);
+    }
+    if (!isValidEmail(email)) {
+      return jsonResponse({ error: 'Invalid email' }, 400);
     }
     const isJa = lang === 'ja';
     ctx.waitUntil((async () => {
@@ -48,8 +52,9 @@ async function handleContact(request, env, ctx) {
 
 async function handleWaitlist(request, env, ctx) {
   try {
-    const { email, lang } = await request.json();
-    if (!email) return jsonResponse({ error: 'Email is required' }, 400);
+    const { email, lang, company } = await request.json();
+    if (company) return jsonResponse({ success: true });
+    if (!isValidEmail(email)) return jsonResponse({ error: 'Email is required' }, 400);
     const existing = await env.DB.prepare('SELECT id FROM waitlist WHERE email = ?').bind(email).first();
     if (existing) return jsonResponse({ error: 'already_registered' }, 409);
     await env.DB.prepare('INSERT INTO waitlist (email, lang) VALUES (?, ?)').bind(email, lang || 'en').run();
@@ -153,6 +158,13 @@ async function sendEmail(apiKey, { from, to, subject, html, text }) {
   });
   if (!res.ok) throw new Error(`Resend error: ${await res.text()}`);
   return res.json();
+}
+
+function isValidEmail(e) {
+  if (typeof e !== 'string' || e.length > 254) return false;
+  var at = e.indexOf('@');
+  var dot = e.lastIndexOf('.');
+  return at > 0 && dot > at + 1 && dot < e.length - 1 && e.indexOf(' ') === -1;
 }
 
 function escapeHtml(s) {

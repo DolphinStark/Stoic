@@ -407,6 +407,7 @@ footer { padding: 20px; }
 <form id="wl-form">
 <div class="wl-field">
 <input class="wl-input" type="email" name="EMAIL" required placeholder="your@email.com" autocomplete="email">
+<input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 <button class="wl-btn" type="submit" id="wl-btn"><span class="en">Join Waitlist</span><span class="ja">登録する</span></button>
 </div>
 <p class="wl-note en">Your email is used only for this waitlist — never sold, shared, or used for any other purpose. You'll receive one notification when Stoic launches. No marketing. No newsletters. Unsubscribe instantly at any time.</p>
@@ -518,11 +519,12 @@ e.preventDefault();
 var btn = document.getElementById('wl-btn');
 btn.disabled = true; btn.style.opacity = '0.4';
 var email = document.querySelector('#wl-form [name="EMAIL"]').value;
+var company = (document.querySelector('#wl-form [name="company"]')||{}).value || '';
 var lang = document.body.classList.contains('lang-ja') ? 'ja' : 'en';
 fetch('https://stoic-mailer.oikawa830-z.workers.dev/waitlist', {
 method: 'POST',
 headers: { 'Content-Type': 'text/plain' },
-body: JSON.stringify({ email: email, lang: lang })
+body: JSON.stringify({ email: email, lang: lang, company: company })
 }).then(function(r) { return r.json(); }).then(function(data) {
 if (data.success) {
 document.getElementById('wl-wrap').style.display = 'none';

@@ -87,6 +87,7 @@ footer{background:var(--white);border-top:0.5px solid var(--gray-12);padding:20p
         <div class="cf-field"><input type="email" name="email" data-en="Email" data-ja="メールアドレス" placeholder="Email" required></div>
       </div>
       <div class="cf-field"><textarea name="message" rows="6" data-en="Your message" data-ja="メッセージ" placeholder="Your message" required></textarea></div>
+      <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="cf-btn" type="submit" id="cf-btn">
         <span class="en">Send message</span>
         <span class="ja">送信する</span>
@@ -140,12 +141,13 @@ document.getElementById('cf').addEventListener('submit', async function(e) {
   var name = this.querySelector('[name="name"]').value;
   var email = this.querySelector('[name="email"]').value;
   var message = this.querySelector('[name="message"]').value;
+  var company = (this.querySelector('[name="company"]')||{}).value || '';
   var lang = document.body.classList.contains('lang-ja') ? 'ja' : 'en';
   try {
     var r = await fetch('https://stoic-mailer.oikawa830-z.workers.dev/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({ name: name, email: email, message: message, lang: lang })
+      body: JSON.stringify({ name: name, email: email, message: message, lang: lang, company: company })
     });
     if (r.ok) {
       this.reset();
