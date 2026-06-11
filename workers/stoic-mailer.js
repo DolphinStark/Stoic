@@ -25,6 +25,9 @@ async function handleContact(request, env, ctx) {
     if (!(await verifyTurnstile(turnstileToken, env.TURNSTILE_SECRET_KEY, request))) {
       return jsonResponse({ error: 'verification_failed' }, 403);
     }
+    if (!(await checkRateLimit(env, request))) {
+      return jsonResponse({ error: 'rate_limited' }, 429);
+    }
     if (!name || !email || !message) {
       return jsonResponse({ error: 'Missing required fields' }, 400);
     }
@@ -59,6 +62,9 @@ async function handleWaitlist(request, env, ctx) {
     if (company) return jsonResponse({ success: true });
     if (!(await verifyTurnstile(turnstileToken, env.TURNSTILE_SECRET_KEY, request))) {
       return jsonResponse({ error: 'verification_failed' }, 403);
+    }
+    if (!(await checkRateLimit(env, request))) {
+      return jsonResponse({ error: 'rate_limited' }, 429);
     }
     if (!isValidEmail(email)) return jsonResponse({ error: 'Email is required' }, 400);
     const existing = await env.DB.prepare('SELECT id FROM waitlist WHERE email = ?').bind(email).first();
@@ -183,6 +189,34 @@ async function verifyTurnstile(token, secret, request) {
     return data.success === true;
   } catch (e) {
     return false;
+  }
+}
+
+async function checkRateLimit(env, request) {
+  const ip = request.headers.get('CF-Connecting-IP') || '';
+  if (!ip || !env.DB) return true;
+  const LIMIT = 30;
+  const WINDOW = 600;
+  const now = Math.floor(Date.now() / 1000);
+  const run = async () => {
+    const row = await env.DB.prepare('SELECT cnt, reset_at FROM rate_limit WHERE ip = ?').bind(ip).first();
+    if (!row || row.reset_at < now) {
+      await env.DB.prepare('INSERT INTO rate_limit (ip, cnt, reset_at) VALUES (?, 1, ?) ON CONFLICT(ip) DO UPDATE SET cnt = 1, reset_at = ?').bind(ip, now + WINDOW, now + WINDOW).run();
+      return true;
+    }
+    if (row.cnt >= LIMIT) return false;
+    await env.DB.prepare('UPDATE rate_limit SET cnt = cnt + 1 WHERE ip = ?').bind(ip).run();
+    return true;
+  };
+  try {
+    return await run();
+  } catch (e) {
+    try {
+      await env.DB.prepare('CREATE TABLE IF NOT EXISTS rate_limit (ip TEXT PRIMARY KEY, cnt INTEGER NOT NULL, reset_at INTEGER NOT NULL)').run();
+      return await run();
+    } catch (e2) {
+      return true;
+    }
   }
 }
 
