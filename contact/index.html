@@ -144,7 +144,7 @@ document.getElementById('cf').addEventListener('submit', async function(e) {
   try {
     var r = await fetch('https://stoic-mailer.oikawa830-z.workers.dev/contact', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({ name: name, email: email, message: message, lang: lang })
     });
     if (r.ok) {

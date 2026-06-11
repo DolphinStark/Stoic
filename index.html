@@ -522,7 +522,7 @@ var email = document.querySelector('#wl-form [name="EMAIL"]').value;
 var lang = document.body.classList.contains('lang-ja') ? 'ja' : 'en';
 fetch('https://stoic-mailer.oikawa830-z.workers.dev/waitlist', {
 method: 'POST',
-headers: { 'Content-Type': 'application/json' },
+headers: { 'Content-Type': 'text/plain' },
 body: JSON.stringify({ email: email, lang: lang })
 }).then(function(r) { return r.json(); }).then(function(data) {
 if (data.success) {
