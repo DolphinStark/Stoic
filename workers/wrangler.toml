@@ -1,5 +1,5 @@
 name = "stoic-mailer"
-main = "stoic-mailer.js"
+main = "mailer.js"
 compatibility_date = "2026-06-08"
 
 [[d1_databases]]
