@@ -108,7 +108,7 @@ function waitlistConfirmHtml(isJa) {
 <tr><td align="center">
 <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">
 <tr><td style="background:#060810;border-radius:12px 12px 0 0;padding:32px 40px;text-align:center;">
-<p style="margin:0;font-size:12px;font-weight:600;letter-spacing:0.04em;color:rgba(255,255,255,0.45);"></p>
+<p style="margin:0;font-size:16px;font-weight:700;letter-spacing:0.08em;color:#ffffff;">Denroot</p>
 </td></tr>
 <tr><td style="background:#ffffff;border-radius:0 0 12px 12px;padding:48px 40px 40px;">
 <h1 style="margin:0 0 24px;font-size:26px;font-weight:600;line-height:1.3;letter-spacing:-0.02em;color:#1d1d1f;">${h1}</h1>
@@ -116,7 +116,7 @@ function waitlistConfirmHtml(isJa) {
 <p style="margin:0 0 40px;font-size:15px;line-height:1.75;color:#48484a;">${p2}</p>
 <hr style="border:none;border-top:1px solid #e8e8ed;margin:0 0 24px;">
 <p style="margin:0;font-size:11px;color:#6e6e73;line-height:1.6;">${footer}</p>
-<p style="margin:8px 0 0;font-size:11px;color:#6e6e73;">© 2026</p>
+<p style="margin:8px 0 0;font-size:11px;color:#6e6e73;">© 2026 Denroot</p>
 </td></tr>
 </table>
 </td></tr>
@@ -138,7 +138,7 @@ function contactConfirmHtml(name, message, isJa) {
 <tr><td align="center">
 <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">
 <tr><td style="background:#060810;border-radius:12px 12px 0 0;padding:32px 40px;text-align:center;">
-<p style="margin:0;font-size:12px;font-weight:600;letter-spacing:0.04em;color:rgba(255,255,255,0.45);"></p>
+<p style="margin:0;font-size:16px;font-weight:700;letter-spacing:0.08em;color:#ffffff;">Denroot</p>
 </td></tr>
 <tr><td style="background:#ffffff;border-radius:0 0 12px 12px;padding:48px 40px 40px;">
 <h1 style="margin:0 0 24px;font-size:26px;font-weight:600;line-height:1.3;letter-spacing:-0.02em;color:#1d1d1f;">${t.h1}</h1>
@@ -149,7 +149,7 @@ function contactConfirmHtml(name, message, isJa) {
 </div>
 <hr style="border:none;border-top:1px solid #e8e8ed;margin:0 0 24px;">
 <p style="margin:0;font-size:11px;color:#6e6e73;line-height:1.6;">${t.footer}</p>
-<p style="margin:8px 0 0;font-size:11px;color:#6e6e73;">© 2026</p>
+<p style="margin:8px 0 0;font-size:11px;color:#6e6e73;">© 2026 Denroot</p>
 </td></tr>
 </table>
 </td></tr>
