@@ -595,7 +595,7 @@ var email = document.querySelector('#wl-form [name="EMAIL"]').value;
 var company = (document.querySelector('#wl-form [name="company"]')||{}).value || '';
 var token = (document.querySelector('#wl-form [name="cf-turnstile-response"]')||{}).value || '';
 var lang = document.body.classList.contains('lang-ja') ? 'ja' : 'en';
-fetch('https://stoic-mailer.oikawa830-z.workers.dev/waitlist', {
+fetch('https://denroot-mailer.oikawa830-z.workers.dev/waitlist', {
 method: 'POST',
 headers: { 'Content-Type': 'text/plain' },
 body: JSON.stringify({ email: email, lang: lang, company: company, turnstileToken: token })

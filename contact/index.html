@@ -166,7 +166,7 @@ document.getElementById('cf').addEventListener('submit', async function(e) {
   var token = (this.querySelector('[name="cf-turnstile-response"]')||{}).value || '';
   var lang = document.body.classList.contains('lang-ja') ? 'ja' : 'en';
   try {
-    var r = await fetch('https://stoic-mailer.oikawa830-z.workers.dev/contact', {
+    var r = await fetch('https://denroot-mailer.oikawa830-z.workers.dev/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({ name: name, email: email, message: message, lang: lang, company: company, turnstileToken: token })

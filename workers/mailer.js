@@ -38,14 +38,14 @@ async function handleContact(request, env, ctx) {
     const isJa = lang === 'ja';
     ctx.waitUntil((async () => {
       await sendEmailWithRetry(env.RESEND_API_KEY, {
-        from: 'noreply@dolphinstark.com',
-        to: 'dolphinstark@protonmail.com',
+        from: 'noreply@denroot.com',
+        to: 'contact@denroot.com',
         subject: `[お問合せ] ${name}様`,
         text: `名前: ${name}\nメール: ${email}\n\nメッセージ:\n${message}`,
       });
       await sleep(600);
       await sendEmailWithRetry(env.RESEND_API_KEY, {
-        from: 'noreply@dolphinstark.com',
+        from: 'noreply@denroot.com',
         to: email,
         subject: isJa ? 'お問合せを承りました' : 'Thank you for your inquiry',
         html: contactConfirmHtml(name, message, isJa),
@@ -74,15 +74,15 @@ async function handleWaitlist(request, env, ctx) {
     const isJa = lang === 'ja';
     ctx.waitUntil((async () => {
       await sendEmailWithRetry(env.RESEND_API_KEY, {
-        from: 'noreply@dolphinstark.com',
+        from: 'noreply@denroot.com',
         to: email,
         subject: isJa ? 'ウェイトリスト登録完了' : 'Waitlist Registration Confirmed',
         html: waitlistConfirmHtml(isJa),
       });
       await sleep(600);
       await sendEmailWithRetry(env.RESEND_API_KEY, {
-        from: 'noreply@dolphinstark.com',
-        to: 'dolphinstark@protonmail.com',
+        from: 'noreply@denroot.com',
+        to: 'contact@denroot.com',
         subject: '[ウェイトリスト] 新規登録',
         text: `新規ウェイトリスト登録\nメール: ${email}\n言語: ${lang || 'en'}`,
       });
