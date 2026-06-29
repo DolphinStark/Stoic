@@ -116,7 +116,7 @@ function waitlistConfirmHtml(isJa) {
 <p style="margin:0 0 40px;font-size:15px;line-height:1.75;color:#48484a;">${p2}</p>
 <hr style="border:none;border-top:1px solid #e8e8ed;margin:0 0 24px;">
 <p style="margin:0;font-size:11px;color:#6e6e73;line-height:1.6;">${footer}</p>
-<p style="margin:8px 0 0;font-size:11px;color:#6e6e73;">© 2026 Denroot</p>
+<p style="margin:8px 0 0;font-size:11px;color:#6e6e73;">© 2026 denroot</p>
 </td></tr>
 </table>
 </td></tr>
@@ -149,7 +149,7 @@ function contactConfirmHtml(name, message, isJa) {
 </div>
 <hr style="border:none;border-top:1px solid #e8e8ed;margin:0 0 24px;">
 <p style="margin:0;font-size:11px;color:#6e6e73;line-height:1.6;">${t.footer}</p>
-<p style="margin:8px 0 0;font-size:11px;color:#6e6e73;">© 2026 Denroot</p>
+<p style="margin:8px 0 0;font-size:11px;color:#6e6e73;">© 2026 denroot</p>
 </td></tr>
 </table>
 </td></tr>
